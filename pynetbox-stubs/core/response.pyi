@@ -1,4 +1,5 @@
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Generic, TypeVar, Self
+
 if TYPE_CHECKING:
     from pynetbox.core.app import App
 
@@ -6,13 +7,15 @@ if TYPE_CHECKING:
 class JsonField(object):
     ...
 
-class RecordSet(object):
+R = TypeVar('R', bound='Record')
+
+class RecordSet(Generic[R]):
     def __init__(self, endpoint: 'App', request: str, **kwargs):
         self.endpoint = endpoint
         self.request = request
 
-    def __iter__(self): ...
-    def __next__(self): ...
+    def __iter__(self) -> Self: ...
+    def __next__(self) -> R: ...
     def __len__(self) -> int: ...
     def update(self, **kwargs) -> Optional[Record]: ...
     def delete(self):
