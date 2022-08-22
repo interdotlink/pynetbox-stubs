@@ -60,9 +60,6 @@ class PathKey(NamedTuple):
         return '/{id}/' in self.name
 
 
-
-
-
 def visit_prefix(prefix, data):
 
     header = """
@@ -155,6 +152,7 @@ from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet, Record
+from pynetbox.models import dcim
 """
 
     with open('pynetbox-stubs/_gen/definitions.pyi', 'w') as f:
@@ -182,7 +180,11 @@ class Property(NamedTuple):
 def visit_definition(key, data):
     properties = [Property.from_definition(name=k, defi=data['properties'][k]) for k in data['properties']]
     properties_str = '\n'.join('        self.' + str(p) for p in properties)
-    header = f"""class {key}(Record):
+    special_classes = {
+        'Interface': 'dcim.Interfaces'
+    }
+
+    header = f"""class {key}({special_classes.get(key, 'Record')}):
     def __init__(self):
 {properties_str}
 """

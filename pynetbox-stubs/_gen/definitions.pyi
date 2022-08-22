@@ -3,6 +3,7 @@ from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet, Record
+from pynetbox.models import dcim
 
 class NestedCircuit(Record):
     def __init__(self):
@@ -961,7 +962,7 @@ class NestedVRF(Record):
         self.rd: str
         self.prefix_count: int
 
-class Interface(Record):
+class Interface(dcim.Interfaces):
     def __init__(self):
         self.id: int
         self.url: str
