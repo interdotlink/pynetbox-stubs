@@ -34,4 +34,5 @@ Right now, this project is still unfinished:
 * [ ] make stubs for `pynetbox.models.*`
 * [ ] `pynetbox.core.query`
 * [ ] `pynetbox.core.app.PluginsApp`
-* 
+* [ ] `POST`, `POST`, `PATCH` parameters
+* [ ] Detail routes like `/ipam/ip-ranges/{id}/available-ips/`
