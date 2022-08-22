@@ -1,9 +1,9 @@
-
 from typing import Any, Dict, List, Optional, Union, Iterable
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet, Record
+
 class NestedCircuit(Record):
     def __init__(self):
         self.id: int
@@ -38,17 +38,17 @@ class CircuitTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.circuit: 'NestedCircuit'
+        self.circuit: "NestedCircuit"
         self.term_side: str
-        self.site: 'NestedSite'
-        self.provider_network: 'NestedProviderNetwork'
+        self.site: "NestedSite"
+        self.provider_network: "NestedProviderNetwork"
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
         self.pp_info: str
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self._occupied: bool
@@ -70,7 +70,7 @@ class WritableCircuitTermination(Record):
         self.pp_info: str
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self._occupied: bool
@@ -131,8 +131,8 @@ class CircuitCircuitTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'NestedSite'
-        self.provider_network: 'NestedProviderNetwork'
+        self.site: "NestedSite"
+        self.provider_network: "NestedProviderNetwork"
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
@@ -143,15 +143,15 @@ class Circuit(Record):
         self.url: str
         self.display: str
         self.cid: str
-        self.provider: 'NestedProvider'
-        self.type: 'NestedCircuitType'
+        self.provider: "NestedProvider"
+        self.type: "NestedCircuitType"
         self.status: Any
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.install_date: str
         self.commit_rate: int
         self.description: str
-        self.termination_a: 'CircuitCircuitTermination'
-        self.termination_z: 'CircuitCircuitTermination'
+        self.termination_a: "CircuitCircuitTermination"
+        self.termination_z: "CircuitCircuitTermination"
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -184,7 +184,7 @@ class ProviderNetwork(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.provider: 'NestedProvider'
+        self.provider: "NestedProvider"
         self.name: str
         self.service_id: str
         self.description: str
@@ -269,7 +269,7 @@ class Cable(Record):
         self.termination_b: Any
         self.type: str
         self.status: Any
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.label: str
         self.color: str
         self.length: float
@@ -316,7 +316,7 @@ class NestedDeviceType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'NestedManufacturer'
+        self.manufacturer: "NestedManufacturer"
         self.model: str
         self.slug: str
         self.device_count: int
@@ -388,7 +388,7 @@ class NestedVirtualChassis(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.master: 'NestedDevice'
+        self.master: "NestedDevice"
         self.member_count: int
 
 class Device(Record):
@@ -397,25 +397,25 @@ class Device(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.device_type: 'NestedDeviceType'
-        self.device_role: 'NestedDeviceRole'
-        self.tenant: 'NestedTenant'
-        self.platform: 'NestedPlatform'
+        self.device_type: "NestedDeviceType"
+        self.device_role: "NestedDeviceRole"
+        self.tenant: "NestedTenant"
+        self.platform: "NestedPlatform"
         self.serial: str
         self.asset_tag: str
-        self.site: 'NestedSite'
-        self.location: 'NestedLocation'
-        self.rack: 'NestedRack'
+        self.site: "NestedSite"
+        self.location: "NestedLocation"
+        self.rack: "NestedRack"
         self.position: int
         self.face: Any
-        self.parent_device: 'NestedDevice'
+        self.parent_device: "NestedDevice"
         self.status: Any
         self.airflow: Any
-        self.primary_ip: 'NestedIPAddress'
-        self.primary_ip4: 'NestedIPAddress'
-        self.primary_ip6: 'NestedIPAddress'
-        self.cluster: 'NestedCluster'
-        self.virtual_chassis: 'NestedVirtualChassis'
+        self.primary_ip: "NestedIPAddress"
+        self.primary_ip4: "NestedIPAddress"
+        self.primary_ip6: "NestedIPAddress"
+        self.cluster: "NestedCluster"
+        self.virtual_chassis: "NestedVirtualChassis"
         self.vc_position: int
         self.vc_priority: int
         self.comments: str
@@ -430,7 +430,7 @@ class NestedModuleType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'NestedManufacturer'
+        self.manufacturer: "NestedManufacturer"
         self.model: str
 
 class ConsolePortTemplate(Record):
@@ -438,8 +438,8 @@ class ConsolePortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
@@ -474,22 +474,22 @@ class ComponentNestedModule(Record):
         self.url: str
         self.display: str
         self.device: int
-        self.module_bay: 'ModuleNestedModuleBay'
+        self.module_bay: "ModuleNestedModuleBay"
 
 class ConsolePort(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
         self.speed: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -514,7 +514,7 @@ class WritableConsolePort(Record):
         self.speed: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -531,8 +531,8 @@ class ConsoleServerPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
@@ -559,15 +559,15 @@ class ConsoleServerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
         self.speed: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -592,7 +592,7 @@ class WritableConsoleServerPort(Record):
         self.speed: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -609,7 +609,7 @@ class DeviceBayTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
+        self.device_type: "NestedDeviceType"
         self.name: str
         self.label: str
         self.description: str
@@ -633,11 +633,11 @@ class DeviceBay(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.name: str
         self.label: str
         self.description: str
-        self.installed_device: 'NestedDevice'
+        self.installed_device: "NestedDevice"
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -680,7 +680,7 @@ class DeviceType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'NestedManufacturer'
+        self.manufacturer: "NestedManufacturer"
         self.model: str
         self.slug: str
         self.part_number: str
@@ -725,25 +725,25 @@ class DeviceWithConfigContext(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.device_type: 'NestedDeviceType'
-        self.device_role: 'NestedDeviceRole'
-        self.tenant: 'NestedTenant'
-        self.platform: 'NestedPlatform'
+        self.device_type: "NestedDeviceType"
+        self.device_role: "NestedDeviceRole"
+        self.tenant: "NestedTenant"
+        self.platform: "NestedPlatform"
         self.serial: str
         self.asset_tag: str
-        self.site: 'NestedSite'
-        self.location: 'NestedLocation'
-        self.rack: 'NestedRack'
+        self.site: "NestedSite"
+        self.location: "NestedLocation"
+        self.rack: "NestedRack"
         self.position: int
         self.face: Any
-        self.parent_device: 'NestedDevice'
+        self.parent_device: "NestedDevice"
         self.status: Any
         self.airflow: Any
-        self.primary_ip: 'NestedIPAddress'
-        self.primary_ip4: 'NestedIPAddress'
-        self.primary_ip6: 'NestedIPAddress'
-        self.cluster: 'NestedCluster'
-        self.virtual_chassis: 'NestedVirtualChassis'
+        self.primary_ip: "NestedIPAddress"
+        self.primary_ip4: "NestedIPAddress"
+        self.primary_ip6: "NestedIPAddress"
+        self.cluster: "NestedCluster"
+        self.virtual_chassis: "NestedVirtualChassis"
         self.vc_position: int
         self.vc_priority: int
         self.comments: str
@@ -771,7 +771,7 @@ class WritableDeviceWithConfigContext(Record):
         self.rack: int
         self.position: int
         self.face: str
-        self.parent_device: 'NestedDevice'
+        self.parent_device: "NestedDevice"
         self.status: str
         self.airflow: str
         self.primary_ip: str
@@ -805,13 +805,13 @@ class FrontPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
         self.color: str
-        self.rear_port: 'NestedRearPortTemplate'
+        self.rear_port: "NestedRearPortTemplate"
         self.rear_port_position: int
         self.description: str
         self.created: str
@@ -847,17 +847,17 @@ class FrontPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
         self.color: str
-        self.rear_port: 'FrontPortRearPort'
+        self.rear_port: "FrontPortRearPort"
         self.rear_port_position: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.tags: List[Any]
@@ -881,7 +881,7 @@ class WritableFrontPort(Record):
         self.rear_port_position: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.tags: List[Any]
@@ -895,8 +895,8 @@ class InterfaceTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
@@ -925,7 +925,7 @@ class NestedInterface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.name: str
         self.cable: int
         self._occupied: str
@@ -966,15 +966,15 @@ class Interface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
         self.enabled: bool
-        self.parent: 'NestedInterface'
-        self.bridge: 'NestedInterface'
-        self.lag: 'NestedInterface'
+        self.parent: "NestedInterface"
+        self.bridge: "NestedInterface"
+        self.lag: "NestedInterface"
         self.mtu: int
         self.mac_address: str
         self.speed: int
@@ -988,15 +988,15 @@ class Interface(Record):
         self.rf_channel_frequency: float
         self.rf_channel_width: float
         self.tx_power: int
-        self.untagged_vlan: 'NestedVLAN'
+        self.untagged_vlan: "NestedVLAN"
         self.tagged_vlans: List[Any]
         self.mark_connected: bool
-        self.cable: 'NestedCable'
-        self.wireless_link: 'NestedWirelessLink'
+        self.cable: "NestedCable"
+        self.wireless_link: "NestedWirelessLink"
         self.link_peer: Any
         self.link_peer_type: str
         self.wireless_lans: List[Any]
-        self.vrf: 'NestedVRF'
+        self.vrf: "NestedVRF"
         self.connected_endpoint: Any
         self.connected_endpoint_type: str
         self.connected_endpoint_reachable: bool
@@ -1038,7 +1038,7 @@ class WritableInterface(Record):
         self.untagged_vlan: int
         self.tagged_vlans: List[Any]
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.wireless_link: int
         self.link_peer: Any
         self.link_peer_type: str
@@ -1084,12 +1084,12 @@ class InventoryItemTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
+        self.device_type: "NestedDeviceType"
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'NestedInventoryItemRole'
-        self.manufacturer: 'NestedManufacturer'
+        self.role: "NestedInventoryItemRole"
+        self.manufacturer: "NestedManufacturer"
         self.part_id: str
         self.description: str
         self.component_type: str
@@ -1124,12 +1124,12 @@ class InventoryItem(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'NestedInventoryItemRole'
-        self.manufacturer: 'NestedManufacturer'
+        self.role: "NestedInventoryItemRole"
+        self.manufacturer: "NestedManufacturer"
         self.part_id: str
         self.serial: str
         self.asset_tag: str
@@ -1176,9 +1176,9 @@ class Location(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.site: 'NestedSite'
-        self.parent: 'NestedLocation'
-        self.tenant: 'NestedTenant'
+        self.site: "NestedSite"
+        self.parent: "NestedLocation"
+        self.tenant: "NestedTenant"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1228,7 +1228,7 @@ class ModuleBayTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
+        self.device_type: "NestedDeviceType"
         self.name: str
         self.label: str
         self.position: str
@@ -1261,9 +1261,9 @@ class ModuleBay(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.name: str
-        self.installed_module: 'ModuleBayNestedModule'
+        self.installed_module: "ModuleBayNestedModule"
         self.label: str
         self.position: str
         self.description: str
@@ -1293,7 +1293,7 @@ class ModuleType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'NestedManufacturer'
+        self.manufacturer: "NestedManufacturer"
         self.model: str
         self.part_number: str
         self.comments: str
@@ -1321,16 +1321,16 @@ class NestedModule(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module_bay: 'ModuleNestedModuleBay'
-        self.module_type: 'NestedModuleType'
+        self.device: "NestedDevice"
+        self.module_bay: "ModuleNestedModuleBay"
+        self.module_type: "NestedModuleType"
 
 class NestedModuleBay(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.module: 'NestedModule'
+        self.module: "NestedModule"
         self.name: str
 
 class Module(Record):
@@ -1338,9 +1338,9 @@ class Module(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module_bay: 'NestedModuleBay'
-        self.module_type: 'NestedModuleType'
+        self.device: "NestedDevice"
+        self.module_bay: "NestedModuleBay"
+        self.module_type: "NestedModuleType"
         self.serial: str
         self.asset_tag: str
         self.comments: str
@@ -1372,7 +1372,7 @@ class Platform(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.manufacturer: 'NestedManufacturer'
+        self.manufacturer: "NestedManufacturer"
         self.napalm_driver: str
         self.napalm_args: str
         self.description: str
@@ -1414,8 +1414,8 @@ class PowerFeed(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.power_panel: 'NestedPowerPanel'
-        self.rack: 'NestedRack'
+        self.power_panel: "NestedPowerPanel"
+        self.rack: "NestedRack"
         self.name: str
         self.status: Any
         self.type: Any
@@ -1426,7 +1426,7 @@ class PowerFeed(Record):
         self.max_utilization: int
         self.comments: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1455,7 +1455,7 @@ class WritablePowerFeed(Record):
         self.max_utilization: int
         self.comments: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1479,12 +1479,12 @@ class PowerOutletTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
-        self.power_port: 'NestedPowerPortTemplate'
+        self.power_port: "NestedPowerPortTemplate"
         self.feed_leg: Any
         self.description: str
         self.created: str
@@ -1511,7 +1511,7 @@ class NestedPowerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.name: str
         self.cable: int
         self._occupied: str
@@ -1521,16 +1521,16 @@ class PowerOutlet(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
-        self.power_port: 'NestedPowerPort'
+        self.power_port: "NestedPowerPort"
         self.feed_leg: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1556,7 +1556,7 @@ class WritablePowerOutlet(Record):
         self.feed_leg: str
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1573,8 +1573,8 @@ class PowerPanel(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'NestedSite'
-        self.location: 'NestedLocation'
+        self.site: "NestedSite"
+        self.location: "NestedLocation"
         self.name: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1601,8 +1601,8 @@ class PowerPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
@@ -1633,8 +1633,8 @@ class PowerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
@@ -1642,7 +1642,7 @@ class PowerPort(Record):
         self.allocated_draw: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1668,7 +1668,7 @@ class WritablePowerPort(Record):
         self.allocated_draw: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.connected_endpoint: Any
@@ -1692,12 +1692,12 @@ class RackReservation(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.rack: 'NestedRack'
+        self.rack: "NestedRack"
         self.units: List[Any]
         self.created: str
         self.last_updated: str
-        self.user: 'NestedUser'
-        self.tenant: 'NestedTenant'
+        self.user: "NestedUser"
+        self.tenant: "NestedTenant"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1748,11 +1748,11 @@ class Rack(Record):
         self.display: str
         self.name: str
         self.facility_id: str
-        self.site: 'NestedSite'
-        self.location: 'NestedLocation'
-        self.tenant: 'NestedTenant'
+        self.site: "NestedSite"
+        self.location: "NestedLocation"
+        self.tenant: "NestedTenant"
         self.status: Any
-        self.role: 'NestedRackRole'
+        self.role: "NestedRackRole"
         self.serial: str
         self.asset_tag: str
         self.type: Any
@@ -1804,7 +1804,7 @@ class RackUnit(Record):
         self.id: int
         self.name: str
         self.face: Any
-        self.device: 'NestedDevice'
+        self.device: "NestedDevice"
         self.occupied: bool
         self.display: str
 
@@ -1813,8 +1813,8 @@ class RearPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'NestedDeviceType'
-        self.module_type: 'NestedModuleType'
+        self.device_type: "NestedDeviceType"
+        self.module_type: "NestedModuleType"
         self.name: str
         self.label: str
         self.type: Any
@@ -1845,8 +1845,8 @@ class RearPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.module: 'ComponentNestedModule'
+        self.device: "NestedDevice"
+        self.module: "ComponentNestedModule"
         self.name: str
         self.label: str
         self.type: Any
@@ -1854,7 +1854,7 @@ class RearPort(Record):
         self.positions: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.tags: List[Any]
@@ -1877,7 +1877,7 @@ class WritableRearPort(Record):
         self.positions: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'NestedCable'
+        self.cable: "NestedCable"
         self.link_peer: Any
         self.link_peer_type: str
         self.tags: List[Any]
@@ -1903,7 +1903,7 @@ class Region(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'NestedRegion'
+        self.parent: "NestedRegion"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1945,7 +1945,7 @@ class SiteGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'NestedSiteGroup'
+        self.parent: "NestedSiteGroup"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1978,9 +1978,9 @@ class Site(Record):
         self.name: str
         self.slug: str
         self.status: Any
-        self.region: 'NestedRegion'
-        self.group: 'NestedSiteGroup'
-        self.tenant: 'NestedTenant'
+        self.region: "NestedRegion"
+        self.group: "NestedSiteGroup"
+        self.tenant: "NestedTenant"
         self.facility: str
         self.time_zone: str
         self.description: str
@@ -2039,7 +2039,7 @@ class VirtualChassis(Record):
         self.display: str
         self.name: str
         self.domain: str
-        self.master: 'NestedDevice'
+        self.master: "NestedDevice"
         self.tags: List[Any]
         self.custom_fields: Any
         self.member_count: int
@@ -2249,7 +2249,7 @@ class JobResult(Record):
         self.name: str
         self.obj_type: str
         self.status: Any
-        self.user: 'NestedUser'
+        self.user: "NestedUser"
         self.data: str
         self.job_id: str
 
@@ -2291,7 +2291,7 @@ class ObjectChange(Record):
         self.url: str
         self.display: str
         self.time: str
-        self.user: 'NestedUser'
+        self.user: "NestedUser"
         self.user_name: str
         self.request_id: str
         self.action: Any
@@ -2353,8 +2353,8 @@ class Aggregate(Record):
         self.display: str
         self.family: Any
         self.prefix: str
-        self.rir: 'NestedRIR'
-        self.tenant: 'NestedTenant'
+        self.rir: "NestedRIR"
+        self.tenant: "NestedTenant"
         self.date_added: str
         self.description: str
         self.tags: List[Any]
@@ -2385,7 +2385,7 @@ class ASN(Record):
         self.display: str
         self.asn: int
         self.rir: int
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.description: str
         self.site_count: int
         self.provider_count: int
@@ -2423,7 +2423,7 @@ class FHRPGroupAssignment(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.group: 'NestedFHRPGroup'
+        self.group: "NestedFHRPGroup"
         self.interface_type: str
         self.interface_id: int
         self.interface: Any
@@ -2467,15 +2467,15 @@ class IPAddress(Record):
         self.display: str
         self.family: Any
         self.address: str
-        self.vrf: 'NestedVRF'
-        self.tenant: 'NestedTenant'
+        self.vrf: "NestedVRF"
+        self.tenant: "NestedTenant"
         self.status: Any
         self.role: Any
         self.assigned_object_type: str
         self.assigned_object_id: int
         self.assigned_object: Any
-        self.nat_inside: 'NestedIPAddress'
-        self.nat_outside: 'NestedIPAddress'
+        self.nat_inside: "NestedIPAddress"
+        self.nat_outside: "NestedIPAddress"
         self.dns_name: str
         self.description: str
         self.tags: List[Any]
@@ -2525,10 +2525,10 @@ class IPRange(Record):
         self.start_address: str
         self.end_address: str
         self.size: int
-        self.vrf: 'NestedVRF'
-        self.tenant: 'NestedTenant'
+        self.vrf: "NestedVRF"
+        self.tenant: "NestedTenant"
         self.status: Any
-        self.role: 'NestedRole'
+        self.role: "NestedRole"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -2560,7 +2560,7 @@ class AvailableIP(Record):
     def __init__(self):
         self.family: int
         self.address: str
-        self.vrf: 'NestedVRF'
+        self.vrf: "NestedVRF"
 
 class WritableAvailableIP(Record):
     def __init__(self):
@@ -2574,12 +2574,12 @@ class Prefix(Record):
         self.display: str
         self.family: Any
         self.prefix: str
-        self.site: 'NestedSite'
-        self.vrf: 'NestedVRF'
-        self.tenant: 'NestedTenant'
-        self.vlan: 'NestedVLAN'
+        self.site: "NestedSite"
+        self.vrf: "NestedVRF"
+        self.tenant: "NestedTenant"
+        self.vlan: "NestedVLAN"
         self.status: Any
-        self.role: 'NestedRole'
+        self.role: "NestedRole"
         self.is_pool: bool
         self.mark_utilized: bool
         self.description: str
@@ -2617,7 +2617,7 @@ class AvailablePrefix(Record):
     def __init__(self):
         self.family: int
         self.prefix: str
-        self.vrf: 'NestedVRF'
+        self.vrf: "NestedVRF"
 
 class PrefixLength(Record):
     def __init__(self):
@@ -2660,7 +2660,7 @@ class RouteTarget(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -2720,8 +2720,8 @@ class Service(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'NestedDevice'
-        self.virtual_machine: 'NestedVirtualMachine'
+        self.device: "NestedDevice"
+        self.virtual_machine: "NestedVirtualMachine"
         self.name: str
         self.ports: List[Any]
         self.protocol: Any
@@ -2780,7 +2780,7 @@ class NestedVLANGroup(Record):
 class AvailableVLAN(Record):
     def __init__(self):
         self.vid: int
-        self.group: 'NestedVLANGroup'
+        self.group: "NestedVLANGroup"
 
 class WritableCreateAvailableVLAN(Record):
     def __init__(self):
@@ -2798,13 +2798,13 @@ class VLAN(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'NestedSite'
-        self.group: 'NestedVLANGroup'
+        self.site: "NestedSite"
+        self.group: "NestedVLANGroup"
         self.vid: int
         self.name: str
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.status: Any
-        self.role: 'NestedRole'
+        self.role: "NestedRole"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -2845,7 +2845,7 @@ class VRF(Record):
         self.display: str
         self.name: str
         self.rd: str
-        self.tenant: 'NestedTenant'
+        self.tenant: "NestedTenant"
         self.enforce_unique: bool
         self.description: str
         self.import_targets: List[Any]
@@ -2899,8 +2899,8 @@ class ContactAssignment(Record):
         self.content_type: str
         self.object_id: int
         self.object: Any
-        self.contact: 'NestedContact'
-        self.role: 'NestedContactRole'
+        self.contact: "NestedContact"
+        self.role: "NestedContactRole"
         self.priority: Any
         self.created: str
         self.last_updated: str
@@ -2936,7 +2936,7 @@ class ContactGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'NestedContactGroup'
+        self.parent: "NestedContactGroup"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -2979,7 +2979,7 @@ class Contact(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.group: 'NestedContactGroup'
+        self.group: "NestedContactGroup"
         self.name: str
         self.title: str
         self.phone: str
@@ -3017,7 +3017,7 @@ class TenantGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'NestedTenantGroup'
+        self.parent: "NestedTenantGroup"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -3049,7 +3049,7 @@ class Tenant(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.group: 'NestedTenantGroup'
+        self.group: "NestedTenantGroup"
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -3140,7 +3140,7 @@ class Token(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.user: 'NestedUser'
+        self.user: "NestedUser"
         self.created: str
         self.expires: str
         self.key: str
@@ -3223,10 +3223,10 @@ class Cluster(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.type: 'NestedClusterType'
-        self.group: 'NestedClusterGroup'
-        self.tenant: 'NestedTenant'
-        self.site: 'NestedSite'
+        self.type: "NestedClusterType"
+        self.group: "NestedClusterGroup"
+        self.tenant: "NestedTenant"
+        self.site: "NestedSite"
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -3258,7 +3258,7 @@ class NestedVMInterface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.virtual_machine: 'NestedVirtualMachine'
+        self.virtual_machine: "NestedVirtualMachine"
         self.name: str
 
 class VMInterface(Record):
@@ -3266,18 +3266,18 @@ class VMInterface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.virtual_machine: 'NestedVirtualMachine'
+        self.virtual_machine: "NestedVirtualMachine"
         self.name: str
         self.enabled: bool
-        self.parent: 'NestedVMInterface'
-        self.bridge: 'NestedVMInterface'
+        self.parent: "NestedVMInterface"
+        self.bridge: "NestedVMInterface"
         self.mtu: int
         self.mac_address: str
         self.description: str
         self.mode: Any
-        self.untagged_vlan: 'NestedVLAN'
+        self.untagged_vlan: "NestedVLAN"
         self.tagged_vlans: List[Any]
-        self.vrf: 'NestedVRF'
+        self.vrf: "NestedVRF"
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -3316,14 +3316,14 @@ class VirtualMachineWithConfigContext(Record):
         self.display: str
         self.name: str
         self.status: Any
-        self.site: 'NestedSite'
-        self.cluster: 'NestedCluster'
-        self.role: 'NestedDeviceRole'
-        self.tenant: 'NestedTenant'
-        self.platform: 'NestedPlatform'
-        self.primary_ip: 'NestedIPAddress'
-        self.primary_ip4: 'NestedIPAddress'
-        self.primary_ip6: 'NestedIPAddress'
+        self.site: "NestedSite"
+        self.cluster: "NestedCluster"
+        self.role: "NestedDeviceRole"
+        self.tenant: "NestedTenant"
+        self.platform: "NestedPlatform"
+        self.primary_ip: "NestedIPAddress"
+        self.primary_ip4: "NestedIPAddress"
+        self.primary_ip6: "NestedIPAddress"
         self.vcpus: float
         self.memory: int
         self.disk: int
@@ -3378,7 +3378,7 @@ class WirelessLANGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'NestedWirelessLANGroup'
+        self.parent: "NestedWirelessLANGroup"
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -3410,8 +3410,8 @@ class WirelessLAN(Record):
         self.display: str
         self.ssid: str
         self.description: str
-        self.group: 'NestedWirelessLANGroup'
-        self.vlan: 'NestedVLAN'
+        self.group: "NestedWirelessLANGroup"
+        self.vlan: "NestedVLAN"
         self.auth_type: Any
         self.auth_cipher: Any
         self.auth_psk: str
@@ -3442,8 +3442,8 @@ class WirelessLink(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.interface_a: 'NestedInterface'
-        self.interface_b: 'NestedInterface'
+        self.interface_a: "NestedInterface"
+        self.interface_b: "NestedInterface"
         self.ssid: str
         self.status: Any
         self.description: str

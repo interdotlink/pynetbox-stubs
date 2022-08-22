@@ -84,7 +84,9 @@ from pynetbox._gen import definitions
     path_keys = [PathKey.from_raw_path(k, k.name in gets) for k in raw_path_keys if not k.is_get]
     non_detailed = [p for p in path_keys if not p.is_detailed]
 
-    keys = [f'        self.{k.attr_name}: {k.class_name} = ...' for k in non_detailed]
+    keys = [f'        self.{k.attr_name}: {k.class_name} = ...' for k in non_detailed if k.name]
+    if not keys:
+        keys = ['        ...']
 
     def get_get_data(key: PathKey):
         g = gets.get(key.name)
@@ -203,6 +205,7 @@ def main():
         visit_prefix(p, data)
 
     visit_definitions(openapi['definitions'])
+    os.system('black pynetbox-stubs/_gen')
 
 
 if __name__ == "__main__":
