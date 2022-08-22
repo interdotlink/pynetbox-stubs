@@ -20,12 +20,10 @@ class Parameter(NamedTuple):
     required: bool
     type: str
 
-
-
     def __str__(self):
         if self.required:
             return f"{self.name}: {self.type}"
-        return f"{self.name}: Optional[{python_type(self.type)}]"
+        return f"{self.name}: Optional[{python_type(self.type)}] = None"
 
 
 class RawPathKey(NamedTuple):
@@ -73,7 +71,7 @@ from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet, Record
-from pynetbox._get import definitions
+from pynetbox._gen import definitions
 
 """
 
@@ -108,21 +106,37 @@ def visit_endpoint(key: PathKey, data, get_data):
     get_params = visit_get(data['get']) if 'get' in data else []
     get_str = ', '.join(str(p) for p in get_params)
 
-    record_cls = f'definitions.{key.class_name}'
+    response_type_ref = get_response_type_ref(data)
+    response_type = 'definitions.' + response_type_ref[len('#/definitions/'):] if response_type_ref else 'Record'
 
     cls = f"""class {key.class_name}(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[{record_cls}]: ...
-    def get(self, {get_str}) -> {record_cls}: ...
-    def filter(self, {get_str}) -> RecordSet[{record_cls}]: ...
-    def create(self, {get_str}) -> {record_cls}: ...
-    def update(self, objects: Iterable[{record_cls}]) -> [{record_cls}]: ...
-    def delete(self, objects: Iterable[{record_cls}]): ...
+    def all(self, limit=0, offset=None) -> RecordSet[{response_type}]: ...
+    def get(self, {get_str}) -> Optional[{response_type}]: ...
+    def filter(self, {get_str}) -> RecordSet[{response_type}]: ...
+    def create(self, {get_str}) -> {response_type}: ...
+    def update(self, objects: Iterable[{response_type}]) -> [{response_type}]: ...
+    def delete(self, objects: Iterable[{response_type}]): ...
     def choices(self) -> dict:...
     def count(self, {get_str}) -> int: ...
 
 """
 
     return cls
+
+def get_response_type_ref(data):
+    if 'get' in data:
+        _200 = data['get']['responses']['200']
+        if 'schema' in _200:
+            schema = data['get']['responses']['200']['schema']
+            if 'properties' in schema:
+                return schema['properties']['results']['items']['$ref']
+            elif '$ref' in schema:
+                return schema['$ref']
+            assert False, schema
+        elif _200 == {'description': ''}:
+            return None
+        assert False, _200
+    return None
 
 
 def visit_get(data) -> List[Parameter]:
@@ -165,8 +179,8 @@ class Property(NamedTuple):
 
 def visit_definition(key, data):
     properties = [Property.from_definition(name=k, defi=data['properties'][k]) for k in data['properties']]
-    properties_str = '\n'.join('        ' + str(p) for p in properties)
-    header = f"""class {key.capitalize()}(Record):
+    properties_str = '\n'.join('        self.' + str(p) for p in properties)
+    header = f"""class {key}(Record):
     def __init__(self):
 {properties_str}
 """
