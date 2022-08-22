@@ -4,22 +4,28 @@ from pathlib import Path
 from typing import List, NamedTuple
 
 
+def python_type(typ):
+    return {
+        'string': 'str',
+        'integer': 'int',
+        'number': 'float',
+        'boolean': 'bool',
+        'object': 'Any',
+        'array': 'List[Any]',
+    }[typ]
+
+
 class Parameter(NamedTuple):
     name: str
     required: bool
     type: str
 
-    def python_type(self):
-        return {
-            'string': 'str',
-            'integer': 'int',
-            'number': 'float',
-        }[self.type]
+
 
     def __str__(self):
         if self.required:
             return f"{self.name}: {self.type}"
-        return f"{self.name}: Optional[{self.python_type()}]"
+        return f"{self.name}: Optional[{python_type(self.type)}]"
 
 
 class RawPathKey(NamedTuple):
@@ -67,6 +73,7 @@ from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet, Record
+from pynetbox._get import definitions
 
 """
 
@@ -101,12 +108,12 @@ def visit_endpoint(key: PathKey, data, get_data):
     get_params = visit_get(data['get']) if 'get' in data else []
     get_str = ', '.join(str(p) for p in get_params)
 
-    record_cls = key.class_name + 'Record'
+    record_cls = f'definitions.{key.class_name}'
 
     cls = f"""class {key.class_name}(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[{record_cls}]: ...
     def get(self, {get_str}) -> {record_cls}: ...
-    def filter(self, {get_str}) -> RecordSet: ...
+    def filter(self, {get_str}) -> RecordSet[{record_cls}]: ...
     def create(self, {get_str}) -> {record_cls}: ...
     def update(self, objects: Iterable[{record_cls}]) -> [{record_cls}]: ...
     def delete(self, objects: Iterable[{record_cls}]): ...
@@ -118,12 +125,53 @@ def visit_endpoint(key: PathKey, data, get_data):
     return cls
 
 
-
-
-
 def visit_get(data) -> List[Parameter]:
     parameters = data['parameters']
     return [Parameter(p['name'], p['required'], p['type']) for p in parameters]
+
+
+def visit_definitions(definitions: dict):
+    defs = [visit_definition(k, d) for k,d in definitions.items()]
+
+    header = """
+from typing import Any, Dict, List, Optional, Union, Iterable
+from pynetbox.core.api import Api
+from pynetbox.core.app import App
+from pynetbox.core.endpoint import Endpoint
+from pynetbox.core.response import RecordSet, Record
+"""
+
+    with open('pynetbox-stubs/_gen/definitions.pyi', 'w') as f:
+        f.write(header)
+        f.write('\n'.join(defs))
+
+
+class Property(NamedTuple):
+    name: str
+    type: str
+    ref: str = ''
+
+    def __str__(self):
+        if self.type:
+            return f"{self.name}: {python_type(self.type)}"
+        if '#/definitions/' in self.ref:
+            return f"{self.name}: '{self.ref[len('#/definitions/'):]}'"
+        assert False, f"{self.ref}"
+
+    @classmethod
+    def from_definition(cls, name, defi):
+        return cls(name, defi.get('type'), defi.get('$ref'))
+
+
+def visit_definition(key, data):
+    properties = [Property.from_definition(name=k, defi=data['properties'][k]) for k in data['properties']]
+    properties_str = '\n'.join('        ' + str(p) for p in properties)
+    header = f"""class {key.capitalize()}(Record):
+    def __init__(self):
+{properties_str}
+"""
+    return header
+
 
 def main():
     with open('openapi.json', 'r') as f:
@@ -140,6 +188,7 @@ def main():
         data = {path[len(p + '/') + 1:]: value for path, value in paths.items() if path.startswith(f'/{p}')}
         visit_prefix(p, data)
 
+    visit_definitions(openapi['definitions'])
 
 
 if __name__ == "__main__":

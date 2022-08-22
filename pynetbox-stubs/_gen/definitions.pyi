@@ -1,0 +1,3474 @@
+
+from typing import Any, Dict, List, Optional, Union, Iterable
+from pynetbox.core.api import Api
+from pynetbox.core.app import App
+from pynetbox.core.endpoint import Endpoint
+from pynetbox.core.response import RecordSet, Record
+class Nestedcircuit(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        cid: str
+
+class Nestedsite(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+
+class Nestedprovidernetwork(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Nestedcable(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        label: str
+
+class Circuittermination(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        circuit: 'NestedCircuit'
+        term_side: str
+        site: 'NestedSite'
+        provider_network: 'NestedProviderNetwork'
+        port_speed: int
+        upstream_speed: int
+        xconnect_id: str
+        pp_info: str
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        _occupied: bool
+        created: str
+        last_updated: str
+
+class Writablecircuittermination(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        circuit: int
+        term_side: str
+        site: int
+        provider_network: int
+        port_speed: int
+        upstream_speed: int
+        xconnect_id: str
+        pp_info: str
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        _occupied: bool
+        created: str
+        last_updated: str
+
+class Nestedtag(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        color: str
+
+class Circuittype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+
+class Nestedprovider(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        circuit_count: int
+
+class Nestedcircuittype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        circuit_count: int
+
+class Nestedtenant(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+
+class Circuitcircuittermination(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        site: 'NestedSite'
+        provider_network: 'NestedProviderNetwork'
+        port_speed: int
+        upstream_speed: int
+        xconnect_id: str
+
+class Circuit(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        cid: str
+        provider: 'NestedProvider'
+        type: 'NestedCircuitType'
+        status: Any
+        tenant: 'NestedTenant'
+        install_date: str
+        commit_rate: int
+        description: str
+        termination_a: 'CircuitCircuitTermination'
+        termination_z: 'CircuitCircuitTermination'
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablecircuit(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        cid: str
+        provider: int
+        type: int
+        status: str
+        tenant: int
+        install_date: str
+        commit_rate: int
+        description: str
+        termination_a: int
+        termination_z: int
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Providernetwork(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        provider: 'NestedProvider'
+        name: str
+        service_id: str
+        description: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableprovidernetwork(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        provider: int
+        name: str
+        service_id: str
+        description: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedasn(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        asn: int
+
+class Provider(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        asn: int
+        account: str
+        portal_url: str
+        noc_contact: str
+        admin_contact: str
+        comments: str
+        asns: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+
+class Writableprovider(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        asn: int
+        account: str
+        portal_url: str
+        noc_contact: str
+        admin_contact: str
+        comments: str
+        asns: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+
+class Cable(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        termination_a_type: str
+        termination_a_id: int
+        termination_a: Any
+        termination_b_type: str
+        termination_b_id: int
+        termination_b: Any
+        type: str
+        status: Any
+        tenant: 'NestedTenant'
+        label: str
+        color: str
+        length: float
+        length_unit: Any
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablecable(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        termination_a_type: str
+        termination_a_id: int
+        termination_a: Any
+        termination_b_type: str
+        termination_b_id: int
+        termination_b: Any
+        type: str
+        status: str
+        tenant: int
+        label: str
+        color: str
+        length: float
+        length_unit: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedmanufacturer(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        devicetype_count: int
+
+class Nesteddevicetype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: 'NestedManufacturer'
+        model: str
+        slug: str
+        device_count: int
+
+class Nesteddevicerole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        device_count: int
+        virtualmachine_count: int
+
+class Nestedplatform(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        device_count: int
+        virtualmachine_count: int
+
+class Nestedlocation(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        rack_count: int
+        _depth: int
+
+class Nestedrack(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        device_count: int
+
+class Nesteddevice(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Nestedipaddress(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: int
+        address: str
+
+class Nestedcluster(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        virtualmachine_count: int
+
+class Nestedvirtualchassis(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        master: 'NestedDevice'
+        member_count: int
+
+class Device(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        device_type: 'NestedDeviceType'
+        device_role: 'NestedDeviceRole'
+        tenant: 'NestedTenant'
+        platform: 'NestedPlatform'
+        serial: str
+        asset_tag: str
+        site: 'NestedSite'
+        location: 'NestedLocation'
+        rack: 'NestedRack'
+        position: int
+        face: Any
+        parent_device: 'NestedDevice'
+        status: Any
+        airflow: Any
+        primary_ip: 'NestedIPAddress'
+        primary_ip4: 'NestedIPAddress'
+        primary_ip6: 'NestedIPAddress'
+        cluster: 'NestedCluster'
+        virtual_chassis: 'NestedVirtualChassis'
+        vc_position: int
+        vc_priority: int
+        comments: str
+        local_context_data: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedmoduletype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: 'NestedManufacturer'
+        model: str
+
+class Consoleporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        description: str
+        created: str
+        last_updated: str
+
+class Writableconsoleporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        description: str
+        created: str
+        last_updated: str
+
+class Modulenestedmodulebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Componentnestedmodule(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module_bay: 'ModuleNestedModuleBay'
+
+class Consoleport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        speed: Any
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writableconsoleport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        speed: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Consoleserverporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        description: str
+        created: str
+        last_updated: str
+
+class Writableconsoleserverporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        description: str
+        created: str
+        last_updated: str
+
+class Consoleserverport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        speed: Any
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writableconsoleserverport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        speed: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Devicebaytemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        name: str
+        label: str
+        description: str
+        created: str
+        last_updated: str
+
+class Writabledevicebaytemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        name: str
+        label: str
+        description: str
+        created: str
+        last_updated: str
+
+class Devicebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        name: str
+        label: str
+        description: str
+        installed_device: 'NestedDevice'
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writabledevicebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        name: str
+        label: str
+        description: str
+        installed_device: int
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Devicerole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        color: str
+        vm_role: bool
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        virtualmachine_count: int
+
+class Devicetype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: 'NestedManufacturer'
+        model: str
+        slug: str
+        part_number: str
+        u_height: int
+        is_full_depth: bool
+        subdevice_role: Any
+        airflow: Any
+        front_image: str
+        rear_image: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+
+class Writabledevicetype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: int
+        model: str
+        slug: str
+        part_number: str
+        u_height: int
+        is_full_depth: bool
+        subdevice_role: str
+        airflow: str
+        front_image: str
+        rear_image: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+
+class Devicewithconfigcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        device_type: 'NestedDeviceType'
+        device_role: 'NestedDeviceRole'
+        tenant: 'NestedTenant'
+        platform: 'NestedPlatform'
+        serial: str
+        asset_tag: str
+        site: 'NestedSite'
+        location: 'NestedLocation'
+        rack: 'NestedRack'
+        position: int
+        face: Any
+        parent_device: 'NestedDevice'
+        status: Any
+        airflow: Any
+        primary_ip: 'NestedIPAddress'
+        primary_ip4: 'NestedIPAddress'
+        primary_ip6: 'NestedIPAddress'
+        cluster: 'NestedCluster'
+        virtual_chassis: 'NestedVirtualChassis'
+        vc_position: int
+        vc_priority: int
+        comments: str
+        local_context_data: str
+        tags: List[Any]
+        custom_fields: Any
+        config_context: Any
+        created: str
+        last_updated: str
+
+class Writabledevicewithconfigcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        device_type: int
+        device_role: int
+        tenant: int
+        platform: int
+        serial: str
+        asset_tag: str
+        site: int
+        location: int
+        rack: int
+        position: int
+        face: str
+        parent_device: 'NestedDevice'
+        status: str
+        airflow: str
+        primary_ip: str
+        primary_ip4: int
+        primary_ip6: int
+        cluster: int
+        virtual_chassis: int
+        vc_position: int
+        vc_priority: int
+        comments: str
+        local_context_data: str
+        tags: List[Any]
+        custom_fields: Any
+        config_context: Any
+        created: str
+        last_updated: str
+
+class Devicenapalm(Record):
+    def __init__(self):
+        method: Any
+
+class Nestedrearporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Frontporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        color: str
+        rear_port: 'NestedRearPortTemplate'
+        rear_port_position: int
+        description: str
+        created: str
+        last_updated: str
+
+class Writablefrontporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        color: str
+        rear_port: int
+        rear_port_position: int
+        description: str
+        created: str
+        last_updated: str
+
+class Frontportrearport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        label: str
+
+class Frontport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        color: str
+        rear_port: 'FrontPortRearPort'
+        rear_port_position: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writablefrontport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        color: str
+        rear_port: int
+        rear_port_position: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Interfacetemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        mgmt_only: bool
+        description: str
+        created: str
+        last_updated: str
+
+class Writableinterfacetemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        mgmt_only: bool
+        description: str
+        created: str
+        last_updated: str
+
+class Nestedinterface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        name: str
+        cable: int
+        _occupied: str
+
+class Nestedvlan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        vid: int
+        name: str
+
+class Nestedwirelesslink(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        ssid: str
+
+class Nestedwirelesslan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        ssid: str
+
+class Nestedvrf(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        rd: str
+        prefix_count: int
+
+class Interface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        enabled: bool
+        parent: 'NestedInterface'
+        bridge: 'NestedInterface'
+        lag: 'NestedInterface'
+        mtu: int
+        mac_address: str
+        speed: int
+        duplex: Any
+        wwn: str
+        mgmt_only: bool
+        description: str
+        mode: Any
+        rf_role: Any
+        rf_channel: Any
+        rf_channel_frequency: float
+        rf_channel_width: float
+        tx_power: int
+        untagged_vlan: 'NestedVLAN'
+        tagged_vlans: List[Any]
+        mark_connected: bool
+        cable: 'NestedCable'
+        wireless_link: 'NestedWirelessLink'
+        link_peer: Any
+        link_peer_type: str
+        wireless_lans: List[Any]
+        vrf: 'NestedVRF'
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        count_ipaddresses: int
+        count_fhrp_groups: int
+        _occupied: bool
+
+class Writableinterface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        enabled: bool
+        parent: int
+        bridge: int
+        lag: int
+        mtu: int
+        mac_address: str
+        speed: int
+        duplex: str
+        wwn: str
+        mgmt_only: bool
+        description: str
+        mode: str
+        rf_role: str
+        rf_channel: str
+        rf_channel_frequency: float
+        rf_channel_width: float
+        tx_power: int
+        untagged_vlan: int
+        tagged_vlans: List[Any]
+        mark_connected: bool
+        cable: 'NestedCable'
+        wireless_link: int
+        link_peer: Any
+        link_peer_type: str
+        wireless_lans: List[Any]
+        vrf: int
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        count_ipaddresses: int
+        count_fhrp_groups: int
+        _occupied: bool
+
+class Inventoryitemrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        color: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        inventoryitem_count: int
+
+class Nestedinventoryitemrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        inventoryitem_count: int
+
+class Inventoryitemtemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        parent: int
+        name: str
+        label: str
+        role: 'NestedInventoryItemRole'
+        manufacturer: 'NestedManufacturer'
+        part_id: str
+        description: str
+        component_type: str
+        component_id: int
+        component: Any
+        created: str
+        last_updated: str
+        _depth: int
+
+class Writableinventoryitemtemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        parent: int
+        name: str
+        label: str
+        role: int
+        manufacturer: int
+        part_id: str
+        description: str
+        component_type: str
+        component_id: int
+        component: Any
+        created: str
+        last_updated: str
+        _depth: int
+
+class Inventoryitem(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        parent: int
+        name: str
+        label: str
+        role: 'NestedInventoryItemRole'
+        manufacturer: 'NestedManufacturer'
+        part_id: str
+        serial: str
+        asset_tag: str
+        discovered: bool
+        description: str
+        component_type: str
+        component_id: int
+        component: Any
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _depth: int
+
+class Writableinventoryitem(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        parent: int
+        name: str
+        label: str
+        role: int
+        manufacturer: int
+        part_id: str
+        serial: str
+        asset_tag: str
+        discovered: bool
+        description: str
+        component_type: str
+        component_id: int
+        component: Any
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _depth: int
+
+class Location(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        site: 'NestedSite'
+        parent: 'NestedLocation'
+        tenant: 'NestedTenant'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        rack_count: int
+        device_count: int
+        _depth: int
+
+class Writablelocation(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        site: int
+        parent: int
+        tenant: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        rack_count: int
+        device_count: int
+        _depth: int
+
+class Manufacturer(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        devicetype_count: int
+        inventoryitem_count: int
+        platform_count: int
+
+class Modulebaytemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        name: str
+        label: str
+        position: str
+        description: str
+        created: str
+        last_updated: str
+
+class Writablemodulebaytemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        name: str
+        label: str
+        position: str
+        description: str
+        created: str
+        last_updated: str
+
+class Modulebaynestedmodule(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        serial: str
+
+class Modulebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        name: str
+        installed_module: 'ModuleBayNestedModule'
+        label: str
+        position: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablemodulebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        name: str
+        installed_module: int
+        label: str
+        position: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Moduletype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: 'NestedManufacturer'
+        model: str
+        part_number: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablemoduletype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        manufacturer: int
+        model: str
+        part_number: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedmodule(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module_bay: 'ModuleNestedModuleBay'
+        module_type: 'NestedModuleType'
+
+class Nestedmodulebay(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        module: 'NestedModule'
+        name: str
+
+class Module(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module_bay: 'NestedModuleBay'
+        module_type: 'NestedModuleType'
+        serial: str
+        asset_tag: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablemodule(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module_bay: int
+        module_type: int
+        serial: str
+        asset_tag: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Platform(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        manufacturer: 'NestedManufacturer'
+        napalm_driver: str
+        napalm_args: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        virtualmachine_count: int
+
+class Writableplatform(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        manufacturer: int
+        napalm_driver: str
+        napalm_args: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        virtualmachine_count: int
+
+class Nestedpowerpanel(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        powerfeed_count: int
+
+class Powerfeed(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        power_panel: 'NestedPowerPanel'
+        rack: 'NestedRack'
+        name: str
+        status: Any
+        type: Any
+        supply: Any
+        phase: Any
+        voltage: int
+        amperage: int
+        max_utilization: int
+        comments: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writablepowerfeed(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        power_panel: int
+        rack: int
+        name: str
+        status: str
+        type: str
+        supply: str
+        phase: str
+        voltage: int
+        amperage: int
+        max_utilization: int
+        comments: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Nestedpowerporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Poweroutlettemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        power_port: 'NestedPowerPortTemplate'
+        feed_leg: Any
+        description: str
+        created: str
+        last_updated: str
+
+class Writablepoweroutlettemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        power_port: int
+        feed_leg: str
+        description: str
+        created: str
+        last_updated: str
+
+class Nestedpowerport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        name: str
+        cable: int
+        _occupied: str
+
+class Poweroutlet(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        power_port: 'NestedPowerPort'
+        feed_leg: Any
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writablepoweroutlet(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        power_port: int
+        feed_leg: str
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Powerpanel(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        site: 'NestedSite'
+        location: 'NestedLocation'
+        name: str
+        tags: List[Any]
+        custom_fields: Any
+        powerfeed_count: int
+        created: str
+        last_updated: str
+
+class Writablepowerpanel(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        site: int
+        location: int
+        name: str
+        tags: List[Any]
+        custom_fields: Any
+        powerfeed_count: int
+        created: str
+        last_updated: str
+
+class Powerporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        maximum_draw: int
+        allocated_draw: int
+        description: str
+        created: str
+        last_updated: str
+
+class Writablepowerporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        maximum_draw: int
+        allocated_draw: int
+        description: str
+        created: str
+        last_updated: str
+
+class Powerport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        maximum_draw: int
+        allocated_draw: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writablepowerport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        maximum_draw: int
+        allocated_draw: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        connected_endpoint: Any
+        connected_endpoint_type: str
+        connected_endpoint_reachable: bool
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Nesteduser(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        username: str
+
+class Rackreservation(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        rack: 'NestedRack'
+        units: List[Any]
+        created: str
+        last_updated: str
+        user: 'NestedUser'
+        tenant: 'NestedTenant'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+
+class Writablerackreservation(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        rack: int
+        units: List[Any]
+        created: str
+        last_updated: str
+        user: int
+        tenant: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+
+class Rackrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        color: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        rack_count: int
+
+class Nestedrackrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        rack_count: int
+
+class Rack(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        facility_id: str
+        site: 'NestedSite'
+        location: 'NestedLocation'
+        tenant: 'NestedTenant'
+        status: Any
+        role: 'NestedRackRole'
+        serial: str
+        asset_tag: str
+        type: Any
+        width: Any
+        u_height: int
+        desc_units: bool
+        outer_width: int
+        outer_depth: int
+        outer_unit: Any
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        powerfeed_count: int
+
+class Writablerack(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        facility_id: str
+        site: int
+        location: int
+        tenant: int
+        status: str
+        role: int
+        serial: str
+        asset_tag: str
+        type: str
+        width: int
+        u_height: int
+        desc_units: bool
+        outer_width: int
+        outer_depth: int
+        outer_unit: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        powerfeed_count: int
+
+class Rackunit(Record):
+    def __init__(self):
+        id: int
+        name: str
+        face: Any
+        device: 'NestedDevice'
+        occupied: bool
+        display: str
+
+class Rearporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: 'NestedDeviceType'
+        module_type: 'NestedModuleType'
+        name: str
+        label: str
+        type: Any
+        color: str
+        positions: int
+        description: str
+        created: str
+        last_updated: str
+
+class Writablerearporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device_type: int
+        module_type: int
+        name: str
+        label: str
+        type: str
+        color: str
+        positions: int
+        description: str
+        created: str
+        last_updated: str
+
+class Rearport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        module: 'ComponentNestedModule'
+        name: str
+        label: str
+        type: Any
+        color: str
+        positions: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Writablerearport(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        module: int
+        name: str
+        label: str
+        type: str
+        color: str
+        positions: int
+        description: str
+        mark_connected: bool
+        cable: 'NestedCable'
+        link_peer: Any
+        link_peer_type: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        _occupied: bool
+
+class Nestedregion(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        site_count: int
+        _depth: int
+
+class Region(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: 'NestedRegion'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        site_count: int
+        _depth: int
+
+class Writableregion(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        site_count: int
+        _depth: int
+
+class Nestedsitegroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        site_count: int
+        _depth: int
+
+class Sitegroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: 'NestedSiteGroup'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        site_count: int
+        _depth: int
+
+class Writablesitegroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        site_count: int
+        _depth: int
+
+class Site(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        status: Any
+        region: 'NestedRegion'
+        group: 'NestedSiteGroup'
+        tenant: 'NestedTenant'
+        facility: str
+        time_zone: str
+        description: str
+        physical_address: str
+        shipping_address: str
+        latitude: float
+        longitude: float
+        comments: str
+        asns: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+        device_count: int
+        prefix_count: int
+        rack_count: int
+        virtualmachine_count: int
+        vlan_count: int
+
+class Writablesite(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        status: str
+        region: int
+        group: int
+        tenant: int
+        facility: str
+        time_zone: str
+        description: str
+        physical_address: str
+        shipping_address: str
+        latitude: float
+        longitude: float
+        comments: str
+        asns: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+        device_count: int
+        prefix_count: int
+        rack_count: int
+        virtualmachine_count: int
+        vlan_count: int
+
+class Virtualchassis(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        domain: str
+        master: 'NestedDevice'
+        tags: List[Any]
+        custom_fields: Any
+        member_count: int
+        created: str
+        last_updated: str
+
+class Writablevirtualchassis(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        domain: str
+        master: int
+        tags: List[Any]
+        custom_fields: Any
+        member_count: int
+        created: str
+        last_updated: str
+
+class Nestedclustertype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        cluster_count: int
+
+class Nestedclustergroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        cluster_count: int
+
+class Nestedtenantgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        tenant_count: int
+        _depth: int
+
+class Configcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        weight: int
+        description: str
+        is_active: bool
+        regions: List[Any]
+        site_groups: List[Any]
+        sites: List[Any]
+        device_types: List[Any]
+        roles: List[Any]
+        platforms: List[Any]
+        cluster_types: List[Any]
+        cluster_groups: List[Any]
+        clusters: List[Any]
+        tenant_groups: List[Any]
+        tenants: List[Any]
+        tags: List[Any]
+        data: str
+        created: str
+        last_updated: str
+
+class Writableconfigcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        weight: int
+        description: str
+        is_active: bool
+        regions: List[Any]
+        site_groups: List[Any]
+        sites: List[Any]
+        device_types: List[Any]
+        roles: List[Any]
+        platforms: List[Any]
+        cluster_types: List[Any]
+        cluster_groups: List[Any]
+        clusters: List[Any]
+        tenant_groups: List[Any]
+        tenants: List[Any]
+        tags: List[Any]
+        data: str
+        created: str
+        last_updated: str
+
+class Contenttype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        app_label: str
+        model: str
+
+class Customfield(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_types: List[Any]
+        type: Any
+        object_type: str
+        data_type: str
+        name: str
+        label: str
+        description: str
+        required: bool
+        filter_logic: Any
+        default: str
+        weight: int
+        validation_minimum: int
+        validation_maximum: int
+        validation_regex: str
+        choices: List[Any]
+        created: str
+        last_updated: str
+
+class Writablecustomfield(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_types: List[Any]
+        type: str
+        object_type: str
+        data_type: str
+        name: str
+        label: str
+        description: str
+        required: bool
+        filter_logic: str
+        default: str
+        weight: int
+        validation_minimum: int
+        validation_maximum: int
+        validation_regex: str
+        choices: List[Any]
+        created: str
+        last_updated: str
+
+class Customlink(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_type: str
+        name: str
+        enabled: bool
+        link_text: str
+        link_url: str
+        weight: int
+        group_name: str
+        button_class: str
+        new_window: bool
+        created: str
+        last_updated: str
+
+class Exporttemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_type: str
+        name: str
+        description: str
+        template_code: str
+        mime_type: str
+        file_extension: str
+        as_attachment: bool
+        created: str
+        last_updated: str
+
+class Imageattachment(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_type: str
+        object_id: int
+        parent: Any
+        name: str
+        image: str
+        image_height: int
+        image_width: int
+        created: str
+        last_updated: str
+
+class Jobresult(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        created: str
+        completed: str
+        name: str
+        obj_type: str
+        status: Any
+        user: 'NestedUser'
+        data: str
+        job_id: str
+
+class Journalentry(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        assigned_object_type: str
+        assigned_object_id: int
+        assigned_object: Any
+        created: str
+        created_by: int
+        kind: Any
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        last_updated: str
+
+class Writablejournalentry(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        assigned_object_type: str
+        assigned_object_id: int
+        assigned_object: Any
+        created: str
+        created_by: int
+        kind: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        last_updated: str
+
+class Objectchange(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        time: str
+        user: 'NestedUser'
+        user_name: str
+        request_id: str
+        action: Any
+        changed_object_type: str
+        changed_object_id: int
+        changed_object: Any
+        prechange_data: str
+        postchange_data: str
+
+class Tag(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        color: str
+        description: str
+        tagged_items: int
+        created: str
+        last_updated: str
+
+class Webhook(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_types: List[Any]
+        name: str
+        type_create: bool
+        type_update: bool
+        type_delete: bool
+        payload_url: str
+        enabled: bool
+        http_method: str
+        http_content_type: str
+        additional_headers: str
+        body_template: str
+        secret: str
+        conditions: str
+        ssl_verification: bool
+        ca_file_path: str
+        created: str
+        last_updated: str
+
+class Nestedrir(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        aggregate_count: int
+
+class Aggregate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: Any
+        prefix: str
+        rir: 'NestedRIR'
+        tenant: 'NestedTenant'
+        date_added: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableaggregate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: str
+        prefix: str
+        rir: int
+        tenant: int
+        date_added: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Asn(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        asn: int
+        rir: int
+        tenant: 'NestedTenant'
+        description: str
+        site_count: int
+        provider_count: int
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableasn(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        asn: int
+        rir: int
+        tenant: int
+        description: str
+        site_count: int
+        provider_count: int
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedfhrpgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        protocol: str
+        group_id: int
+
+class Fhrpgroupassignment(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        group: 'NestedFHRPGroup'
+        interface_type: str
+        interface_id: int
+        interface: Any
+        priority: int
+        created: str
+        last_updated: str
+
+class Writablefhrpgroupassignment(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        group: int
+        interface_type: str
+        interface_id: int
+        interface: Any
+        priority: int
+        created: str
+        last_updated: str
+
+class Fhrpgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        protocol: str
+        group_id: int
+        auth_type: str
+        auth_key: str
+        description: str
+        ip_addresses: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Ipaddress(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: Any
+        address: str
+        vrf: 'NestedVRF'
+        tenant: 'NestedTenant'
+        status: Any
+        role: Any
+        assigned_object_type: str
+        assigned_object_id: int
+        assigned_object: Any
+        nat_inside: 'NestedIPAddress'
+        nat_outside: 'NestedIPAddress'
+        dns_name: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableipaddress(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: str
+        address: str
+        vrf: int
+        tenant: int
+        status: str
+        role: str
+        assigned_object_type: str
+        assigned_object_id: int
+        assigned_object: Any
+        nat_inside: int
+        nat_outside: str
+        dns_name: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        prefix_count: int
+        vlan_count: int
+
+class Iprange(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: Any
+        start_address: str
+        end_address: str
+        size: int
+        vrf: 'NestedVRF'
+        tenant: 'NestedTenant'
+        status: Any
+        role: 'NestedRole'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        children: int
+
+class Writableiprange(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: str
+        start_address: str
+        end_address: str
+        size: int
+        vrf: int
+        tenant: int
+        status: str
+        role: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        children: int
+
+class Availableip(Record):
+    def __init__(self):
+        family: int
+        address: str
+        vrf: 'NestedVRF'
+
+class Writableavailableip(Record):
+    def __init__(self):
+        family: int
+        address: str
+
+class Prefix(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: Any
+        prefix: str
+        site: 'NestedSite'
+        vrf: 'NestedVRF'
+        tenant: 'NestedTenant'
+        vlan: 'NestedVLAN'
+        status: Any
+        role: 'NestedRole'
+        is_pool: bool
+        mark_utilized: bool
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        children: int
+        _depth: int
+
+class Writableprefix(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        family: str
+        prefix: str
+        site: int
+        vrf: int
+        tenant: int
+        vlan: int
+        status: str
+        role: int
+        is_pool: bool
+        mark_utilized: bool
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        children: int
+        _depth: int
+
+class Availableprefix(Record):
+    def __init__(self):
+        family: int
+        prefix: str
+        vrf: 'NestedVRF'
+
+class Prefixlength(Record):
+    def __init__(self):
+        prefix_length: int
+
+class Rir(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        is_private: bool
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        aggregate_count: int
+
+class Role(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        weight: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        prefix_count: int
+        vlan_count: int
+
+class Routetarget(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        tenant: 'NestedTenant'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableroutetarget(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        tenant: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Servicetemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        ports: List[Any]
+        protocol: Any
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableservicetemplate(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        ports: List[Any]
+        protocol: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Nestedvirtualmachine(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Service(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: 'NestedDevice'
+        virtual_machine: 'NestedVirtualMachine'
+        name: str
+        ports: List[Any]
+        protocol: Any
+        ipaddresses: List[Any]
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writableservice(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        device: int
+        virtual_machine: int
+        name: str
+        ports: List[Any]
+        protocol: str
+        ipaddresses: List[Any]
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Vlangroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        scope_type: str
+        scope_id: int
+        scope: str
+        min_vid: int
+        max_vid: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        vlan_count: int
+
+class Nestedvlangroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        vlan_count: int
+
+class Availablevlan(Record):
+    def __init__(self):
+        vid: int
+        group: 'NestedVLANGroup'
+
+class Writablecreateavailablevlan(Record):
+    def __init__(self):
+        name: str
+        site: int
+        tenant: int
+        status: str
+        role: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+
+class Vlan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        site: 'NestedSite'
+        group: 'NestedVLANGroup'
+        vid: int
+        name: str
+        tenant: 'NestedTenant'
+        status: Any
+        role: 'NestedRole'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        prefix_count: int
+
+class Writablevlan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        site: int
+        group: int
+        vid: int
+        name: str
+        tenant: int
+        status: str
+        role: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        prefix_count: int
+
+class Nestedroutetarget(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Vrf(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        rd: str
+        tenant: 'NestedTenant'
+        enforce_unique: bool
+        description: str
+        import_targets: List[Any]
+        export_targets: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        ipaddress_count: int
+        prefix_count: int
+
+class Writablevrf(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        rd: str
+        tenant: int
+        enforce_unique: bool
+        description: str
+        import_targets: List[Any]
+        export_targets: List[Any]
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        ipaddress_count: int
+        prefix_count: int
+
+class Nestedcontact(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Nestedcontactrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+
+class Contactassignment(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_type: str
+        object_id: int
+        object: Any
+        contact: 'NestedContact'
+        role: 'NestedContactRole'
+        priority: Any
+        created: str
+        last_updated: str
+
+class Writablecontactassignment(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        content_type: str
+        object_id: int
+        object: Any
+        contact: int
+        role: int
+        priority: str
+        created: str
+        last_updated: str
+
+class Nestedcontactgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        contact_count: int
+        _depth: int
+
+class Contactgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: 'NestedContactGroup'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        contact_count: int
+        _depth: int
+
+class Writablecontactgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        contact_count: int
+        _depth: int
+
+class Contactrole(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Contact(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        group: 'NestedContactGroup'
+        name: str
+        title: str
+        phone: str
+        email: str
+        address: str
+        link: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablecontact(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        group: int
+        name: str
+        title: str
+        phone: str
+        email: str
+        address: str
+        link: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Tenantgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: 'NestedTenantGroup'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        tenant_count: int
+        _depth: int
+
+class Writabletenantgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        tenant_count: int
+        _depth: int
+
+class Tenant(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        group: 'NestedTenantGroup'
+        description: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+        device_count: int
+        ipaddress_count: int
+        prefix_count: int
+        rack_count: int
+        site_count: int
+        virtualmachine_count: int
+        vlan_count: int
+        vrf_count: int
+        cluster_count: int
+
+class Writabletenant(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        group: int
+        description: str
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        circuit_count: int
+        device_count: int
+        ipaddress_count: int
+        prefix_count: int
+        rack_count: int
+        site_count: int
+        virtualmachine_count: int
+        vlan_count: int
+        vrf_count: int
+        cluster_count: int
+
+class Group(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        user_count: int
+
+class Nestedgroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+
+class Objectpermission(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        description: str
+        enabled: bool
+        object_types: List[Any]
+        groups: List[Any]
+        users: List[Any]
+        actions: List[Any]
+        constraints: str
+
+class Writableobjectpermission(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        description: str
+        enabled: bool
+        object_types: List[Any]
+        groups: List[Any]
+        users: List[Any]
+        actions: List[Any]
+        constraints: str
+
+class Token(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        user: 'NestedUser'
+        created: str
+        expires: str
+        key: str
+        write_enabled: bool
+        description: str
+
+class Writabletoken(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        user: int
+        created: str
+        expires: str
+        key: str
+        write_enabled: bool
+        description: str
+
+class User(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        username: str
+        password: str
+        first_name: str
+        last_name: str
+        email: str
+        is_staff: bool
+        is_active: bool
+        date_joined: str
+        groups: List[Any]
+
+class Writableuser(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        username: str
+        password: str
+        first_name: str
+        last_name: str
+        email: str
+        is_staff: bool
+        is_active: bool
+        date_joined: str
+        groups: List[Any]
+
+class Clustergroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        cluster_count: int
+
+class Clustertype(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        cluster_count: int
+
+class Cluster(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        type: 'NestedClusterType'
+        group: 'NestedClusterGroup'
+        tenant: 'NestedTenant'
+        site: 'NestedSite'
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        virtualmachine_count: int
+
+class Writablecluster(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        type: int
+        group: int
+        tenant: int
+        site: int
+        comments: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        device_count: int
+        virtualmachine_count: int
+
+class Nestedvminterface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        virtual_machine: 'NestedVirtualMachine'
+        name: str
+
+class Vminterface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        virtual_machine: 'NestedVirtualMachine'
+        name: str
+        enabled: bool
+        parent: 'NestedVMInterface'
+        bridge: 'NestedVMInterface'
+        mtu: int
+        mac_address: str
+        description: str
+        mode: Any
+        untagged_vlan: 'NestedVLAN'
+        tagged_vlans: List[Any]
+        vrf: 'NestedVRF'
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        count_ipaddresses: int
+        count_fhrp_groups: int
+
+class Writablevminterface(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        virtual_machine: int
+        name: str
+        enabled: bool
+        parent: int
+        bridge: int
+        mtu: int
+        mac_address: str
+        description: str
+        mode: str
+        untagged_vlan: int
+        tagged_vlans: List[Any]
+        vrf: int
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        count_ipaddresses: int
+        count_fhrp_groups: int
+
+class Virtualmachinewithconfigcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        status: Any
+        site: 'NestedSite'
+        cluster: 'NestedCluster'
+        role: 'NestedDeviceRole'
+        tenant: 'NestedTenant'
+        platform: 'NestedPlatform'
+        primary_ip: 'NestedIPAddress'
+        primary_ip4: 'NestedIPAddress'
+        primary_ip6: 'NestedIPAddress'
+        vcpus: float
+        memory: int
+        disk: int
+        comments: str
+        local_context_data: str
+        tags: List[Any]
+        custom_fields: Any
+        config_context: Any
+        created: str
+        last_updated: str
+
+class Writablevirtualmachinewithconfigcontext(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        status: str
+        site: str
+        cluster: int
+        role: int
+        tenant: int
+        platform: int
+        primary_ip: str
+        primary_ip4: int
+        primary_ip6: int
+        vcpus: float
+        memory: int
+        disk: int
+        comments: str
+        local_context_data: str
+        tags: List[Any]
+        custom_fields: Any
+        config_context: Any
+        created: str
+        last_updated: str
+
+class Nestedwirelesslangroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        wirelesslan_count: int
+        _depth: int
+
+class Wirelesslangroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: 'NestedWirelessLANGroup'
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        wirelesslan_count: int
+        _depth: int
+
+class Writablewirelesslangroup(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        name: str
+        slug: str
+        parent: int
+        description: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+        wirelesslan_count: int
+        _depth: int
+
+class Wirelesslan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        ssid: str
+        description: str
+        group: 'NestedWirelessLANGroup'
+        vlan: 'NestedVLAN'
+        auth_type: Any
+        auth_cipher: Any
+        auth_psk: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablewirelesslan(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        ssid: str
+        description: str
+        group: int
+        vlan: int
+        auth_type: str
+        auth_cipher: str
+        auth_psk: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Wirelesslink(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        interface_a: 'NestedInterface'
+        interface_b: 'NestedInterface'
+        ssid: str
+        status: Any
+        description: str
+        auth_type: Any
+        auth_cipher: Any
+        auth_psk: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
+
+class Writablewirelesslink(Record):
+    def __init__(self):
+        id: int
+        url: str
+        display: str
+        interface_a: int
+        interface_b: int
+        ssid: str
+        status: str
+        description: str
+        auth_type: str
+        auth_cipher: str
+        auth_psk: str
+        tags: List[Any]
+        custom_fields: Any
+        created: str
+        last_updated: str
