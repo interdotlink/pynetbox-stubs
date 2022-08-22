@@ -14,3 +14,24 @@ pip install pynetbox-stubs
 Enables autocompletion: 
 
 ![](pynetbox-stubs.gif)
+
+# Development
+
+you'll need a local netbox running on port `8080`, then run 
+
+```shell
+make openapi.json
+python -m venv venv
+. venv/bin/activate 
+pip install -r requirements.txt
+python gen.py
+```
+
+## TODOs:
+
+Right now, this project is still unfinished:
+
+* [ ] make stubs for `pynetbox.models.*`
+* [ ] `pynetbox.core.query`
+* [ ] `pynetbox.core.app.PluginsApp`
+* 
