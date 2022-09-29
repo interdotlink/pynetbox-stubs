@@ -50,7 +50,10 @@ class ParameterList:
         self.parameters = parameters
 
     def __str__(self) -> str:
-        return ", ".join(str(p) for p in sorted(self.parameters, key=lambda p: p.required, reverse=True))
+        return ", ".join(
+            str(p)
+            for p in sorted(self.parameters, key=lambda p: p.required, reverse=True)
+        )
 
 
 class RawPathKey(NamedTuple):
@@ -87,7 +90,9 @@ class PathKey(NamedTuple):
         return "/{id}/" in self.name
 
 
-def visit_prefix(prefix: str, data: Dict[str, dict], defs: List["RecordDefinition"]) -> None:
+def visit_prefix(
+    prefix: str, data: Dict[str, dict], defs: List["RecordDefinition"]
+) -> None:
 
     header = """
 from typing import Any, Dict, List, Optional, Union, Iterable, overload
@@ -136,7 +141,10 @@ from pynetbox._gen import definitions
 
 
 def visit_endpoint(
-    key: PathKey, data: Dict[str, dict], get_data: Optional[dict], defs: List["RecordDefinition"]
+    key: PathKey,
+    data: Dict[str, dict],
+    get_data: Optional[dict],
+    defs: List["RecordDefinition"],
 ) -> str:
     get_str = str(visit_get(data["get"])) if "get" in data else ""
     create_str = str(visit_create(data["post"], defs)) if "post" in data else ""
@@ -185,10 +193,12 @@ def get_response_type_ref(data: dict) -> Optional[str]:
 
 def visit_get(data: dict) -> ParameterList:
     parameters = data["parameters"]
-    return ParameterList([
-        Parameter(p["name"], p["required"], PythonType.from_json(p["type"]))
-        for p in parameters
-    ])
+    return ParameterList(
+        [
+            Parameter(p["name"], p["required"], PythonType.from_json(p["type"]))
+            for p in parameters
+        ]
+    )
 
 
 def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
@@ -201,10 +211,9 @@ def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
         definition: "RecordDefinition" = next(d for d in defs if d.name == schema_name)
     except StopIteration:
         assert False, f'{schema_name} not in {", ".join(d.name for d in defs)}'
-    return ParameterList([
-        Parameter(p.name, p.required, p.type)
-        for p in definition.properties
-    ])
+    return ParameterList(
+        [Parameter(p.name, p.required, p.type) for p in definition.properties]
+    )
 
 
 def visit_definitions(definitions: List["RecordDefinition"]) -> None:
@@ -234,16 +243,27 @@ class Property(NamedTuple):
         if self.type:
             return f"{self.name}: {self.type}"
         if "#/definitions/" in self.ref:
-            return f"{self.name}: '{self.ref[len('#/definitions/'):]}'"
+            # "Nested" classes are calling "full_details" for unknown properties, so internally they
+            # convert themselves to the non-nested class.
+            ref = self.ref[len("#/definitions/") :]
+            ref = ref[len("Nested") :] if ref.startswith("Nested") else ref
+
+            if ref == "VirtualMachine":
+                ref = "VirtualMachineWithConfigContext"  # TODO wild guess
+
+            return f"{self.name}: '{ref}'"
         assert False, f"{self.ref}"
 
     @classmethod
-    def from_definition(cls, name: str, defi: Dict[str, str], required: bool) -> "Property":
-        return cls(name,
-                   required,
-                   PythonType.from_json(defi["type"]) if "type" in defi else None,
-                   defi.get("$ref", ""),
-                   )
+    def from_definition(
+        cls, name: str, defi: Dict[str, str], required: bool
+    ) -> "Property":
+        return cls(
+            name,
+            required,
+            PythonType.from_json(defi["type"]) if "type" in defi else None,
+            defi.get("$ref", ""),
+        )
 
 
 class RecordDefinition(NamedTuple):
@@ -264,7 +284,8 @@ class RecordDefinition(NamedTuple):
     def from_dict(cls, name: str, data: Dict[str, dict]) -> "RecordDefinition":
         required = data.get("required", [])
         properties = [
-            Property.from_definition(k, d, k in required) for k, d in data["properties"].items()
+            Property.from_definition(k, d, k in required)
+            for k, d in data["properties"].items()
         ]
         return cls(name, properties)
 
@@ -293,7 +314,6 @@ def main() -> None:
             if path.startswith(f"/{p}")
         }
         visit_prefix(p, data, defs)
-
 
     visit_definitions(defs)
     os.system("black pynetbox-stubs/_gen")
