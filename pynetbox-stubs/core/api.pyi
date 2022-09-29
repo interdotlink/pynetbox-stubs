@@ -1,4 +1,5 @@
 from typing import Optional
+import requests
 
 from pynetbox._gen.circuits import CircuitsApp
 from pynetbox._gen.dcim import DcimApp
@@ -32,6 +33,8 @@ class Api:
         self.users = UsersApp(self, "users")
         self.wireless = WirelessApp(self, "wireless")
         self.plugins = PluginsApp(self)
+
+        self.http_session = requests.Session()
     @property
     def version(self) -> str: ...
     def openapi(self) -> dict: ...
