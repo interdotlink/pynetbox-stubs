@@ -10,19 +10,17 @@ from pynetbox._gen.virtualization import VirtualizationApp
 from pynetbox._gen.wireless import WirelessApp
 from pynetbox.core.app import App
 
-
 class PluginsApp:
     pass
-
 
 class Api:
     def __init__(
         self,
         url: str,
-        token: Optional[str]=None,
-        private_key: Optional[str]=None,
-        private_key_file: Optional[str]=None,
-        threading: bool=False,
+        token: Optional[str] = None,
+        private_key: Optional[str] = None,
+        private_key_file: Optional[str] = None,
+        threading: bool = False,
     ):
         self.dcim = DcimApp(self, "dcim")
         self.ipam = IpamApp(self, "ipam")
@@ -34,7 +32,6 @@ class Api:
         self.users = UsersApp(self, "users")
         self.wireless = WirelessApp(self, "wireless")
         self.plugins = PluginsApp(self)
-
     @property
     def version(self) -> str: ...
     def openapi(self) -> dict: ...

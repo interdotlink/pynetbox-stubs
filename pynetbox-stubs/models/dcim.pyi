@@ -1,6 +1,7 @@
+from typing import Any, Sequence, Type
+
 from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record
-from typing import Any, Sequence, Type
 
 class TraceableRecord(Record):
     def trace(self) -> Sequence[Sequence[Record]]: ...
