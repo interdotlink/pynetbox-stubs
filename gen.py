@@ -32,10 +32,16 @@ class Parameter(NamedTuple):
     required: bool
     type: PythonType
 
+    @property
+    def type_allow_int(self) -> str:
+        if self.name == 'id' or self.name.endswith('_id'):
+            return f"{self.type} | int"
+        return self.type
+
     def __str__(self) -> str:
         if self.required:
-            return f"{self.name}: {self.type}"
-        return f"{self.name}: Optional[{self.type}] = None"
+            return f"{self.name}: {self.type_allow_int}"
+        return f"{self.name}: Optional[{self.type_allow_int}] = None"
 
 
 class RawPathKey(NamedTuple):

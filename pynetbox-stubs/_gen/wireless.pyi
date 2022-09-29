@@ -10,7 +10,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLANGroup]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
@@ -22,7 +22,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        parent_id: Optional[str] = None,
+        parent_id: Optional[str | int] = None,
         parent: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -64,7 +64,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.WirelessLANGroup]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
@@ -76,7 +76,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        parent_id: Optional[str] = None,
+        parent_id: Optional[str | int] = None,
         parent: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -118,7 +118,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.WirelessLANGroup]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
@@ -130,7 +130,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        parent_id: Optional[str] = None,
+        parent_id: Optional[str | int] = None,
         parent: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -177,7 +177,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         slug: Optional[str] = None,
         description: Optional[str] = None,
@@ -189,7 +189,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        parent_id: Optional[str] = None,
+        parent_id: Optional[str | int] = None,
         parent: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -234,7 +234,7 @@ class Wireless_lansEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLAN]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -246,9 +246,9 @@ class Wireless_lansEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
-        vlan_id: Optional[str] = None,
+        vlan_id: Optional[str | int] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -294,7 +294,7 @@ class Wireless_lansEndpoint(Endpoint):
     ) -> Optional[definitions.WirelessLAN]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -306,9 +306,9 @@ class Wireless_lansEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
-        vlan_id: Optional[str] = None,
+        vlan_id: Optional[str | int] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -354,7 +354,7 @@ class Wireless_lansEndpoint(Endpoint):
     ) -> RecordSet[definitions.WirelessLAN]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -366,9 +366,9 @@ class Wireless_lansEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
-        vlan_id: Optional[str] = None,
+        vlan_id: Optional[str | int] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -419,7 +419,7 @@ class Wireless_lansEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -431,9 +431,9 @@ class Wireless_lansEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
-        vlan_id: Optional[str] = None,
+        vlan_id: Optional[str | int] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -482,7 +482,7 @@ class Wireless_linksEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLink]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -494,8 +494,8 @@ class Wireless_linksEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        interface_a_id: Optional[str] = None,
-        interface_b_id: Optional[str] = None,
+        interface_a_id: Optional[str | int] = None,
+        interface_b_id: Optional[str | int] = None,
         status: Optional[str] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
@@ -550,7 +550,7 @@ class Wireless_linksEndpoint(Endpoint):
     ) -> Optional[definitions.WirelessLink]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -562,8 +562,8 @@ class Wireless_linksEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        interface_a_id: Optional[str] = None,
-        interface_b_id: Optional[str] = None,
+        interface_a_id: Optional[str | int] = None,
+        interface_b_id: Optional[str | int] = None,
         status: Optional[str] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
@@ -618,7 +618,7 @@ class Wireless_linksEndpoint(Endpoint):
     ) -> RecordSet[definitions.WirelessLink]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -630,8 +630,8 @@ class Wireless_linksEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        interface_a_id: Optional[str] = None,
-        interface_b_id: Optional[str] = None,
+        interface_a_id: Optional[str | int] = None,
+        interface_b_id: Optional[str | int] = None,
         status: Optional[str] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,
@@ -691,7 +691,7 @@ class Wireless_linksEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         ssid: Optional[str] = None,
         auth_psk: Optional[str] = None,
         description: Optional[str] = None,
@@ -703,8 +703,8 @@ class Wireless_linksEndpoint(Endpoint):
         last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
-        interface_a_id: Optional[str] = None,
-        interface_b_id: Optional[str] = None,
+        interface_a_id: Optional[str | int] = None,
+        interface_b_id: Optional[str | int] = None,
         status: Optional[str] = None,
         auth_type: Optional[str] = None,
         auth_cipher: Optional[str] = None,

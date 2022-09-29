@@ -28,7 +28,7 @@ class GroupsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Group]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         q: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -51,7 +51,7 @@ class GroupsEndpoint(Endpoint):
     ) -> Optional[definitions.Group]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         q: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -74,7 +74,7 @@ class GroupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.Group]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         q: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -100,7 +100,7 @@ class GroupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         q: Optional[str] = None,
         id__n: Optional[str] = None,
@@ -126,15 +126,15 @@ class PermissionsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.ObjectPermission]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         enabled: Optional[str] = None,
         object_types: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -171,15 +171,15 @@ class PermissionsEndpoint(Endpoint):
     ) -> Optional[definitions.ObjectPermission]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         enabled: Optional[str] = None,
         object_types: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -216,15 +216,15 @@ class PermissionsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ObjectPermission]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         enabled: Optional[str] = None,
         object_types: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -266,15 +266,15 @@ class PermissionsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         name: Optional[str] = None,
         enabled: Optional[str] = None,
         object_types: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -314,12 +314,12 @@ class TokensEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Token]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         key: Optional[str] = None,
         write_enabled: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
@@ -359,12 +359,12 @@ class TokensEndpoint(Endpoint):
     ) -> Optional[definitions.Token]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         key: Optional[str] = None,
         write_enabled: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
@@ -404,12 +404,12 @@ class TokensEndpoint(Endpoint):
     ) -> RecordSet[definitions.Token]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         key: Optional[str] = None,
         write_enabled: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
@@ -452,12 +452,12 @@ class TokensEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         key: Optional[str] = None,
         write_enabled: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
-        user_id: Optional[str] = None,
+        user_id: Optional[str | int] = None,
         user: Optional[str] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
@@ -518,7 +518,7 @@ class UsersEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.User]: ...
     def get(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         username: Optional[str] = None,
         first_name: Optional[str] = None,
         last_name: Optional[str] = None,
@@ -526,7 +526,7 @@ class UsersEndpoint(Endpoint):
         is_staff: Optional[str] = None,
         is_active: Optional[str] = None,
         q: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -580,7 +580,7 @@ class UsersEndpoint(Endpoint):
     ) -> Optional[definitions.User]: ...
     def filter(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         username: Optional[str] = None,
         first_name: Optional[str] = None,
         last_name: Optional[str] = None,
@@ -588,7 +588,7 @@ class UsersEndpoint(Endpoint):
         is_staff: Optional[str] = None,
         is_active: Optional[str] = None,
         q: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -642,7 +642,7 @@ class UsersEndpoint(Endpoint):
     ) -> RecordSet[definitions.User]: ...
     def create(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         username: Optional[str] = None,
         first_name: Optional[str] = None,
         last_name: Optional[str] = None,
@@ -650,7 +650,7 @@ class UsersEndpoint(Endpoint):
         is_staff: Optional[str] = None,
         is_active: Optional[str] = None,
         q: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
@@ -707,7 +707,7 @@ class UsersEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
-        id: Optional[str] = None,
+        id: Optional[str | int] = None,
         username: Optional[str] = None,
         first_name: Optional[str] = None,
         last_name: Optional[str] = None,
@@ -715,7 +715,7 @@ class UsersEndpoint(Endpoint):
         is_staff: Optional[str] = None,
         is_active: Optional[str] = None,
         q: Optional[str] = None,
-        group_id: Optional[str] = None,
+        group_id: Optional[str | int] = None,
         group: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
