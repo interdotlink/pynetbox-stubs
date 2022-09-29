@@ -34,7 +34,7 @@ class Parameter(NamedTuple):
 
     @property
     def type_allow_int(self) -> str:
-        if self.name == 'id' or self.name.endswith('_id'):
+        if self.name == "id" or self.name.endswith("_id"):
             return f"{self.type} | int"
         return self.type
 
@@ -172,7 +172,10 @@ def get_response_type_ref(data: dict) -> Optional[str]:
 
 def visit_get(data: dict) -> List[Parameter]:
     parameters = data["parameters"]
-    return [Parameter(p["name"], p["required"], PythonType.from_json(p["type"])) for p in parameters]
+    return [
+        Parameter(p["name"], p["required"], PythonType.from_json(p["type"]))
+        for p in parameters
+    ]
 
 
 def visit_definitions(definitions: dict) -> None:
