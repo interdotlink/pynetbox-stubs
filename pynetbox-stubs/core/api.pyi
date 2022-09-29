@@ -1,6 +1,6 @@
 from typing import Optional
-import requests
 
+import requests
 from pynetbox._gen.circuits import CircuitsApp
 from pynetbox._gen.dcim import DcimApp
 from pynetbox._gen.extras import ExtrasApp
