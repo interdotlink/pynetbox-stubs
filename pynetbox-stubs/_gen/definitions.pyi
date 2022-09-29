@@ -2569,7 +2569,7 @@ class WritableAvailableIP(Record):
         self.family: int
         self.address: str
 
-class Prefix(Record):
+class Prefix(ipam.Prefixes):
     def __init__(self):
         self.id: int
         self.url: str
