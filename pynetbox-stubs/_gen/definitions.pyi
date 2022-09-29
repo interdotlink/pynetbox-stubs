@@ -1,8 +1,9 @@
-from typing import Any, Dict, List, Optional, Union, Iterable
+from typing import Any, Dict, Iterable, List, Optional, Union
+
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
-from pynetbox.core.response import RecordSet, Record
+from pynetbox.core.response import Record, RecordSet
 from pynetbox.models import dcim
 
 class NestedCircuit(Record):

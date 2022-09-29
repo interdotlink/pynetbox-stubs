@@ -1,18 +1,30 @@
 import json
 import os
+from enum import Enum
 from pathlib import Path
-from typing import List, NamedTuple
+from typing import Dict, List, NamedTuple, Optional
 
 
-def python_type(typ):
-    return {
-        "string": "str",
-        "integer": "int",
-        "number": "float",
-        "boolean": "bool",
-        "object": "Any",
-        "array": "List[Any]",
-    }[typ]
+class PythonType(str, Enum):
+    str = "str"
+    int = "int"
+    float = "float"
+    bool = "bool"
+    any = "Any"
+    list = "List[Any]"
+    none = "None"
+
+    @classmethod
+    def from_json(cls, json_type: str) -> "PythonType":
+        return {
+            "string": cls.str,
+            "integer": cls.int,
+            "number": cls.float,
+            "boolean": cls.bool,
+            "object": cls.any,
+            "array": cls.list,
+            "null": cls.none,
+        }[json_type]
 
 
 class Parameter(NamedTuple):
@@ -20,10 +32,10 @@ class Parameter(NamedTuple):
     required: bool
     type: str
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.required:
             return f"{self.name}: {self.type}"
-        return f"{self.name}: Optional[{python_type(self.type)}] = None"
+        return f"{self.name}: Optional[{PythonType.from_json(self.type)}] = None"
 
 
 class RawPathKey(NamedTuple):
@@ -32,7 +44,7 @@ class RawPathKey(NamedTuple):
     is_get: bool
 
     @classmethod
-    def from_path(cls, path):
+    def from_path(cls, path: str) -> "RawPathKey":
         if path.endswith("s/{id}/"):
             return cls(path, path[: -len("s/{id}/")], True)
         return cls(path, path.rstrip("/"), False)
@@ -44,23 +56,23 @@ class PathKey(NamedTuple):
     has_get: bool
 
     @classmethod
-    def from_raw_path(cls, raw_path: RawPathKey, has_get: bool):
+    def from_raw_path(cls, raw_path: RawPathKey, has_get: bool) -> "PathKey":
         return cls(raw_path.path, raw_path.name, has_get)
 
     @property
-    def attr_name(self):
+    def attr_name(self) -> str:
         return self.name.replace("-", "_").replace("/", "_")
 
     @property
-    def class_name(self):
+    def class_name(self) -> str:
         return self.name.replace("-", "_").replace("/", "_").capitalize() + "Endpoint"
 
     @property
-    def is_detailed(self):
+    def is_detailed(self) -> bool:
         return "/{id}/" in self.name
 
 
-def visit_prefix(prefix, data):
+def visit_prefix(prefix: str, data: Dict[str, dict]) -> None:
 
     header = """
 from typing import Any, Dict, List, Optional, Union, Iterable
@@ -91,10 +103,11 @@ from pynetbox._gen import definitions
     if not keys:
         keys = ["        ..."]
 
-    def get_get_data(key: PathKey):
+    def get_get_data(key: PathKey) -> Optional[dict]:
         g = gets.get(key.name)
         if g is not None:
             return data[g.path]
+        return None
 
     endpoint_classes = [
         visit_endpoint(k, data[k.path], get_get_data(k)) for k in non_detailed
@@ -107,7 +120,9 @@ from pynetbox._gen import definitions
         f.write("\n".join(keys))
 
 
-def visit_endpoint(key: PathKey, data, get_data):
+def visit_endpoint(
+    key: PathKey, data: Dict[str, dict], get_data: Optional[dict]
+) -> str:
     get_params = visit_get(data["get"]) if "get" in data else []
     get_str = ", ".join(str(p) for p in get_params)
 
@@ -133,7 +148,7 @@ def visit_endpoint(key: PathKey, data, get_data):
     return cls
 
 
-def get_response_type_ref(data):
+def get_response_type_ref(data: dict) -> Optional[str]:
     if "get" in data:
         _200 = data["get"]["responses"]["200"]
         if "schema" in _200:
@@ -149,12 +164,12 @@ def get_response_type_ref(data):
     return None
 
 
-def visit_get(data) -> List[Parameter]:
+def visit_get(data: dict) -> List[Parameter]:
     parameters = data["parameters"]
     return [Parameter(p["name"], p["required"], p["type"]) for p in parameters]
 
 
-def visit_definitions(definitions: dict):
+def visit_definitions(definitions: dict) -> None:
     defs = [visit_definition(k, d) for k, d in definitions.items()]
 
     header = """
@@ -173,22 +188,22 @@ from pynetbox.models import dcim
 
 class Property(NamedTuple):
     name: str
-    type: str
+    type: Optional[str]
     ref: str = ""
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.type:
-            return f"{self.name}: {python_type(self.type)}"
+            return f"{self.name}: {PythonType.from_json(self.type)}"
         if "#/definitions/" in self.ref:
             return f"{self.name}: '{self.ref[len('#/definitions/'):]}'"
         assert False, f"{self.ref}"
 
     @classmethod
-    def from_definition(cls, name, defi):
-        return cls(name, defi.get("type"), defi.get("$ref"))
+    def from_definition(cls, name: str, defi: Dict[str, str]) -> "Property":
+        return cls(name, defi.get("type"), defi.get("$ref", ""))
 
 
-def visit_definition(key, data):
+def visit_definition(key: str, data: dict) -> str:
     properties = [
         Property.from_definition(name=k, defi=data["properties"][k])
         for k in data["properties"]
@@ -203,7 +218,7 @@ def visit_definition(key, data):
     return header
 
 
-def main():
+def main() -> None:
     with open("openapi.json", "r") as f:
         openapi = json.load(f)
     paths = openapi["paths"]
@@ -224,6 +239,7 @@ def main():
 
     visit_definitions(openapi["definitions"])
     os.system("black pynetbox-stubs/_gen")
+    os.system("isort pynetbox-stubs/_gen")
 
 
 if __name__ == "__main__":
