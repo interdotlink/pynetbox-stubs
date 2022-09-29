@@ -1,4 +1,4 @@
-from typing import Any, Dict, Iterable, List, Optional, Union
+from typing import Any, Dict, Iterable, List, Optional, Union, overload
 
 from pynetbox._gen import definitions
 from pynetbox.core.api import Api
@@ -154,78 +154,36 @@ class Config_contextsEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ConfigContext]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.ConfigContext: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        name: Optional[str] = None,
-        is_active: Optional[str] = None,
+        name: str,
+        data: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
+        weight: Optional[int] = None,
+        description: Optional[str] = None,
+        is_active: Optional[bool] = None,
+        regions: Optional[List[Any]] = None,
+        site_groups: Optional[List[Any]] = None,
+        sites: Optional[List[Any]] = None,
+        device_types: Optional[List[Any]] = None,
+        roles: Optional[List[Any]] = None,
+        platforms: Optional[List[Any]] = None,
+        cluster_types: Optional[List[Any]] = None,
+        cluster_groups: Optional[List[Any]] = None,
+        clusters: Optional[List[Any]] = None,
+        tenant_groups: Optional[List[Any]] = None,
+        tenants: Optional[List[Any]] = None,
+        tags: Optional[List[Any]] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
-        q: Optional[str] = None,
-        region_id: Optional[str | int] = None,
-        region: Optional[str] = None,
-        site_group: Optional[str] = None,
-        site_group_id: Optional[str | int] = None,
-        site_id: Optional[str | int] = None,
-        site: Optional[str] = None,
-        device_type_id: Optional[str | int] = None,
-        role_id: Optional[str | int] = None,
-        role: Optional[str] = None,
-        platform_id: Optional[str | int] = None,
-        platform: Optional[str] = None,
-        cluster_type_id: Optional[str | int] = None,
-        cluster_type: Optional[str] = None,
-        cluster_group_id: Optional[str | int] = None,
-        cluster_group: Optional[str] = None,
-        cluster_id: Optional[str | int] = None,
-        tenant_group_id: Optional[str | int] = None,
-        tenant_group: Optional[str] = None,
-        tenant_id: Optional[str | int] = None,
-        tenant: Optional[str] = None,
-        tag_id: Optional[str | int] = None,
-        tag: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        region_id__n: Optional[str] = None,
-        region__n: Optional[str] = None,
-        site_group__n: Optional[str] = None,
-        site_group_id__n: Optional[str] = None,
-        site_id__n: Optional[str] = None,
-        site__n: Optional[str] = None,
-        device_type_id__n: Optional[str] = None,
-        role_id__n: Optional[str] = None,
-        role__n: Optional[str] = None,
-        platform_id__n: Optional[str] = None,
-        platform__n: Optional[str] = None,
-        cluster_type_id__n: Optional[str] = None,
-        cluster_type__n: Optional[str] = None,
-        cluster_group_id__n: Optional[str] = None,
-        cluster_group__n: Optional[str] = None,
-        cluster_id__n: Optional[str] = None,
-        tenant_group_id__n: Optional[str] = None,
-        tenant_group__n: Optional[str] = None,
-        tenant_id__n: Optional[str] = None,
-        tenant__n: Optional[str] = None,
-        tag_id__n: Optional[str] = None,
-        tag__n: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+    ) -> definitions.ConfigContext: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.ConfigContext: ...
     def update(
         self, objects: Iterable[definitions.ConfigContext]
@@ -326,14 +284,14 @@ class Content_typesEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ContentType]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.ContentType: ...
+    @overload
     def create(
         self,
-        id: Optional[float | int] = None,
-        app_label: Optional[str] = None,
-        model: Optional[str] = None,
-        q: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+    ) -> definitions.ContentType: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.ContentType: ...
     def update(
         self, objects: Iterable[definitions.ContentType]
@@ -470,64 +428,34 @@ class Custom_fieldsEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.CustomField]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.CustomField: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        name: Optional[str] = None,
-        required: Optional[str] = None,
-        filter_logic: Optional[str] = None,
-        weight: Optional[str] = None,
-        description: Optional[str] = None,
-        q: Optional[str] = None,
+        content_types: List[Any],
+        name: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
         type: Optional[str] = None,
-        content_type_id: Optional[str | int] = None,
-        content_types: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        filter_logic__n: Optional[str] = None,
-        weight__n: Optional[str] = None,
-        weight__lte: Optional[str] = None,
-        weight__lt: Optional[str] = None,
-        weight__gte: Optional[str] = None,
-        weight__gt: Optional[str] = None,
-        description__n: Optional[str] = None,
-        description__ic: Optional[str] = None,
-        description__nic: Optional[str] = None,
-        description__iew: Optional[str] = None,
-        description__niew: Optional[str] = None,
-        description__isw: Optional[str] = None,
-        description__nisw: Optional[str] = None,
-        description__ie: Optional[str] = None,
-        description__nie: Optional[str] = None,
-        type__n: Optional[str] = None,
-        content_type_id__n: Optional[str] = None,
-        content_type_id__lte: Optional[str] = None,
-        content_type_id__lt: Optional[str] = None,
-        content_type_id__gte: Optional[str] = None,
-        content_type_id__gt: Optional[str] = None,
-        content_types__n: Optional[str] = None,
-        content_types__ic: Optional[str] = None,
-        content_types__nic: Optional[str] = None,
-        content_types__iew: Optional[str] = None,
-        content_types__niew: Optional[str] = None,
-        content_types__isw: Optional[str] = None,
-        content_types__nisw: Optional[str] = None,
-        content_types__ie: Optional[str] = None,
-        content_types__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        object_type: Optional[str] = None,
+        data_type: Optional[str] = None,
+        label: Optional[str] = None,
+        description: Optional[str] = None,
+        required: Optional[bool] = None,
+        filter_logic: Optional[str] = None,
+        default: Optional[str] = None,
+        weight: Optional[int] = None,
+        validation_minimum: Optional[int] = None,
+        validation_maximum: Optional[int] = None,
+        validation_regex: Optional[str] = None,
+        choices: Optional[List[Any]] = None,
+        created: Optional[str] = None,
+        last_updated: Optional[str] = None,
+    ) -> definitions.CustomField: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.CustomField: ...
     def update(
         self, objects: Iterable[definitions.CustomField]
@@ -720,67 +648,28 @@ class Custom_linksEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.CustomLink]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.CustomLink: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        content_type: Optional[str] = None,
-        name: Optional[str] = None,
-        enabled: Optional[str] = None,
-        link_text: Optional[str] = None,
-        link_url: Optional[str] = None,
-        weight: Optional[str] = None,
+        content_type: str,
+        name: str,
+        link_text: str,
+        link_url: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
+        enabled: Optional[bool] = None,
+        weight: Optional[int] = None,
         group_name: Optional[str] = None,
-        new_window: Optional[str] = None,
-        q: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        content_type__n: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        link_text__n: Optional[str] = None,
-        link_text__ic: Optional[str] = None,
-        link_text__nic: Optional[str] = None,
-        link_text__iew: Optional[str] = None,
-        link_text__niew: Optional[str] = None,
-        link_text__isw: Optional[str] = None,
-        link_text__nisw: Optional[str] = None,
-        link_text__ie: Optional[str] = None,
-        link_text__nie: Optional[str] = None,
-        link_url__n: Optional[str] = None,
-        link_url__ic: Optional[str] = None,
-        link_url__nic: Optional[str] = None,
-        link_url__iew: Optional[str] = None,
-        link_url__niew: Optional[str] = None,
-        link_url__isw: Optional[str] = None,
-        link_url__nisw: Optional[str] = None,
-        link_url__ie: Optional[str] = None,
-        link_url__nie: Optional[str] = None,
-        weight__n: Optional[str] = None,
-        weight__lte: Optional[str] = None,
-        weight__lt: Optional[str] = None,
-        weight__gte: Optional[str] = None,
-        weight__gt: Optional[str] = None,
-        group_name__n: Optional[str] = None,
-        group_name__ic: Optional[str] = None,
-        group_name__nic: Optional[str] = None,
-        group_name__iew: Optional[str] = None,
-        group_name__niew: Optional[str] = None,
-        group_name__isw: Optional[str] = None,
-        group_name__nisw: Optional[str] = None,
-        group_name__ie: Optional[str] = None,
-        group_name__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        button_class: Optional[str] = None,
+        new_window: Optional[bool] = None,
+        created: Optional[str] = None,
+        last_updated: Optional[str] = None,
+    ) -> definitions.CustomLink: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.CustomLink: ...
     def update(
         self, objects: Iterable[definitions.CustomLink]
@@ -920,39 +809,26 @@ class Export_templatesEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ExportTemplate]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.ExportTemplate: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        content_type: Optional[str] = None,
-        name: Optional[str] = None,
+        content_type: str,
+        name: str,
+        template_code: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
         description: Optional[str] = None,
-        q: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        content_type__n: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        description__n: Optional[str] = None,
-        description__ic: Optional[str] = None,
-        description__nic: Optional[str] = None,
-        description__iew: Optional[str] = None,
-        description__niew: Optional[str] = None,
-        description__isw: Optional[str] = None,
-        description__nisw: Optional[str] = None,
-        description__ie: Optional[str] = None,
-        description__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        mime_type: Optional[str] = None,
+        file_extension: Optional[str] = None,
+        as_attachment: Optional[bool] = None,
+        created: Optional[str] = None,
+        last_updated: Optional[str] = None,
+    ) -> definitions.ExportTemplate: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.ExportTemplate: ...
     def update(
         self, objects: Iterable[definitions.ExportTemplate]
@@ -1062,38 +938,26 @@ class Image_attachmentsEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ImageAttachment]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.ImageAttachment: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        content_type_id: Optional[str | int] = None,
-        object_id: Optional[str | int] = None,
+        content_type: str,
+        object_id: int | int,
+        image_height: int,
+        image_width: int,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
+        parent: Optional[Any] = None,
         name: Optional[str] = None,
-        q: Optional[str] = None,
+        image: Optional[str] = None,
         created: Optional[str] = None,
-        content_type: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        content_type_id__n: Optional[str] = None,
-        object_id__n: Optional[str] = None,
-        object_id__lte: Optional[str] = None,
-        object_id__lt: Optional[str] = None,
-        object_id__gte: Optional[str] = None,
-        object_id__gt: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        content_type__n: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        last_updated: Optional[str] = None,
+    ) -> definitions.ImageAttachment: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.ImageAttachment: ...
     def update(
         self, objects: Iterable[definitions.ImageAttachment]
@@ -1196,36 +1060,13 @@ class Job_resultsEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.JobResult]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.JobResult: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        created: Optional[str] = None,
-        completed: Optional[str] = None,
-        status: Optional[str] = None,
-        user: Optional[str] = None,
-        obj_type: Optional[str] = None,
-        name: Optional[str] = None,
-        q: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        status__n: Optional[str] = None,
-        user__n: Optional[str] = None,
-        obj_type__n: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
     ) -> definitions.JobResult: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.JobResult: ...
     def update(
         self, objects: Iterable[definitions.JobResult]
     ) -> [definitions.JobResult]: ...
@@ -1336,41 +1177,27 @@ class Journal_entriesEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.JournalEntry]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.JournalEntry: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        assigned_object_type_id: Optional[str | int] = None,
-        assigned_object_id: Optional[str | int] = None,
+        assigned_object_type: str,
+        assigned_object_id: int | int,
+        comments: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
+        assigned_object: Optional[Any] = None,
         created: Optional[str] = None,
+        created_by: Optional[int] = None,
         kind: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
+        tags: Optional[List[Any]] = None,
+        custom_fields: Optional[Any] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
-        q: Optional[str] = None,
-        tag: Optional[str] = None,
-        assigned_object_type: Optional[str] = None,
-        created_by_id: Optional[str | int] = None,
-        created_by: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        assigned_object_type_id__n: Optional[str] = None,
-        assigned_object_id__n: Optional[str] = None,
-        assigned_object_id__lte: Optional[str] = None,
-        assigned_object_id__lt: Optional[str] = None,
-        assigned_object_id__gte: Optional[str] = None,
-        assigned_object_id__gt: Optional[str] = None,
-        kind__n: Optional[str] = None,
-        tag__n: Optional[str] = None,
-        assigned_object_type__n: Optional[str] = None,
-        created_by_id__n: Optional[str] = None,
-        created_by__n: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+    ) -> definitions.JournalEntry: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.JournalEntry: ...
     def update(
         self, objects: Iterable[definitions.JournalEntry]
@@ -1516,55 +1343,14 @@ class Object_changesEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ObjectChange]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.ObjectChange: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        user: Optional[str] = None,
-        user_name: Optional[str] = None,
-        request_id: Optional[str | int] = None,
-        action: Optional[str] = None,
-        changed_object_type_id: Optional[str | int] = None,
-        changed_object_id: Optional[str | int] = None,
-        object_repr: Optional[str] = None,
-        q: Optional[str] = None,
-        time: Optional[str] = None,
-        changed_object_type: Optional[str] = None,
-        user_id: Optional[str | int] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        user__n: Optional[str] = None,
-        user_name__n: Optional[str] = None,
-        user_name__ic: Optional[str] = None,
-        user_name__nic: Optional[str] = None,
-        user_name__iew: Optional[str] = None,
-        user_name__niew: Optional[str] = None,
-        user_name__isw: Optional[str] = None,
-        user_name__nisw: Optional[str] = None,
-        user_name__ie: Optional[str] = None,
-        user_name__nie: Optional[str] = None,
-        action__n: Optional[str] = None,
-        changed_object_type_id__n: Optional[str] = None,
-        changed_object_id__n: Optional[str] = None,
-        changed_object_id__lte: Optional[str] = None,
-        changed_object_id__lt: Optional[str] = None,
-        changed_object_id__gte: Optional[str] = None,
-        changed_object_id__gt: Optional[str] = None,
-        object_repr__n: Optional[str] = None,
-        object_repr__ic: Optional[str] = None,
-        object_repr__nic: Optional[str] = None,
-        object_repr__iew: Optional[str] = None,
-        object_repr__niew: Optional[str] = None,
-        object_repr__isw: Optional[str] = None,
-        object_repr__nisw: Optional[str] = None,
-        object_repr__ie: Optional[str] = None,
-        object_repr__nie: Optional[str] = None,
-        changed_object_type__n: Optional[str] = None,
-        user_id__n: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+    ) -> definitions.ObjectChange: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
     ) -> definitions.ObjectChange: ...
     def update(
         self, objects: Iterable[definitions.ObjectChange]
@@ -1630,9 +1416,13 @@ class ReportsEndpoint(Endpoint):
     def filter(
         self,
     ) -> RecordSet[Record]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> Record: ...
+    @overload
     def create(
         self,
     ) -> Record: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> Record: ...
     def update(self, objects: Iterable[Record]) -> [Record]: ...
     def delete(self, objects: Iterable[Record]): ...
     def choices(self) -> dict: ...
@@ -1648,9 +1438,13 @@ class ScriptsEndpoint(Endpoint):
     def filter(
         self,
     ) -> RecordSet[Record]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> Record: ...
+    @overload
     def create(
         self,
     ) -> Record: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> Record: ...
     def update(self, objects: Iterable[Record]) -> [Record]: ...
     def delete(self, objects: Iterable[Record]): ...
     def choices(self) -> dict: ...
@@ -1780,66 +1574,23 @@ class TagsEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Tag]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.Tag: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        name: Optional[str] = None,
-        slug: Optional[str] = None,
+        name: str,
+        slug: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
         color: Optional[str] = None,
         description: Optional[str] = None,
+        tagged_items: Optional[int] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
-        q: Optional[str] = None,
-        content_type: Optional[str] = None,
-        content_type_id: Optional[str | int] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        slug__n: Optional[str] = None,
-        slug__ic: Optional[str] = None,
-        slug__nic: Optional[str] = None,
-        slug__iew: Optional[str] = None,
-        slug__niew: Optional[str] = None,
-        slug__isw: Optional[str] = None,
-        slug__nisw: Optional[str] = None,
-        slug__ie: Optional[str] = None,
-        slug__nie: Optional[str] = None,
-        color__n: Optional[str] = None,
-        color__ic: Optional[str] = None,
-        color__nic: Optional[str] = None,
-        color__iew: Optional[str] = None,
-        color__niew: Optional[str] = None,
-        color__isw: Optional[str] = None,
-        color__nisw: Optional[str] = None,
-        color__ie: Optional[str] = None,
-        color__nie: Optional[str] = None,
-        description__n: Optional[str] = None,
-        description__ic: Optional[str] = None,
-        description__nic: Optional[str] = None,
-        description__iew: Optional[str] = None,
-        description__niew: Optional[str] = None,
-        description__isw: Optional[str] = None,
-        description__nisw: Optional[str] = None,
-        description__ie: Optional[str] = None,
-        description__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
     ) -> definitions.Tag: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Tag: ...
     def update(self, objects: Iterable[definitions.Tag]) -> [definitions.Tag]: ...
     def delete(self, objects: Iterable[definitions.Tag]): ...
     def choices(self) -> dict: ...
@@ -2076,91 +1827,33 @@ class WebhooksEndpoint(Endpoint):
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Webhook]: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> definitions.Webhook: ...
+    @overload
     def create(
         self,
-        id: Optional[str | int] = None,
-        name: Optional[str] = None,
-        type_create: Optional[str] = None,
-        type_update: Optional[str] = None,
-        type_delete: Optional[str] = None,
-        payload_url: Optional[str] = None,
-        enabled: Optional[str] = None,
+        content_types: List[Any],
+        name: str,
+        payload_url: str,
+        id: Optional[int | int] = None,
+        url: Optional[str] = None,
+        display: Optional[str] = None,
+        type_create: Optional[bool] = None,
+        type_update: Optional[bool] = None,
+        type_delete: Optional[bool] = None,
+        enabled: Optional[bool] = None,
         http_method: Optional[str] = None,
         http_content_type: Optional[str] = None,
+        additional_headers: Optional[str] = None,
+        body_template: Optional[str] = None,
         secret: Optional[str] = None,
-        ssl_verification: Optional[str] = None,
+        conditions: Optional[str] = None,
+        ssl_verification: Optional[bool] = None,
         ca_file_path: Optional[str] = None,
-        q: Optional[str] = None,
-        content_type_id: Optional[str | int] = None,
-        content_types: Optional[str] = None,
-        id__n: Optional[str] = None,
-        id__lte: Optional[str] = None,
-        id__lt: Optional[str] = None,
-        id__gte: Optional[str] = None,
-        id__gt: Optional[str] = None,
-        name__n: Optional[str] = None,
-        name__ic: Optional[str] = None,
-        name__nic: Optional[str] = None,
-        name__iew: Optional[str] = None,
-        name__niew: Optional[str] = None,
-        name__isw: Optional[str] = None,
-        name__nisw: Optional[str] = None,
-        name__ie: Optional[str] = None,
-        name__nie: Optional[str] = None,
-        payload_url__n: Optional[str] = None,
-        payload_url__ic: Optional[str] = None,
-        payload_url__nic: Optional[str] = None,
-        payload_url__iew: Optional[str] = None,
-        payload_url__niew: Optional[str] = None,
-        payload_url__isw: Optional[str] = None,
-        payload_url__nisw: Optional[str] = None,
-        payload_url__ie: Optional[str] = None,
-        payload_url__nie: Optional[str] = None,
-        http_method__n: Optional[str] = None,
-        http_content_type__n: Optional[str] = None,
-        http_content_type__ic: Optional[str] = None,
-        http_content_type__nic: Optional[str] = None,
-        http_content_type__iew: Optional[str] = None,
-        http_content_type__niew: Optional[str] = None,
-        http_content_type__isw: Optional[str] = None,
-        http_content_type__nisw: Optional[str] = None,
-        http_content_type__ie: Optional[str] = None,
-        http_content_type__nie: Optional[str] = None,
-        secret__n: Optional[str] = None,
-        secret__ic: Optional[str] = None,
-        secret__nic: Optional[str] = None,
-        secret__iew: Optional[str] = None,
-        secret__niew: Optional[str] = None,
-        secret__isw: Optional[str] = None,
-        secret__nisw: Optional[str] = None,
-        secret__ie: Optional[str] = None,
-        secret__nie: Optional[str] = None,
-        ca_file_path__n: Optional[str] = None,
-        ca_file_path__ic: Optional[str] = None,
-        ca_file_path__nic: Optional[str] = None,
-        ca_file_path__iew: Optional[str] = None,
-        ca_file_path__niew: Optional[str] = None,
-        ca_file_path__isw: Optional[str] = None,
-        ca_file_path__nisw: Optional[str] = None,
-        ca_file_path__ie: Optional[str] = None,
-        ca_file_path__nie: Optional[str] = None,
-        content_type_id__n: Optional[str] = None,
-        content_type_id__lte: Optional[str] = None,
-        content_type_id__lt: Optional[str] = None,
-        content_type_id__gte: Optional[str] = None,
-        content_type_id__gt: Optional[str] = None,
-        content_types__n: Optional[str] = None,
-        content_types__ic: Optional[str] = None,
-        content_types__nic: Optional[str] = None,
-        content_types__iew: Optional[str] = None,
-        content_types__niew: Optional[str] = None,
-        content_types__isw: Optional[str] = None,
-        content_types__nisw: Optional[str] = None,
-        content_types__ie: Optional[str] = None,
-        content_types__nie: Optional[str] = None,
-        limit: Optional[int] = None,
-        offset: Optional[int] = None,
+        created: Optional[str] = None,
+        last_updated: Optional[str] = None,
     ) -> definitions.Webhook: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Webhook: ...
     def update(
         self, objects: Iterable[definitions.Webhook]
     ) -> [definitions.Webhook]: ...

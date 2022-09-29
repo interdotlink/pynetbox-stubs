@@ -13,6 +13,7 @@ class PythonType(str, Enum):
     any = "Any"
     list = "List[Any]"
     none = "None"
+    dict = "Dict[str, Any]"
 
     @classmethod
     def from_json(cls, json_type: str) -> "PythonType":
@@ -42,6 +43,14 @@ class Parameter(NamedTuple):
         if self.required:
             return f"{self.name}: {self.type_allow_int}"
         return f"{self.name}: Optional[{self.type_allow_int}] = None"
+
+
+class ParameterList:
+    def __init__(self, parameters: List[Parameter]) -> None:
+        self.parameters = parameters
+
+    def __str__(self) -> str:
+        return ", ".join(str(p) for p in sorted(self.parameters, key=lambda p: p.required, reverse=True))
 
 
 class RawPathKey(NamedTuple):
@@ -78,10 +87,10 @@ class PathKey(NamedTuple):
         return "/{id}/" in self.name
 
 
-def visit_prefix(prefix: str, data: Dict[str, dict]) -> None:
+def visit_prefix(prefix: str, data: Dict[str, dict], defs: List["RecordDefinition"]) -> None:
 
     header = """
-from typing import Any, Dict, List, Optional, Union, Iterable
+from typing import Any, Dict, List, Optional, Union, Iterable, overload
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
@@ -116,7 +125,7 @@ from pynetbox._gen import definitions
         return None
 
     endpoint_classes = [
-        visit_endpoint(k, data[k.path], get_get_data(k)) for k in non_detailed
+        visit_endpoint(k, data[k.path], get_get_data(k), defs) for k in non_detailed
     ]
 
     with open(f"pynetbox-stubs/_gen/{prefix}.pyi", "w") as f:
@@ -127,10 +136,10 @@ from pynetbox._gen import definitions
 
 
 def visit_endpoint(
-    key: PathKey, data: Dict[str, dict], get_data: Optional[dict]
+    key: PathKey, data: Dict[str, dict], get_data: Optional[dict], defs: List["RecordDefinition"]
 ) -> str:
-    get_params = visit_get(data["get"]) if "get" in data else []
-    get_str = ", ".join(str(p) for p in get_params)
+    get_str = str(visit_get(data["get"])) if "get" in data else ""
+    create_str = str(visit_create(data["post"], defs)) if "post" in data else ""
 
     response_type_ref = get_response_type_ref(data)
     response_type = (
@@ -143,7 +152,11 @@ def visit_endpoint(
     def all(self, limit=0, offset=None) -> RecordSet[{response_type}]: ...
     def get(self, {get_str}) -> Optional[{response_type}]: ...
     def filter(self, {get_str}) -> RecordSet[{response_type}]: ...
-    def create(self, {get_str}) -> {response_type}: ...
+    @overload
+    def create(self, *args: Dict[str, Any]) -> {response_type}: ...
+    @overload
+    def create(self, {create_str}) -> {response_type}: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> {response_type}: ...
     def update(self, objects: Iterable[{response_type}]) -> [{response_type}]: ...
     def delete(self, objects: Iterable[{response_type}]): ...
     def choices(self) -> dict:...
@@ -170,16 +183,32 @@ def get_response_type_ref(data: dict) -> Optional[str]:
     return None
 
 
-def visit_get(data: dict) -> List[Parameter]:
+def visit_get(data: dict) -> ParameterList:
     parameters = data["parameters"]
-    return [
+    return ParameterList([
         Parameter(p["name"], p["required"], PythonType.from_json(p["type"]))
         for p in parameters
-    ]
+    ])
 
 
-def visit_definitions(definitions: dict) -> None:
-    defs = [visit_definition(k, d) for k, d in definitions.items()]
+def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
+    try:
+        parameter = data["parameters"][0]
+    except IndexError:
+        return ParameterList([])
+    schema_name = parameter["schema"]["$ref"][len("#/definitions/") :]
+    try:
+        definition: "RecordDefinition" = next(d for d in defs if d.name == schema_name)
+    except StopIteration:
+        assert False, f'{schema_name} not in {", ".join(d.name for d in defs)}'
+    return ParameterList([
+        Parameter(p.name, p.required, p.type)
+        for p in definition.properties
+    ])
+
+
+def visit_definitions(definitions: List["RecordDefinition"]) -> None:
+    defs = [str(d) for d in definitions]
 
     header = """
 from typing import Any, Dict, List, Optional, Union, Iterable
@@ -197,34 +226,51 @@ from pynetbox.models import dcim
 
 class Property(NamedTuple):
     name: str
-    type: Optional[str]
+    required: bool
+    type: Optional[PythonType]
     ref: str = ""
 
     def __str__(self) -> str:
         if self.type:
-            return f"{self.name}: {PythonType.from_json(self.type)}"
+            return f"{self.name}: {self.type}"
         if "#/definitions/" in self.ref:
             return f"{self.name}: '{self.ref[len('#/definitions/'):]}'"
         assert False, f"{self.ref}"
 
     @classmethod
-    def from_definition(cls, name: str, defi: Dict[str, str]) -> "Property":
-        return cls(name, defi.get("type"), defi.get("$ref", ""))
+    def from_definition(cls, name: str, defi: Dict[str, str], required: bool) -> "Property":
+        return cls(name,
+                   required,
+                   PythonType.from_json(defi["type"]) if "type" in defi else None,
+                   defi.get("$ref", ""),
+                   )
 
 
-def visit_definition(key: str, data: dict) -> str:
-    properties = [
-        Property.from_definition(name=k, defi=data["properties"][k])
-        for k in data["properties"]
-    ]
-    properties_str = "\n".join("        self." + str(p) for p in properties)
-    special_classes = {"Interface": "dcim.Interfaces"}
+class RecordDefinition(NamedTuple):
+    name: str
+    properties: List[Property]
 
-    header = f"""class {key}({special_classes.get(key, 'Record')}):
+    def __str__(self) -> str:
+        properties_str = "\n".join("        self." + str(p) for p in self.properties)
+        special_classes = {"Interface": "dcim.Interfaces"}
+
+        header = f"""class {self.name}({special_classes.get(self.name, 'Record')}):
     def __init__(self):
 {properties_str}
 """
-    return header
+        return header
+
+    @classmethod
+    def from_dict(cls, name: str, data: Dict[str, dict]) -> "RecordDefinition":
+        required = data.get("required", [])
+        properties = [
+            Property.from_definition(k, d, k in required) for k, d in data["properties"].items()
+        ]
+        return cls(name, properties)
+
+    @classmethod
+    def mk_all(cls, definitions: Dict[str, dict]) -> List["RecordDefinition"]:
+        return [cls.from_dict(k, d) for k, d in definitions.items()]
 
 
 def main() -> None:
@@ -235,6 +281,8 @@ def main() -> None:
     if not os.path.exists("pynetbox-stubs/_gen"):
         os.mkdir("pynetbox-stubs/_gen")
 
+    defs = RecordDefinition.mk_all(openapi["definitions"])
+
     Path("pynetbox-stubs/_gen/__init__.py").touch()
 
     for p in prefixes:
@@ -244,9 +292,10 @@ def main() -> None:
             for path, value in paths.items()
             if path.startswith(f"/{p}")
         }
-        visit_prefix(p, data)
+        visit_prefix(p, data, defs)
 
-    visit_definitions(openapi["definitions"])
+
+    visit_definitions(defs)
     os.system("black pynetbox-stubs/_gen")
     os.system("isort pynetbox-stubs/_gen")
 
