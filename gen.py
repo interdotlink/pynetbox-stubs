@@ -30,12 +30,12 @@ class PythonType(str, Enum):
 class Parameter(NamedTuple):
     name: str
     required: bool
-    type: str
+    type: PythonType
 
     def __str__(self) -> str:
         if self.required:
             return f"{self.name}: {self.type}"
-        return f"{self.name}: Optional[{PythonType.from_json(self.type)}] = None"
+        return f"{self.name}: Optional[{self.type}] = None"
 
 
 class RawPathKey(NamedTuple):
@@ -166,7 +166,7 @@ def get_response_type_ref(data: dict) -> Optional[str]:
 
 def visit_get(data: dict) -> List[Parameter]:
     parameters = data["parameters"]
-    return [Parameter(p["name"], p["required"], p["type"]) for p in parameters]
+    return [Parameter(p["name"], p["required"], PythonType.from_json(p["type"])) for p in parameters]
 
 
 def visit_definitions(definitions: dict) -> None:
