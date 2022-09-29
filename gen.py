@@ -35,7 +35,7 @@ class Parameter(NamedTuple):
 
     @property
     def type_allow_int(self) -> str:
-        if self.name == "id" or self.name.endswith("_id"):
+        if self.name == "id" or self.name.endswith("_id") or self.name == "depth":
             return f"{self.type} | int"
         return self.type
 
@@ -272,7 +272,10 @@ class RecordDefinition(NamedTuple):
 
     def __str__(self) -> str:
         properties_str = "\n".join("        self." + str(p) for p in self.properties)
-        special_classes = {"Interface": "dcim.Interfaces"}
+        special_classes = {
+            "Interface": "dcim.Interfaces",
+            "Prefix": "ipam.Prefixes",
+        }
 
         header = f"""class {self.name}({special_classes.get(self.name, 'Record')}):
     def __init__(self):
