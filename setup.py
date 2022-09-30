@@ -1,5 +1,6 @@
-from setuptools import setup
 import os
+
+from setuptools import setup
 
 
 def find_stubs(package):
@@ -17,7 +18,7 @@ setup(
     maintainer_email="sebastian@inter.link",
     description="PEP 561 type stubs for pynetbox",
     url="",
-    license="",
+    license="Apache License 2.0",
     version="0.0.1",
     packages=["pynetbox-stubs"],
     # PEP 561 requires these
