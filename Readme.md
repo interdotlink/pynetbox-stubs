@@ -6,7 +6,7 @@ code that uses pynetbox with [mypy](http://mypy-lang.org/)
 # installation
 
 ```shell
-pip install pynetbox-stubs
+pip install git+https://github.com/sebastian-philipp/pynetbox-stubs.git#egg=pynetbox-stubs
 ```
 
 # Example
