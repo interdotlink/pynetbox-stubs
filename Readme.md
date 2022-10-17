@@ -31,8 +31,8 @@ tox -e gen,fixlint
 
 Right now, this project is still unfinished:
 
-* [ ] make stubs for `pynetbox.models.*`
-* [ ] `pynetbox.core.query`
+* [x] make stubs for `pynetbox.models.*`
+* [x] `pynetbox.core.query`
 * [ ] `pynetbox.core.app.PluginsApp`
-* [ ] `POST`, `POST`, `PATCH` parameters
-* [ ] Detail routes like `/ipam/ip-ranges/{id}/available-ips/`
+* [x] `POST`, `POST`, `PATCH` parameters
+* [x] Detail routes like `/ipam/ip-ranges/{id}/available-ips/`
