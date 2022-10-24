@@ -3474,3 +3474,127 @@ class WritableWirelessLink(Record):
         self.custom_fields: Any
         self.created: str
         self.last_updated: str
+
+class BGPPeerGroup(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.name: str
+        self.description: str
+
+class NestedBGPPeerGroup(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.name: str
+        self.description: str
+
+class BGPSession(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.status: Any
+        self.site: 'Site'
+        self.tenant: 'Tenant'
+        self.device: 'Device'
+        self.local_address: 'IPAddress'
+        self.remote_address: 'IPAddress'
+        self.local_as: 'ASN'
+        self.remote_as: 'ASN'
+        self.peer_group: 'BGPPeerGroup'
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.name: str
+        self.description: str
+
+class WritableBGPSession(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.name: str
+        self.status: str
+        self.description: str
+        self.site: int
+        self.tenant: int
+        self.device: int
+        self.local_address: int
+        self.remote_address: int
+        self.local_as: int
+        self.remote_as: int
+        self.peer_group: int
+
+class Community(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.status: Any
+        self.tenant: 'Tenant'
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.description: str
+        self.value: str
+        self.site: int
+        self.role: int
+
+class WritableCommunity(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.status: str
+        self.description: str
+        self.value: str
+        self.site: int
+        self.tenant: int
+        self.role: int
+
+class PrefixList(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.name: str
+        self.description: str
+        self.family: str
+
+class RoutingPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.created: str
+        self.last_updated: str
+        self.custom_field_data: Any
+        self.name: str
+        self.description: str
