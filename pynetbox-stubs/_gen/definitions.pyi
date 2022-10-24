@@ -3503,14 +3503,14 @@ class BGPSession(Record):
         self.custom_fields: Any
         self.display: str
         self.status: Any
-        self.site: 'Site'
-        self.tenant: 'Tenant'
-        self.device: 'Device'
-        self.local_address: 'IPAddress'
-        self.remote_address: 'IPAddress'
-        self.local_as: 'ASN'
-        self.remote_as: 'ASN'
-        self.peer_group: 'BGPPeerGroup'
+        self.site: "Site"
+        self.tenant: "Tenant"
+        self.device: "Device"
+        self.local_address: "IPAddress"
+        self.remote_address: "IPAddress"
+        self.local_as: "ASN"
+        self.remote_as: "ASN"
+        self.peer_group: "BGPPeerGroup"
         self.import_policies: List[Any]
         self.export_policies: List[Any]
         self.created: str
@@ -3549,7 +3549,7 @@ class Community(Record):
         self.custom_fields: Any
         self.display: str
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: "Tenant"
         self.created: str
         self.last_updated: str
         self.custom_field_data: Any

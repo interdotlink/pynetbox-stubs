@@ -1,6 +1,6 @@
-from pynetbox._gen.bgp import BgpApp
-
 from typing import TYPE_CHECKING
+
+from pynetbox._gen.bgp import BgpApp
 
 if TYPE_CHECKING:
     from pynetbox.core.api import Api
