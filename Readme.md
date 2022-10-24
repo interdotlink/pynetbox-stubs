@@ -3,7 +3,11 @@
 Project that contains Python stub files for pynetbox in order to allow type checking 
 code that uses pynetbox with [mypy](http://mypy-lang.org/)
 
-# installation
+This module also includes stubs for the following NetBox plugins:
+
+* [netbox-bgp](https://github.com/k01ek/netbox-bgp)
+
+# Installation
 
 ```shell
 pip install git+https://github.com/interdotlink/pynetbox-stubs.git#egg=pynetbox-stubs
