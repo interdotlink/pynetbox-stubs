@@ -9,10 +9,7 @@ from pynetbox._gen.tenancy import TenancyApp
 from pynetbox._gen.users import UsersApp
 from pynetbox._gen.virtualization import VirtualizationApp
 from pynetbox._gen.wireless import WirelessApp
-from pynetbox.core.app import App
-
-class PluginsApp:
-    pass
+from pynetbox.core.app import App, PluginsApp
 
 class Api:
     def __init__(
