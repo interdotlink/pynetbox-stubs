@@ -2,7 +2,7 @@ import json
 import os
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, NamedTuple, Optional
+from typing import Dict, List, Literal, NamedTuple, Optional, Union
 
 
 class PythonType(str, Enum):
@@ -16,7 +16,7 @@ class PythonType(str, Enum):
     dict = "Dict[str, Any]"
 
     @classmethod
-    def from_json(cls, json_type: str) -> "PythonType":
+    def from_json(cls, json_type: Literal[PythonType.str]) -> "PythonType":
         return {
             "string": cls.str,
             "integer": cls.int,
@@ -31,10 +31,10 @@ class PythonType(str, Enum):
 class Parameter(NamedTuple):
     name: str
     required: bool
-    type: PythonType
+    type: Optional[PythonType]
 
     @property
-    def type_allow_int(self) -> str:
+    def type_allow_int(self) -> Union[Optional[PythonType], str]:
         if (
             self.name == "id"
             or self.name.endswith("_id")
@@ -274,7 +274,10 @@ class Property(NamedTuple):
 
     @classmethod
     def from_definition(
-        cls, name: str, defi: Dict[str, str], required: bool
+        cls,
+        name: str,
+        defi: Dict[str, Literal[PythonType.str]],
+        required: bool,
     ) -> "Property":
         return cls(
             name,
@@ -305,7 +308,7 @@ class RecordDefinition(NamedTuple):
 
     @classmethod
     def from_dict(cls, name: str, data: Dict[str, dict]) -> "RecordDefinition":
-        required = data.get("required", [])
+        required: Union[dict, List] = data.get("required", [])
         properties = [
             Property.from_definition(k, d, k in required)
             for k, d in data["properties"].items()

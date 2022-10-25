@@ -31,7 +31,12 @@ pip install -r requirements.txt
 tox -e gen,fixlint
 ```
 
-Before raising a PR make sure that tox tests are passing using `tox`.
+Before raising a PR make sure that tox tests are passing:
+
+```shell
+pip install tox
+tox
+````
 
 ## TODOs:
 
