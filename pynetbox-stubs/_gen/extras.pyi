@@ -7,7 +7,9 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record, RecordSet
 
 class Config_contextsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ConfigContext]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ConfigContext]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -265,7 +267,9 @@ class Config_contextsEndpoint(Endpoint):
     ) -> int: ...
 
 class Content_typesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ContentType]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ContentType]: ...
     def get(
         self,
         id: Optional[float | int] = None,
@@ -309,7 +313,9 @@ class Content_typesEndpoint(Endpoint):
     ) -> int: ...
 
 class Custom_fieldsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.CustomField]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.CustomField]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -523,7 +529,9 @@ class Custom_fieldsEndpoint(Endpoint):
     ) -> int: ...
 
 class Custom_linksEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.CustomLink]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.CustomLink]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -740,7 +748,9 @@ class Custom_linksEndpoint(Endpoint):
     ) -> int: ...
 
 class Export_templatesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ExportTemplate]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ExportTemplate]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -833,7 +843,9 @@ class Export_templatesEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.ExportTemplate]
     ) -> RecordSet[definitions.ExportTemplate]: ...
-    def delete(self, objects: Iterable[definitions.ExportTemplate]) -> bool: ...
+    def delete(
+        self, objects: Iterable[definitions.ExportTemplate]
+    ) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -871,7 +883,9 @@ class Export_templatesEndpoint(Endpoint):
     ) -> int: ...
 
 class Image_attachmentsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ImageAttachment]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ImageAttachment]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -962,7 +976,9 @@ class Image_attachmentsEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.ImageAttachment]
     ) -> RecordSet[definitions.ImageAttachment]: ...
-    def delete(self, objects: Iterable[definitions.ImageAttachment]) -> bool: ...
+    def delete(
+        self, objects: Iterable[definitions.ImageAttachment]
+    ) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -999,7 +1015,9 @@ class Image_attachmentsEndpoint(Endpoint):
     ) -> int: ...
 
 class Job_resultsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.JobResult]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.JobResult]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1066,7 +1084,9 @@ class Job_resultsEndpoint(Endpoint):
     def create(
         self,
     ) -> definitions.JobResult: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.JobResult: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.JobResult: ...
     def update(
         self, objects: Iterable[definitions.JobResult]
     ) -> RecordSet[definitions.JobResult]: ...
@@ -1104,7 +1124,9 @@ class Job_resultsEndpoint(Endpoint):
     ) -> int: ...
 
 class Journal_entriesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.JournalEntry]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.JournalEntry]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1242,7 +1264,9 @@ class Journal_entriesEndpoint(Endpoint):
     ) -> int: ...
 
 class Object_changesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ObjectChange]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ObjectChange]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1590,7 +1614,9 @@ class TagsEndpoint(Endpoint):
         created: Optional[str] = None,
         last_updated: Optional[str] = None,
     ) -> definitions.Tag: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Tag: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Tag: ...
     def update(
         self, objects: Iterable[definitions.Tag]
     ) -> RecordSet[definitions.Tag]: ...
@@ -1855,7 +1881,9 @@ class WebhooksEndpoint(Endpoint):
         created: Optional[str] = None,
         last_updated: Optional[str] = None,
     ) -> definitions.Webhook: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Webhook: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Webhook: ...
     def update(
         self, objects: Iterable[definitions.Webhook]
     ) -> RecordSet[definitions.Webhook]: ...

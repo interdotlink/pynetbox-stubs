@@ -7,7 +7,9 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record, RecordSet
 
 class Cluster_groupsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ClusterGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ClusterGroup]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -203,7 +205,9 @@ class Cluster_groupsEndpoint(Endpoint):
     ) -> int: ...
 
 class Cluster_typesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ClusterType]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ClusterType]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -531,7 +535,9 @@ class ClustersEndpoint(Endpoint):
         device_count: Optional[int] = None,
         virtualmachine_count: Optional[int] = None,
     ) -> definitions.Cluster: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Cluster: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Cluster: ...
     def update(
         self, objects: Iterable[definitions.Cluster]
     ) -> RecordSet[definitions.Cluster]: ...
@@ -603,7 +609,9 @@ class ClustersEndpoint(Endpoint):
     ) -> int: ...
 
 class InterfacesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.VMInterface]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.VMInterface]: ...
     def get(
         self,
         id: Optional[str | int] = None,

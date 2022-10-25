@@ -19,9 +19,9 @@ Enables autocompletion:
 
 ![](pynetbox-stubs.gif)
 
-# Development
+# Development & Contributing
 
-you'll need a local netbox running on port `8080`, then run 
+You'll need a local netbox running on port `8080`, then run
 
 ```shell
 make openapi.json
@@ -30,6 +30,8 @@ python -m venv venv
 pip install -r requirements.txt
 tox -e gen,fixlint
 ```
+
+Before raising a PR make sure that tox tests are passing using `tox`.
 
 ## TODOs:
 
@@ -40,3 +42,4 @@ Right now, this project is still unfinished:
 * [X] `pynetbox.core.app.PluginsApp`
 * [x] `POST`, `POST`, `PATCH` parameters
 * [x] Detail routes like `/ipam/ip-ranges/{id}/available-ips/`
+* [ ] Custom fields
