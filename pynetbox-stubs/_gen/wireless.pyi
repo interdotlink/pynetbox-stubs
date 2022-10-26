@@ -7,7 +7,9 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record, RecordSet
 
 class Wireless_lan_groupsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLANGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.WirelessLANGroup]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -117,7 +119,9 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.WirelessLANGroup]: ...
     @overload
-    def create(self, *args: Dict[str, Any]) -> definitions.WirelessLANGroup: ...
+    def create(
+        self, *args: Dict[str, Any]
+    ) -> definitions.WirelessLANGroup: ...
     @overload
     def create(
         self,
@@ -141,7 +145,9 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.WirelessLANGroup]
     ) -> RecordSet[definitions.WirelessLANGroup]: ...
-    def delete(self, objects: Iterable[definitions.WirelessLANGroup]) -> bool: ...
+    def delete(
+        self, objects: Iterable[definitions.WirelessLANGroup]
+    ) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -199,7 +205,9 @@ class Wireless_lan_groupsEndpoint(Endpoint):
     ) -> int: ...
 
 class Wireless_lansEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLAN]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.WirelessLAN]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -410,7 +418,9 @@ class Wireless_lansEndpoint(Endpoint):
     ) -> int: ...
 
 class Wireless_linksEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.WirelessLink]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.WirelessLink]: ...
     def get(
         self,
         id: Optional[str | int] = None,

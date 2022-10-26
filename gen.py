@@ -2,7 +2,7 @@ import json
 import os
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, NamedTuple, Optional
+from typing import Dict, List, Literal, NamedTuple, Optional, Union
 
 
 class PythonType(str, Enum):
@@ -16,7 +16,7 @@ class PythonType(str, Enum):
     dict = "Dict[str, Any]"
 
     @classmethod
-    def from_json(cls, json_type: str) -> "PythonType":
+    def from_json(cls, json_type: Literal[PythonType.str]) -> "PythonType":
         return {
             "string": cls.str,
             "integer": cls.int,
@@ -31,11 +31,15 @@ class PythonType(str, Enum):
 class Parameter(NamedTuple):
     name: str
     required: bool
-    type: PythonType
+    type: Optional[PythonType]
 
     @property
-    def type_allow_int(self) -> str:
-        if self.name == "id" or self.name.endswith("_id") or self.name == "depth":
+    def type_allow_int(self) -> Union[Optional[PythonType], str]:
+        if (
+            self.name == "id"
+            or self.name.endswith("_id")
+            or self.name == "depth"
+        ):
             return f"{self.type} | int"
         return self.type
 
@@ -52,7 +56,9 @@ class ParameterList:
     def __str__(self) -> str:
         return ", ".join(
             str(p)
-            for p in sorted(self.parameters, key=lambda p: p.required, reverse=True)
+            for p in sorted(
+                self.parameters, key=lambda p: p.required, reverse=True
+            )
         )
 
 
@@ -83,7 +89,10 @@ class PathKey(NamedTuple):
 
     @property
     def class_name(self) -> str:
-        return self.name.replace("-", "_").replace("/", "_").capitalize() + "Endpoint"
+        return (
+            self.name.replace("-", "_").replace("/", "_").capitalize()
+            + "Endpoint"
+        )
 
     @property
     def is_detailed(self) -> bool:
@@ -111,7 +120,9 @@ from pynetbox._gen import definitions
     raw_path_keys = [RawPathKey.from_path(path) for path in data.keys()]
     gets = {p.name: p for p in raw_path_keys if p.is_get}
     path_keys = [
-        PathKey.from_raw_path(k, k.name in gets) for k in raw_path_keys if not k.is_get
+        PathKey.from_raw_path(k, k.name in gets)
+        for k in raw_path_keys
+        if not k.is_get
     ]
     non_detailed = [p for p in path_keys if not p.is_detailed]
 
@@ -130,7 +141,8 @@ from pynetbox._gen import definitions
         return None
 
     endpoint_classes = [
-        visit_endpoint(k, data[k.path], get_get_data(k), defs) for k in non_detailed
+        visit_endpoint(k, data[k.path], get_get_data(k), defs)
+        for k in non_detailed
     ]
 
     with open(f"pynetbox-stubs/_gen/{prefix}.pyi", "w") as f:
@@ -147,7 +159,9 @@ def visit_endpoint(
     defs: List["RecordDefinition"],
 ) -> str:
     get_str = str(visit_get(data["get"])) if "get" in data else ""
-    create_str = str(visit_create(data["post"], defs)) if "post" in data else ""
+    create_str = (
+        str(visit_create(data["post"], defs)) if "post" in data else ""
+    )
 
     response_type_ref = get_response_type_ref(data)
     response_type = (
@@ -195,7 +209,9 @@ def visit_get(data: dict) -> ParameterList:
     parameters = data["parameters"]
     return ParameterList(
         [
-            Parameter(p["name"], p["required"], PythonType.from_json(p["type"]))
+            Parameter(
+                p["name"], p["required"], PythonType.from_json(p["type"])
+            )
             for p in parameters
         ]
     )
@@ -208,7 +224,9 @@ def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
         return ParameterList([])
     schema_name = parameter["schema"]["$ref"][len("#/definitions/") :]
     try:
-        definition: "RecordDefinition" = next(d for d in defs if d.name == schema_name)
+        definition: "RecordDefinition" = next(
+            d for d in defs if d.name == schema_name
+        )
     except StopIteration:
         assert False, f'{schema_name} not in {", ".join(d.name for d in defs)}'
     return ParameterList(
@@ -256,7 +274,10 @@ class Property(NamedTuple):
 
     @classmethod
     def from_definition(
-        cls, name: str, defi: Dict[str, str], required: bool
+        cls,
+        name: str,
+        defi: Dict[str, Literal[PythonType.str]],
+        required: bool,
     ) -> "Property":
         return cls(
             name,
@@ -271,7 +292,9 @@ class RecordDefinition(NamedTuple):
     properties: List[Property]
 
     def __str__(self) -> str:
-        properties_str = "\n".join("        self." + str(p) for p in self.properties)
+        properties_str = "\n".join(
+            "        self." + str(p) for p in self.properties
+        )
         special_classes = {
             "Interface": "dcim.Interfaces",
             "Prefix": "ipam.Prefixes",
@@ -285,7 +308,7 @@ class RecordDefinition(NamedTuple):
 
     @classmethod
     def from_dict(cls, name: str, data: Dict[str, dict]) -> "RecordDefinition":
-        required = data.get("required", [])
+        required: Union[dict, List] = data.get("required", [])
         properties = [
             Property.from_definition(k, d, k in required)
             for k, d in data["properties"].items()
