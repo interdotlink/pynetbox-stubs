@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Generic, Iterator, Optional, Self, TypeVar
+from typing import TYPE_CHECKING, Iterator, Optional, Self, TypeVar
 
 from pynetbox.core.query import Request
 
