@@ -1,7 +1,6 @@
 # pynetbox-stubs
 
-Project that contains Python stub files for pynetbox in order to allow type checking 
-code that uses pynetbox with [mypy](http://mypy-lang.org/)
+Project that contains Python stub files for [pynetbox](https://github.com/netbox-community/pynetbox) in order to allow type checking code that uses pynetbox with [mypy](http://mypy-lang.org/)
 
 This module also includes stubs for the following NetBox plugins:
 

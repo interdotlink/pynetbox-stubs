@@ -16,7 +16,7 @@ class PythonType(str, Enum):
     dict = "Dict[str, Any]"
 
     @classmethod
-    def from_json(cls, json_type: Literal[PythonType.str]) -> "PythonType":
+    def from_json(cls, json_type: "Literal[PythonType.str]") -> "PythonType":
         return {
             "string": cls.str,
             "integer": cls.int,

@@ -7,20 +7,14 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record, RecordSet
 
 class Config_contextsEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.ConfigContext]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.ConfigContext]: ...
     def get(
         self,
         id: Optional[str | int] = None,
         name: Optional[str] = None,
         is_active: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         region_id: Optional[str | int] = None,
         region: Optional[str] = None,
@@ -28,6 +22,8 @@ class Config_contextsEndpoint(Endpoint):
         site_group_id: Optional[str | int] = None,
         site_id: Optional[str | int] = None,
         site: Optional[str] = None,
+        location_id: Optional[str | int] = None,
+        location: Optional[str] = None,
         device_type_id: Optional[str | int] = None,
         role_id: Optional[str | int] = None,
         role: Optional[str] = None,
@@ -58,12 +54,24 @@ class Config_contextsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         region_id__n: Optional[str] = None,
         region__n: Optional[str] = None,
         site_group__n: Optional[str] = None,
         site_group_id__n: Optional[str] = None,
         site_id__n: Optional[str] = None,
         site__n: Optional[str] = None,
+        location_id__n: Optional[str] = None,
+        location__n: Optional[str] = None,
         device_type_id__n: Optional[str] = None,
         role_id__n: Optional[str] = None,
         role__n: Optional[str] = None,
@@ -80,6 +88,7 @@ class Config_contextsEndpoint(Endpoint):
         tenant__n: Optional[str] = None,
         tag_id__n: Optional[str] = None,
         tag__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ConfigContext]: ...
@@ -89,11 +98,7 @@ class Config_contextsEndpoint(Endpoint):
         name: Optional[str] = None,
         is_active: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         region_id: Optional[str | int] = None,
         region: Optional[str] = None,
@@ -101,6 +106,8 @@ class Config_contextsEndpoint(Endpoint):
         site_group_id: Optional[str | int] = None,
         site_id: Optional[str | int] = None,
         site: Optional[str] = None,
+        location_id: Optional[str | int] = None,
+        location: Optional[str] = None,
         device_type_id: Optional[str | int] = None,
         role_id: Optional[str | int] = None,
         role: Optional[str] = None,
@@ -131,12 +138,24 @@ class Config_contextsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         region_id__n: Optional[str] = None,
         region__n: Optional[str] = None,
         site_group__n: Optional[str] = None,
         site_group_id__n: Optional[str] = None,
         site_id__n: Optional[str] = None,
         site__n: Optional[str] = None,
+        location_id__n: Optional[str] = None,
+        location__n: Optional[str] = None,
         device_type_id__n: Optional[str] = None,
         role_id__n: Optional[str] = None,
         role__n: Optional[str] = None,
@@ -153,6 +172,7 @@ class Config_contextsEndpoint(Endpoint):
         tenant__n: Optional[str] = None,
         tag_id__n: Optional[str] = None,
         tag__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ConfigContext]: ...
@@ -162,7 +182,7 @@ class Config_contextsEndpoint(Endpoint):
     def create(
         self,
         name: str,
-        data: str,
+        data: Any,
         id: Optional[int | int] = None,
         url: Optional[str] = None,
         display: Optional[str] = None,
@@ -172,6 +192,7 @@ class Config_contextsEndpoint(Endpoint):
         regions: Optional[List[Any]] = None,
         site_groups: Optional[List[Any]] = None,
         sites: Optional[List[Any]] = None,
+        locations: Optional[List[Any]] = None,
         device_types: Optional[List[Any]] = None,
         roles: Optional[List[Any]] = None,
         platforms: Optional[List[Any]] = None,
@@ -198,11 +219,7 @@ class Config_contextsEndpoint(Endpoint):
         name: Optional[str] = None,
         is_active: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         region_id: Optional[str | int] = None,
         region: Optional[str] = None,
@@ -210,6 +227,8 @@ class Config_contextsEndpoint(Endpoint):
         site_group_id: Optional[str | int] = None,
         site_id: Optional[str | int] = None,
         site: Optional[str] = None,
+        location_id: Optional[str | int] = None,
+        location: Optional[str] = None,
         device_type_id: Optional[str | int] = None,
         role_id: Optional[str | int] = None,
         role: Optional[str] = None,
@@ -240,12 +259,24 @@ class Config_contextsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         region_id__n: Optional[str] = None,
         region__n: Optional[str] = None,
         site_group__n: Optional[str] = None,
         site_group_id__n: Optional[str] = None,
         site_id__n: Optional[str] = None,
         site__n: Optional[str] = None,
+        location_id__n: Optional[str] = None,
+        location__n: Optional[str] = None,
         device_type_id__n: Optional[str] = None,
         role_id__n: Optional[str] = None,
         role__n: Optional[str] = None,
@@ -262,20 +293,20 @@ class Config_contextsEndpoint(Endpoint):
         tenant__n: Optional[str] = None,
         tag_id__n: Optional[str] = None,
         tag__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Content_typesEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.ContentType]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.ContentType]: ...
     def get(
         self,
         id: Optional[float | int] = None,
         app_label: Optional[str] = None,
         model: Optional[str] = None,
         q: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ContentType]: ...
@@ -285,6 +316,7 @@ class Content_typesEndpoint(Endpoint):
         app_label: Optional[str] = None,
         model: Optional[str] = None,
         q: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ContentType]: ...
@@ -308,31 +340,41 @@ class Content_typesEndpoint(Endpoint):
         app_label: Optional[str] = None,
         model: Optional[str] = None,
         q: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Custom_fieldsEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.CustomField]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.CustomField]: ...
     def get(
         self,
         id: Optional[str | int] = None,
+        content_types: Optional[str] = None,
         name: Optional[str] = None,
+        group_name: Optional[str] = None,
         required: Optional[str] = None,
         filter_logic: Optional[str] = None,
+        ui_visibility: Optional[str] = None,
         weight: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
         type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
-        content_types: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
         id__lt: Optional[str] = None,
         id__gte: Optional[str] = None,
         id__gt: Optional[str] = None,
+        content_types__n: Optional[str] = None,
+        content_types__ic: Optional[str] = None,
+        content_types__nic: Optional[str] = None,
+        content_types__iew: Optional[str] = None,
+        content_types__niew: Optional[str] = None,
+        content_types__isw: Optional[str] = None,
+        content_types__nisw: Optional[str] = None,
+        content_types__ie: Optional[str] = None,
+        content_types__nie: Optional[str] = None,
         name__n: Optional[str] = None,
         name__ic: Optional[str] = None,
         name__nic: Optional[str] = None,
@@ -342,7 +384,17 @@ class Custom_fieldsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        group_name__n: Optional[str] = None,
+        group_name__ic: Optional[str] = None,
+        group_name__nic: Optional[str] = None,
+        group_name__iew: Optional[str] = None,
+        group_name__niew: Optional[str] = None,
+        group_name__isw: Optional[str] = None,
+        group_name__nisw: Optional[str] = None,
+        group_name__ie: Optional[str] = None,
+        group_name__nie: Optional[str] = None,
         filter_logic__n: Optional[str] = None,
+        ui_visibility__n: Optional[str] = None,
         weight__n: Optional[str] = None,
         weight__lte: Optional[str] = None,
         weight__lt: Optional[str] = None,
@@ -363,35 +415,38 @@ class Custom_fieldsEndpoint(Endpoint):
         content_type_id__lt: Optional[str] = None,
         content_type_id__gte: Optional[str] = None,
         content_type_id__gt: Optional[str] = None,
-        content_types__n: Optional[str] = None,
-        content_types__ic: Optional[str] = None,
-        content_types__nic: Optional[str] = None,
-        content_types__iew: Optional[str] = None,
-        content_types__niew: Optional[str] = None,
-        content_types__isw: Optional[str] = None,
-        content_types__nisw: Optional[str] = None,
-        content_types__ie: Optional[str] = None,
-        content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.CustomField]: ...
     def filter(
         self,
         id: Optional[str | int] = None,
+        content_types: Optional[str] = None,
         name: Optional[str] = None,
+        group_name: Optional[str] = None,
         required: Optional[str] = None,
         filter_logic: Optional[str] = None,
+        ui_visibility: Optional[str] = None,
         weight: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
         type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
-        content_types: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
         id__lt: Optional[str] = None,
         id__gte: Optional[str] = None,
         id__gt: Optional[str] = None,
+        content_types__n: Optional[str] = None,
+        content_types__ic: Optional[str] = None,
+        content_types__nic: Optional[str] = None,
+        content_types__iew: Optional[str] = None,
+        content_types__niew: Optional[str] = None,
+        content_types__isw: Optional[str] = None,
+        content_types__nisw: Optional[str] = None,
+        content_types__ie: Optional[str] = None,
+        content_types__nie: Optional[str] = None,
         name__n: Optional[str] = None,
         name__ic: Optional[str] = None,
         name__nic: Optional[str] = None,
@@ -401,7 +456,17 @@ class Custom_fieldsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        group_name__n: Optional[str] = None,
+        group_name__ic: Optional[str] = None,
+        group_name__nic: Optional[str] = None,
+        group_name__iew: Optional[str] = None,
+        group_name__niew: Optional[str] = None,
+        group_name__isw: Optional[str] = None,
+        group_name__nisw: Optional[str] = None,
+        group_name__ie: Optional[str] = None,
+        group_name__nie: Optional[str] = None,
         filter_logic__n: Optional[str] = None,
+        ui_visibility__n: Optional[str] = None,
         weight__n: Optional[str] = None,
         weight__lte: Optional[str] = None,
         weight__lt: Optional[str] = None,
@@ -422,15 +487,7 @@ class Custom_fieldsEndpoint(Endpoint):
         content_type_id__lt: Optional[str] = None,
         content_type_id__gte: Optional[str] = None,
         content_type_id__gt: Optional[str] = None,
-        content_types__n: Optional[str] = None,
-        content_types__ic: Optional[str] = None,
-        content_types__nic: Optional[str] = None,
-        content_types__iew: Optional[str] = None,
-        content_types__niew: Optional[str] = None,
-        content_types__isw: Optional[str] = None,
-        content_types__nisw: Optional[str] = None,
-        content_types__ie: Optional[str] = None,
-        content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.CustomField]: ...
@@ -448,10 +505,12 @@ class Custom_fieldsEndpoint(Endpoint):
         object_type: Optional[str] = None,
         data_type: Optional[str] = None,
         label: Optional[str] = None,
+        group_name: Optional[str] = None,
         description: Optional[str] = None,
         required: Optional[bool] = None,
         filter_logic: Optional[str] = None,
-        default: Optional[str] = None,
+        ui_visibility: Optional[str] = None,
+        default: Optional[Any] = None,
         weight: Optional[int] = None,
         validation_minimum: Optional[int] = None,
         validation_maximum: Optional[int] = None,
@@ -471,20 +530,31 @@ class Custom_fieldsEndpoint(Endpoint):
     def count(
         self,
         id: Optional[str | int] = None,
+        content_types: Optional[str] = None,
         name: Optional[str] = None,
+        group_name: Optional[str] = None,
         required: Optional[str] = None,
         filter_logic: Optional[str] = None,
+        ui_visibility: Optional[str] = None,
         weight: Optional[str] = None,
         description: Optional[str] = None,
         q: Optional[str] = None,
         type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
-        content_types: Optional[str] = None,
         id__n: Optional[str] = None,
         id__lte: Optional[str] = None,
         id__lt: Optional[str] = None,
         id__gte: Optional[str] = None,
         id__gt: Optional[str] = None,
+        content_types__n: Optional[str] = None,
+        content_types__ic: Optional[str] = None,
+        content_types__nic: Optional[str] = None,
+        content_types__iew: Optional[str] = None,
+        content_types__niew: Optional[str] = None,
+        content_types__isw: Optional[str] = None,
+        content_types__nisw: Optional[str] = None,
+        content_types__ie: Optional[str] = None,
+        content_types__nie: Optional[str] = None,
         name__n: Optional[str] = None,
         name__ic: Optional[str] = None,
         name__nic: Optional[str] = None,
@@ -494,7 +564,17 @@ class Custom_fieldsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        group_name__n: Optional[str] = None,
+        group_name__ic: Optional[str] = None,
+        group_name__nic: Optional[str] = None,
+        group_name__iew: Optional[str] = None,
+        group_name__niew: Optional[str] = None,
+        group_name__isw: Optional[str] = None,
+        group_name__nisw: Optional[str] = None,
+        group_name__ie: Optional[str] = None,
+        group_name__nie: Optional[str] = None,
         filter_logic__n: Optional[str] = None,
+        ui_visibility__n: Optional[str] = None,
         weight__n: Optional[str] = None,
         weight__lte: Optional[str] = None,
         weight__lt: Optional[str] = None,
@@ -515,23 +595,13 @@ class Custom_fieldsEndpoint(Endpoint):
         content_type_id__lt: Optional[str] = None,
         content_type_id__gte: Optional[str] = None,
         content_type_id__gt: Optional[str] = None,
-        content_types__n: Optional[str] = None,
-        content_types__ic: Optional[str] = None,
-        content_types__nic: Optional[str] = None,
-        content_types__iew: Optional[str] = None,
-        content_types__niew: Optional[str] = None,
-        content_types__isw: Optional[str] = None,
-        content_types__nisw: Optional[str] = None,
-        content_types__ie: Optional[str] = None,
-        content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Custom_linksEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.CustomLink]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.CustomLink]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -591,6 +661,7 @@ class Custom_linksEndpoint(Endpoint):
         group_name__nisw: Optional[str] = None,
         group_name__ie: Optional[str] = None,
         group_name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.CustomLink]: ...
@@ -653,6 +724,7 @@ class Custom_linksEndpoint(Endpoint):
         group_name__nisw: Optional[str] = None,
         group_name__ie: Optional[str] = None,
         group_name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.CustomLink]: ...
@@ -743,14 +815,13 @@ class Custom_linksEndpoint(Endpoint):
         group_name__nisw: Optional[str] = None,
         group_name__ie: Optional[str] = None,
         group_name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Export_templatesEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.ExportTemplate]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.ExportTemplate]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -782,6 +853,7 @@ class Export_templatesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ExportTemplate]: ...
@@ -816,6 +888,7 @@ class Export_templatesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ExportTemplate]: ...
@@ -843,9 +916,7 @@ class Export_templatesEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.ExportTemplate]
     ) -> RecordSet[definitions.ExportTemplate]: ...
-    def delete(
-        self, objects: Iterable[definitions.ExportTemplate]
-    ) -> bool: ...
+    def delete(self, objects: Iterable[definitions.ExportTemplate]) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -878,14 +949,13 @@ class Export_templatesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Image_attachmentsEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.ImageAttachment]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.ImageAttachment]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -916,6 +986,7 @@ class Image_attachmentsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         content_type__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ImageAttachment]: ...
@@ -949,6 +1020,7 @@ class Image_attachmentsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         content_type__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ImageAttachment]: ...
@@ -976,9 +1048,7 @@ class Image_attachmentsEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.ImageAttachment]
     ) -> RecordSet[definitions.ImageAttachment]: ...
-    def delete(
-        self, objects: Iterable[definitions.ImageAttachment]
-    ) -> bool: ...
+    def delete(self, objects: Iterable[definitions.ImageAttachment]) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -1010,14 +1080,13 @@ class Image_attachmentsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         content_type__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Job_resultsEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.JobResult]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.JobResult]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1045,6 +1114,7 @@ class Job_resultsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.JobResult]: ...
@@ -1075,6 +1145,7 @@ class Job_resultsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.JobResult]: ...
@@ -1084,9 +1155,7 @@ class Job_resultsEndpoint(Endpoint):
     def create(
         self,
     ) -> definitions.JobResult: ...
-    def create(
-        self, *args: Dict[str, Any], **kwargs: Any
-    ) -> definitions.JobResult: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.JobResult: ...
     def update(
         self, objects: Iterable[definitions.JobResult]
     ) -> RecordSet[definitions.JobResult]: ...
@@ -1119,14 +1188,13 @@ class Job_resultsEndpoint(Endpoint):
         name__nisw: Optional[str] = None,
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Journal_entriesEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.JournalEntry]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.JournalEntry]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1134,11 +1202,7 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id: Optional[str | int] = None,
         created: Optional[str] = None,
         kind: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
         assigned_object_type: Optional[str] = None,
@@ -1156,10 +1220,16 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id__gte: Optional[str] = None,
         assigned_object_id__gt: Optional[str] = None,
         kind__n: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         tag__n: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         created_by_id__n: Optional[str] = None,
         created_by__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.JournalEntry]: ...
@@ -1170,11 +1240,7 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id: Optional[str | int] = None,
         created: Optional[str] = None,
         kind: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
         assigned_object_type: Optional[str] = None,
@@ -1192,10 +1258,16 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id__gte: Optional[str] = None,
         assigned_object_id__gt: Optional[str] = None,
         kind__n: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         tag__n: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         created_by_id__n: Optional[str] = None,
         created_by__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.JournalEntry]: ...
@@ -1233,11 +1305,7 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id: Optional[str | int] = None,
         created: Optional[str] = None,
         kind: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         tag: Optional[str] = None,
         assigned_object_type: Optional[str] = None,
@@ -1255,18 +1323,22 @@ class Journal_entriesEndpoint(Endpoint):
         assigned_object_id__gte: Optional[str] = None,
         assigned_object_id__gt: Optional[str] = None,
         kind__n: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
         tag__n: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         created_by_id__n: Optional[str] = None,
         created_by__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
 
 class Object_changesEndpoint(Endpoint):
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.ObjectChange]: ...
+    def all(self, limit=0, offset=None) -> RecordSet[definitions.ObjectChange]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1314,6 +1386,7 @@ class Object_changesEndpoint(Endpoint):
         object_repr__nie: Optional[str] = None,
         changed_object_type__n: Optional[str] = None,
         user_id__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ObjectChange]: ...
@@ -1364,6 +1437,7 @@ class Object_changesEndpoint(Endpoint):
         object_repr__nie: Optional[str] = None,
         changed_object_type__n: Optional[str] = None,
         user_id__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ObjectChange]: ...
@@ -1428,6 +1502,7 @@ class Object_changesEndpoint(Endpoint):
         object_repr__nie: Optional[str] = None,
         changed_object_type__n: Optional[str] = None,
         user_id__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
@@ -1486,11 +1561,7 @@ class TagsEndpoint(Endpoint):
         color: Optional[str] = None,
         description: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         content_type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
@@ -1535,6 +1606,17 @@ class TagsEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.Tag]: ...
@@ -1546,11 +1628,7 @@ class TagsEndpoint(Endpoint):
         color: Optional[str] = None,
         description: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         content_type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
@@ -1595,6 +1673,17 @@ class TagsEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Tag]: ...
@@ -1614,9 +1703,7 @@ class TagsEndpoint(Endpoint):
         created: Optional[str] = None,
         last_updated: Optional[str] = None,
     ) -> definitions.Tag: ...
-    def create(
-        self, *args: Dict[str, Any], **kwargs: Any
-    ) -> definitions.Tag: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Tag: ...
     def update(
         self, objects: Iterable[definitions.Tag]
     ) -> RecordSet[definitions.Tag]: ...
@@ -1630,11 +1717,7 @@ class TagsEndpoint(Endpoint):
         color: Optional[str] = None,
         description: Optional[str] = None,
         created: Optional[str] = None,
-        created__gte: Optional[str] = None,
-        created__lte: Optional[str] = None,
         last_updated: Optional[str] = None,
-        last_updated__gte: Optional[str] = None,
-        last_updated__lte: Optional[str] = None,
         q: Optional[str] = None,
         content_type: Optional[str] = None,
         content_type_id: Optional[str | int] = None,
@@ -1679,6 +1762,17 @@ class TagsEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         description__ie: Optional[str] = None,
         description__nie: Optional[str] = None,
+        created__n: Optional[str] = None,
+        created__lte: Optional[str] = None,
+        created__lt: Optional[str] = None,
+        created__gte: Optional[str] = None,
+        created__gt: Optional[str] = None,
+        last_updated__n: Optional[str] = None,
+        last_updated__lte: Optional[str] = None,
+        last_updated__lt: Optional[str] = None,
+        last_updated__gte: Optional[str] = None,
+        last_updated__gt: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
@@ -1767,6 +1861,7 @@ class WebhooksEndpoint(Endpoint):
         content_types__nisw: Optional[str] = None,
         content_types__ie: Optional[str] = None,
         content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.Webhook]: ...
@@ -1852,6 +1947,7 @@ class WebhooksEndpoint(Endpoint):
         content_types__nisw: Optional[str] = None,
         content_types__ie: Optional[str] = None,
         content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Webhook]: ...
@@ -1875,15 +1971,13 @@ class WebhooksEndpoint(Endpoint):
         additional_headers: Optional[str] = None,
         body_template: Optional[str] = None,
         secret: Optional[str] = None,
-        conditions: Optional[str] = None,
+        conditions: Optional[Any] = None,
         ssl_verification: Optional[bool] = None,
         ca_file_path: Optional[str] = None,
         created: Optional[str] = None,
         last_updated: Optional[str] = None,
     ) -> definitions.Webhook: ...
-    def create(
-        self, *args: Dict[str, Any], **kwargs: Any
-    ) -> definitions.Webhook: ...
+    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Webhook: ...
     def update(
         self, objects: Iterable[definitions.Webhook]
     ) -> RecordSet[definitions.Webhook]: ...
@@ -1971,6 +2065,7 @@ class WebhooksEndpoint(Endpoint):
         content_types__nisw: Optional[str] = None,
         content_types__ie: Optional[str] = None,
         content_types__nie: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
