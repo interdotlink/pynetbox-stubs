@@ -50,6 +50,7 @@ class GroupsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         name__empty: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.Group]: ...
@@ -73,6 +74,7 @@ class GroupsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         name__empty: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Group]: ...
@@ -115,6 +117,7 @@ class GroupsEndpoint(Endpoint):
         name__ie: Optional[str] = None,
         name__nie: Optional[str] = None,
         name__empty: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
@@ -165,6 +168,7 @@ class PermissionsEndpoint(Endpoint):
         user__n: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.ObjectPermission]: ...
@@ -210,6 +214,7 @@ class PermissionsEndpoint(Endpoint):
         user__n: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ObjectPermission]: ...
@@ -230,7 +235,7 @@ class PermissionsEndpoint(Endpoint):
         enabled: Optional[bool] = None,
         groups: Optional[List[Any]] = None,
         users: Optional[List[Any]] = None,
-        constraints: Optional[str] = None,
+        constraints: Optional[Any] = None,
     ) -> definitions.ObjectPermission: ...
     def create(
         self, *args: Dict[str, Any], **kwargs: Any
@@ -284,6 +289,7 @@ class PermissionsEndpoint(Endpoint):
         user__n: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
@@ -332,6 +338,7 @@ class TokensEndpoint(Endpoint):
         description__empty: Optional[str] = None,
         user_id__n: Optional[str] = None,
         user__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.Token]: ...
@@ -377,6 +384,7 @@ class TokensEndpoint(Endpoint):
         description__empty: Optional[str] = None,
         user_id__n: Optional[str] = None,
         user__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.Token]: ...
@@ -391,9 +399,11 @@ class TokensEndpoint(Endpoint):
         display: Optional[str] = None,
         created: Optional[str] = None,
         expires: Optional[str] = None,
+        last_used: Optional[str] = None,
         key: Optional[str] = None,
         write_enabled: Optional[bool] = None,
         description: Optional[str] = None,
+        allowed_ips: Optional[List[Any]] = None,
     ) -> definitions.Token: ...
     def create(
         self, *args: Dict[str, Any], **kwargs: Any
@@ -445,6 +455,7 @@ class TokensEndpoint(Endpoint):
         description__empty: Optional[str] = None,
         user_id__n: Optional[str] = None,
         user__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...
@@ -532,6 +543,7 @@ class UsersEndpoint(Endpoint):
         email__empty: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> Optional[definitions.User]: ...
@@ -594,6 +606,7 @@ class UsersEndpoint(Endpoint):
         email__empty: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.User]: ...
@@ -682,6 +695,7 @@ class UsersEndpoint(Endpoint):
         email__empty: Optional[str] = None,
         group_id__n: Optional[str] = None,
         group__n: Optional[str] = None,
+        ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
     ) -> int: ...

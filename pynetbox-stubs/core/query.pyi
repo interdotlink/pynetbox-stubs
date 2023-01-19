@@ -1,5 +1,29 @@
 from typing import Any, Dict, Iterator, Optional
 
+from requests import Response
+
+class RequestError(Exception):
+    message: str
+    req: Response
+    request_body: Response.request.body
+    base: Response.url
+    error: Response.text
+    def __init__(self, req) -> None: ...
+
+class AllocationError(Exception):
+    req: Response
+    request_body: Response.request.body
+    base: Response.url
+    error: str
+    def __init__(self, req) -> None: ...
+
+class ContentError(Exception):
+    req: Response
+    request_body: Response.request.body
+    base: Response.url
+    error: str
+    def __init__(self, req) -> None: ...
+
 class Request:
     def __init__(
         self,

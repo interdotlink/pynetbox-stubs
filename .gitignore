@@ -1,5 +1,6 @@
-openapi.json
-pynetbox_stubs.egg-info
 .idea
+openapi.json
+out/
+pynetbox_stubs.egg-info
 .venv/
 venv/
