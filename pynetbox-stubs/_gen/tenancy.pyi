@@ -7,7 +7,9 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import Record, RecordSet
 
 class Contact_assignmentsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ContactAssignment]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ContactAssignment]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -93,7 +95,9 @@ class Contact_assignmentsEndpoint(Endpoint):
         offset: Optional[int] = None,
     ) -> RecordSet[definitions.ContactAssignment]: ...
     @overload
-    def create(self, *args: Dict[str, Any]) -> definitions.ContactAssignment: ...
+    def create(
+        self, *args: Dict[str, Any]
+    ) -> definitions.ContactAssignment: ...
     @overload
     def create(
         self,
@@ -115,7 +119,9 @@ class Contact_assignmentsEndpoint(Endpoint):
     def update(
         self, objects: Iterable[definitions.ContactAssignment]
     ) -> RecordSet[definitions.ContactAssignment]: ...
-    def delete(self, objects: Iterable[definitions.ContactAssignment]) -> bool: ...
+    def delete(
+        self, objects: Iterable[definitions.ContactAssignment]
+    ) -> bool: ...
     def choices(self) -> dict: ...
     def count(
         self,
@@ -161,7 +167,9 @@ class Contact_assignmentsEndpoint(Endpoint):
     ) -> int: ...
 
 class Contact_groupsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ContactGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ContactGroup]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -374,7 +382,9 @@ class Contact_groupsEndpoint(Endpoint):
     ) -> int: ...
 
 class Contact_rolesEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.ContactRole]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.ContactRole]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -776,7 +786,9 @@ class ContactsEndpoint(Endpoint):
         created: Optional[str] = None,
         last_updated: Optional[str] = None,
     ) -> definitions.Contact: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Contact: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Contact: ...
     def update(
         self, objects: Iterable[definitions.Contact]
     ) -> RecordSet[definitions.Contact]: ...
@@ -875,7 +887,9 @@ class ContactsEndpoint(Endpoint):
     ) -> int: ...
 
 class Tenant_groupsEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.TenantGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.TenantGroup]: ...
     def get(
         self,
         id: Optional[str | int] = None,
@@ -1251,7 +1265,9 @@ class TenantsEndpoint(Endpoint):
         vrf_count: Optional[int] = None,
         cluster_count: Optional[int] = None,
     ) -> definitions.Tenant: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Tenant: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Tenant: ...
     def update(
         self, objects: Iterable[definitions.Tenant]
     ) -> RecordSet[definitions.Tenant]: ...

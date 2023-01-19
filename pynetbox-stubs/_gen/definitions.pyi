@@ -1,4 +1,3 @@
-
 from typing import Any, Dict, Iterable, List, Optional, Union
 
 from pynetbox.core.api import Api
@@ -3397,8 +3396,7 @@ class WritableObjectPermission(Record):
         self.constraints: Any
 
 class IPNetwork(Record):
-    def __init__(self):
-
+    def __init__(self): ...
 
 class Token(Record):
     def __init__(self):

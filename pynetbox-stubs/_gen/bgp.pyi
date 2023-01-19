@@ -7,7 +7,9 @@ from pynetbox.core.endpoint import Endpoint
 from pynetbox.core.response import RecordSet
 
 class Bgp_bgppeergroupEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.BGPPeerGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.BGPPeerGroup]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -66,7 +68,9 @@ class Bgp_bgppeergroupEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_bgpsessionEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.BGPSession]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.BGPSession]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -185,7 +189,9 @@ class Bgp_bgpsessionEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_communityEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.Community]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.Community]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -230,7 +236,9 @@ class Bgp_communityEndpoint(Endpoint):
         tenant: Optional[int] = None,
         role: Optional[int] = None,
     ) -> definitions.Community: ...
-    def create(self, *args: Dict[str, Any], **kwargs: Any) -> definitions.Community: ...
+    def create(
+        self, *args: Dict[str, Any], **kwargs: Any
+    ) -> definitions.Community: ...
     def update(
         self, objects: Iterable[definitions.Community]
     ) -> RecordSet[definitions.Community]: ...
@@ -250,7 +258,9 @@ class Bgp_communityEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_peer_groupEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.BGPPeerGroup]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.BGPPeerGroup]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -309,7 +319,9 @@ class Bgp_peer_groupEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_prefix_listEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.PrefixList]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.PrefixList]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -367,7 +379,9 @@ class Bgp_prefix_listEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_routing_policyEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.RoutingPolicy]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.RoutingPolicy]: ...
     def get(
         self,
         id: Optional[int] = None,
@@ -424,7 +438,9 @@ class Bgp_routing_policyEndpoint(Endpoint):
     ) -> int: ...
 
 class Bgp_sessionEndpoint(Endpoint):
-    def all(self, limit=0, offset=None) -> RecordSet[definitions.BGPSession]: ...
+    def all(
+        self, limit=0, offset=None
+    ) -> RecordSet[definitions.BGPSession]: ...
     def get(
         self,
         id: Optional[int] = None,

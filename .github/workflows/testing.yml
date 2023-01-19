@@ -26,4 +26,6 @@ jobs:
           pip install -r requirements.txt
           pip install tox
       - name: Run tox
-        run: tox -e lint,mypy,gen
+        run: |
+          tox
+          tox -e gen
