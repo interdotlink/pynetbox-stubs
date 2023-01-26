@@ -363,7 +363,7 @@ def main() -> None:
 
     visit_definitions(defs)
     os.system("black --skip-string-normalization -l 79 pynetbox-stubs/_gen")
-    os.system("isort --profile blackpynetbox-stubs/_gen")
+    os.system("isort --profile black pynetbox-stubs/_gen")
 
 
 if __name__ == "__main__":
