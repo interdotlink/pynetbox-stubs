@@ -82,6 +82,7 @@ class Circuit_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.CircuitTermination]: ...
     def filter(
         self,
@@ -155,6 +156,7 @@ class Circuit_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.CircuitTermination]: ...
     @overload
     def create(
@@ -268,6 +270,7 @@ class Circuit_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Circuit_typesEndpoint(Endpoint):
@@ -330,6 +333,7 @@ class Circuit_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.CircuitType]: ...
     def filter(
         self,
@@ -387,6 +391,7 @@ class Circuit_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.CircuitType]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.CircuitType: ...
@@ -469,6 +474,7 @@ class Circuit_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class CircuitsEndpoint(Endpoint):
@@ -575,6 +581,7 @@ class CircuitsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Circuit]: ...
     def filter(
         self,
@@ -678,6 +685,7 @@ class CircuitsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Circuit]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Circuit: ...
@@ -814,6 +822,7 @@ class CircuitsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Provider_networksEndpoint(Endpoint):
@@ -880,6 +889,7 @@ class Provider_networksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ProviderNetwork]: ...
     def filter(
         self,
@@ -941,6 +951,7 @@ class Provider_networksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ProviderNetwork]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ProviderNetwork: ...
@@ -1030,6 +1041,7 @@ class Provider_networksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ProvidersEndpoint(Endpoint):
@@ -1116,6 +1128,7 @@ class ProvidersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Provider]: ...
     def filter(
         self,
@@ -1199,6 +1212,7 @@ class ProvidersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Provider]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Provider: ...
@@ -1313,6 +1327,7 @@ class ProvidersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class CircuitsApp(App):

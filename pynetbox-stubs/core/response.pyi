@@ -15,7 +15,10 @@ from pynetbox.core.query import Request
 from pynetbox.core.util import Hashabledict as Hashabledict
 
 if TYPE_CHECKING:
+    from pynetbox.core.api import Api
     from pynetbox.core.app import App
+
+LIST_AS_SET: Tuple[Any]
 
 def get_return(lookup, return_fields: Optional[List]) -> str: ...
 def flatten_custom(custom_dict: Dict) -> Dict: ...
@@ -38,8 +41,8 @@ class RecordSet(Iterator[R]):
 
 class Record(object):
     url: str | None
-    def __init__(self, values, api, endpoint):
-        self.has_details = False
+    def __init__(self, values: Dict, api: "Api", endpoint: Endpoint):
+        self.has_details: bool = False
         self.api = api
         self.default_ret = Record
         self.endpoint: Endpoint

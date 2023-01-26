@@ -33,6 +33,7 @@ class Cable_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.CableTermination]: ...
     def filter(
         self,
@@ -57,6 +58,7 @@ class Cable_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.CableTermination]: ...
     @overload
     def create(
@@ -107,6 +109,7 @@ class Cable_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class CablesEndpoint(Endpoint):
@@ -193,6 +196,7 @@ class CablesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Cable]: ...
     def filter(
         self,
@@ -276,6 +280,7 @@ class CablesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Cable]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Cable: ...
@@ -389,15 +394,16 @@ class CablesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Connected_deviceEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Device]: ...
     def get(
-        self, peer_device: str, peer_interface: str
+        self, peer_device: str, peer_interface: str, **kwargs: Optional[Any]
     ) -> Optional[definitions.Device]: ...
     def filter(
-        self, peer_device: str, peer_interface: str
+        self, peer_device: str, peer_interface: str, **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Device]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Device: ...
@@ -413,7 +419,9 @@ class Connected_deviceEndpoint(Endpoint):
     ) -> RecordSet[definitions.Device]: ...
     def delete(self, objects: Iterable[definitions.Device]) -> bool: ...
     def choices(self) -> dict: ...
-    def count(self, peer_device: str, peer_interface: str) -> int: ...
+    def count(
+        self, peer_device: str, peer_interface: str, **kwargs: Optional[Any]
+    ) -> int: ...
 
 class Console_port_templatesEndpoint(Endpoint):
     def all(
@@ -459,6 +467,7 @@ class Console_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ConsolePortTemplate]: ...
     def filter(
         self,
@@ -500,6 +509,7 @@ class Console_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ConsolePortTemplate]: ...
     @overload
     def create(
@@ -570,6 +580,7 @@ class Console_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Console_portsEndpoint(Endpoint):
@@ -669,6 +680,7 @@ class Console_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ConsolePort]: ...
     def filter(
         self,
@@ -763,6 +775,7 @@ class Console_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ConsolePort]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ConsolePort: ...
@@ -894,6 +907,7 @@ class Console_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Console_server_port_templatesEndpoint(Endpoint):
@@ -940,6 +954,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ConsoleServerPortTemplate]: ...
     def filter(
         self,
@@ -981,6 +996,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ConsoleServerPortTemplate]: ...
     @overload
     def create(
@@ -1051,6 +1067,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Console_server_portsEndpoint(Endpoint):
@@ -1150,6 +1167,7 @@ class Console_server_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ConsoleServerPort]: ...
     def filter(
         self,
@@ -1244,6 +1262,7 @@ class Console_server_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ConsoleServerPort]: ...
     @overload
     def create(
@@ -1379,6 +1398,7 @@ class Console_server_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Device_bay_templatesEndpoint(Endpoint):
@@ -1421,6 +1441,7 @@ class Device_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.DeviceBayTemplate]: ...
     def filter(
         self,
@@ -1458,6 +1479,7 @@ class Device_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.DeviceBayTemplate]: ...
     @overload
     def create(
@@ -1522,6 +1544,7 @@ class Device_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Device_baysEndpoint(Endpoint):
@@ -1612,6 +1635,7 @@ class Device_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.DeviceBay]: ...
     def filter(
         self,
@@ -1697,6 +1721,7 @@ class Device_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.DeviceBay]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.DeviceBay: ...
@@ -1808,6 +1833,7 @@ class Device_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Device_rolesEndpoint(Endpoint):
@@ -1881,6 +1907,7 @@ class Device_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.DeviceRole]: ...
     def filter(
         self,
@@ -1949,6 +1976,7 @@ class Device_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.DeviceRole]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.DeviceRole: ...
@@ -2045,6 +2073,7 @@ class Device_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Device_typesEndpoint(Endpoint):
@@ -2133,6 +2162,7 @@ class Device_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.DeviceType]: ...
     def filter(
         self,
@@ -2216,6 +2246,7 @@ class Device_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.DeviceType]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.DeviceType: ...
@@ -2332,6 +2363,7 @@ class Device_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class DevicesEndpoint(Endpoint):
@@ -2494,6 +2526,7 @@ class DevicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.DeviceWithConfigContext]: ...
     def filter(
         self,
@@ -2651,6 +2684,7 @@ class DevicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.DeviceWithConfigContext]: ...
     @overload
     def create(
@@ -2858,6 +2892,7 @@ class DevicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Front_port_templatesEndpoint(Endpoint):
@@ -2914,6 +2949,7 @@ class Front_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.FrontPortTemplate]: ...
     def filter(
         self,
@@ -2965,6 +3001,7 @@ class Front_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.FrontPortTemplate]: ...
     @overload
     def create(
@@ -3048,6 +3085,7 @@ class Front_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Front_portsEndpoint(Endpoint):
@@ -3156,6 +3194,7 @@ class Front_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.FrontPort]: ...
     def filter(
         self,
@@ -3259,6 +3298,7 @@ class Front_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.FrontPort]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.FrontPort: ...
@@ -3398,6 +3438,7 @@ class Front_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Interface_templatesEndpoint(Endpoint):
@@ -3449,6 +3490,7 @@ class Interface_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.InterfaceTemplate]: ...
     def filter(
         self,
@@ -3495,6 +3537,7 @@ class Interface_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.InterfaceTemplate]: ...
     @overload
     def create(
@@ -3573,6 +3616,7 @@ class Interface_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class InterfacesEndpoint(Endpoint):
@@ -3747,6 +3791,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Interface]: ...
     def filter(
         self,
@@ -3916,6 +3961,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Interface]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Interface: ...
@@ -4147,6 +4193,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Inventory_item_rolesEndpoint(Endpoint):
@@ -4209,6 +4256,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.InventoryItemRole]: ...
     def filter(
         self,
@@ -4266,6 +4314,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.InventoryItemRole]: ...
     @overload
     def create(
@@ -4353,6 +4402,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Inventory_item_templatesEndpoint(Endpoint):
@@ -4433,6 +4483,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.InventoryItemTemplate]: ...
     def filter(
         self,
@@ -4508,6 +4559,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.InventoryItemTemplate]: ...
     @overload
     def create(
@@ -4618,6 +4670,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Inventory_itemsEndpoint(Endpoint):
@@ -4747,6 +4800,7 @@ class Inventory_itemsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.InventoryItem]: ...
     def filter(
         self,
@@ -4871,6 +4925,7 @@ class Inventory_itemsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.InventoryItem]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.InventoryItem: ...
@@ -5031,6 +5086,7 @@ class Inventory_itemsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class LocationsEndpoint(Endpoint):
@@ -5123,6 +5179,7 @@ class LocationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Location]: ...
     def filter(
         self,
@@ -5212,6 +5269,7 @@ class LocationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Location]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Location: ...
@@ -5332,6 +5390,7 @@ class LocationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ManufacturersEndpoint(Endpoint):
@@ -5400,6 +5459,7 @@ class ManufacturersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Manufacturer]: ...
     def filter(
         self,
@@ -5463,6 +5523,7 @@ class ManufacturersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Manufacturer]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Manufacturer: ...
@@ -5553,6 +5614,7 @@ class ManufacturersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Module_bay_templatesEndpoint(Endpoint):
@@ -5595,6 +5657,7 @@ class Module_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ModuleBayTemplate]: ...
     def filter(
         self,
@@ -5632,6 +5695,7 @@ class Module_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ModuleBayTemplate]: ...
     @overload
     def create(
@@ -5697,6 +5761,7 @@ class Module_bay_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Module_baysEndpoint(Endpoint):
@@ -5787,6 +5852,7 @@ class Module_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ModuleBay]: ...
     def filter(
         self,
@@ -5872,6 +5938,7 @@ class Module_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ModuleBay]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ModuleBay: ...
@@ -5984,6 +6051,7 @@ class Module_baysEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Module_typesEndpoint(Endpoint):
@@ -6046,6 +6114,7 @@ class Module_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ModuleType]: ...
     def filter(
         self,
@@ -6103,6 +6172,7 @@ class Module_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ModuleType]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ModuleType: ...
@@ -6185,6 +6255,7 @@ class Module_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ModulesEndpoint(Endpoint):
@@ -6247,6 +6318,7 @@ class ModulesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Module]: ...
     def filter(
         self,
@@ -6306,6 +6378,7 @@ class ModulesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Module]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Module: ...
@@ -6392,6 +6465,7 @@ class ModulesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class PlatformsEndpoint(Endpoint):
@@ -6466,6 +6540,7 @@ class PlatformsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Platform]: ...
     def filter(
         self,
@@ -6537,6 +6612,7 @@ class PlatformsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Platform]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Platform: ...
@@ -6637,6 +6713,7 @@ class PlatformsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_feedsEndpoint(Endpoint):
@@ -6726,6 +6803,7 @@ class Power_feedsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerFeed]: ...
     def filter(
         self,
@@ -6810,6 +6888,7 @@ class Power_feedsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerFeed]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.PowerFeed: ...
@@ -6935,6 +7014,7 @@ class Power_feedsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_outlet_templatesEndpoint(Endpoint):
@@ -6983,6 +7063,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerOutletTemplate]: ...
     def filter(
         self,
@@ -7026,6 +7107,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerOutletTemplate]: ...
     @overload
     def create(
@@ -7100,6 +7182,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_outletsEndpoint(Endpoint):
@@ -7201,6 +7284,7 @@ class Power_outletsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerOutlet]: ...
     def filter(
         self,
@@ -7297,6 +7381,7 @@ class Power_outletsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerOutlet]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.PowerOutlet: ...
@@ -7431,6 +7516,7 @@ class Power_outletsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_panelsEndpoint(Endpoint):
@@ -7493,6 +7579,7 @@ class Power_panelsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerPanel]: ...
     def filter(
         self,
@@ -7550,6 +7637,7 @@ class Power_panelsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerPanel]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.PowerPanel: ...
@@ -7632,6 +7720,7 @@ class Power_panelsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_port_templatesEndpoint(Endpoint):
@@ -7690,6 +7779,7 @@ class Power_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerPortTemplate]: ...
     def filter(
         self,
@@ -7743,6 +7833,7 @@ class Power_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerPortTemplate]: ...
     @overload
     def create(
@@ -7827,6 +7918,7 @@ class Power_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Power_portsEndpoint(Endpoint):
@@ -7938,6 +8030,7 @@ class Power_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PowerPort]: ...
     def filter(
         self,
@@ -8044,6 +8137,7 @@ class Power_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PowerPort]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.PowerPort: ...
@@ -8188,6 +8282,7 @@ class Power_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Rack_reservationsEndpoint(Endpoint):
@@ -8260,6 +8355,7 @@ class Rack_reservationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RackReservation]: ...
     def filter(
         self,
@@ -8327,6 +8423,7 @@ class Rack_reservationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RackReservation]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RackReservation: ...
@@ -8422,6 +8519,7 @@ class Rack_reservationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Rack_rolesEndpoint(Endpoint):
@@ -8492,6 +8590,7 @@ class Rack_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RackRole]: ...
     def filter(
         self,
@@ -8559,6 +8658,7 @@ class Rack_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RackRole]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RackRole: ...
@@ -8652,6 +8752,7 @@ class Rack_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class RacksEndpoint(Endpoint):
@@ -8783,6 +8884,7 @@ class RacksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Rack]: ...
     def filter(
         self,
@@ -8911,6 +9013,7 @@ class RacksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Rack]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Rack: ...
@@ -9079,6 +9182,7 @@ class RacksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Rear_port_templatesEndpoint(Endpoint):
@@ -9141,6 +9245,7 @@ class Rear_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RearPortTemplate]: ...
     def filter(
         self,
@@ -9198,6 +9303,7 @@ class Rear_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RearPortTemplate]: ...
     @overload
     def create(
@@ -9286,6 +9392,7 @@ class Rear_port_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Rear_portsEndpoint(Endpoint):
@@ -9398,6 +9505,7 @@ class Rear_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RearPort]: ...
     def filter(
         self,
@@ -9507,6 +9615,7 @@ class Rear_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RearPort]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RearPort: ...
@@ -9651,6 +9760,7 @@ class Rear_portsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class RegionsEndpoint(Endpoint):
@@ -9721,6 +9831,7 @@ class RegionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Region]: ...
     def filter(
         self,
@@ -9788,6 +9899,7 @@ class RegionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Region]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Region: ...
@@ -9882,6 +9994,7 @@ class RegionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Site_groupsEndpoint(Endpoint):
@@ -9954,6 +10067,7 @@ class Site_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.SiteGroup]: ...
     def filter(
         self,
@@ -10021,6 +10135,7 @@ class Site_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.SiteGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.SiteGroup: ...
@@ -10115,6 +10230,7 @@ class Site_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class SitesEndpoint(Endpoint):
@@ -10225,6 +10341,7 @@ class SitesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Site]: ...
     def filter(
         self,
@@ -10332,6 +10449,7 @@ class SitesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Site]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Site: ...
@@ -10481,6 +10599,7 @@ class SitesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Virtual_chassisEndpoint(Endpoint):
@@ -10553,6 +10672,7 @@ class Virtual_chassisEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VirtualChassis]: ...
     def filter(
         self,
@@ -10620,6 +10740,7 @@ class Virtual_chassisEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VirtualChassis]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VirtualChassis: ...
@@ -10714,6 +10835,7 @@ class Virtual_chassisEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class DcimApp(App):

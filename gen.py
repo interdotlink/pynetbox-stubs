@@ -2,7 +2,7 @@ import json
 import os
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Literal, NamedTuple, Optional, Union
+from typing import Any, Dict, List, Literal, NamedTuple, Optional, Union
 
 
 class PythonType(str, Enum):
@@ -44,6 +44,8 @@ class Parameter(NamedTuple):
         return self.type
 
     def __str__(self) -> str:
+        if self.name == "**kwargs":
+            return f"{self.name}: Optional[{self.type_allow_int}]"
         if self.required:
             return f"{self.name}: {self.type_allow_int}"
         return f"{self.name}: Optional[{self.type_allow_int}] = None"
@@ -104,12 +106,14 @@ def visit_prefix(
 ) -> None:
 
     header = """
-from typing import Any, Dict, List, Optional, Union, Iterable, overload
+from typing import Any, Dict, Iterable, List, Optional, Union, overload
+
+from pynetbox._gen import definitions
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
-from pynetbox.core.response import RecordSet, Record
-from pynetbox._gen import definitions
+from pynetbox.core.response import Record, RecordSet
+
 
 """
 
@@ -141,8 +145,7 @@ from pynetbox._gen import definitions
         return None
 
     endpoint_classes = [
-        visit_endpoint(k, data[k.path], get_get_data(k), defs)
-        for k in non_detailed
+        visit_endpoint(k, data[k.path], defs) for k in non_detailed
     ]
 
     with open(f"pynetbox-stubs/_gen/{prefix}.pyi", "w") as f:
@@ -155,10 +158,27 @@ from pynetbox._gen import definitions
 def visit_endpoint(
     key: PathKey,
     data: Dict[str, dict],
-    get_data: Optional[dict],
     defs: List["RecordDefinition"],
 ) -> str:
     get_str = str(visit_get(data["get"])) if "get" in data else ""
+    if get_str:
+        get_str += ", " + str(
+            Parameter(
+                name='**kwargs',
+                required=False,
+                type=PythonType.any,
+            )
+        )
+
+    else:
+        get_str = str(
+            Parameter(
+                name='**kwargs',
+                required=False,
+                type=PythonType.any,
+            )
+        )
+
     create_str = (
         str(visit_create(data["post"], defs)) if "post" in data else ""
     )
