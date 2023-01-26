@@ -8,12 +8,8 @@ from pynetbox.core.response import Record, RecordSet
 
 class ConfigEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[Record]: ...
-    def get(
-        self,
-    ) -> Optional[Record]: ...
-    def filter(
-        self,
-    ) -> RecordSet[Record]: ...
+    def get(self, **kwargs: Optional[Any]) -> Optional[Record]: ...
+    def filter(self, **kwargs: Optional[Any]) -> RecordSet[Record]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
     @overload
@@ -24,9 +20,7 @@ class ConfigEndpoint(Endpoint):
     def update(self, objects: Iterable[Record]) -> RecordSet[Record]: ...
     def delete(self, objects: Iterable[Record]) -> bool: ...
     def choices(self) -> dict: ...
-    def count(
-        self,
-    ) -> int: ...
+    def count(self, **kwargs: Optional[Any]) -> int: ...
 
 class GroupsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Group]: ...
@@ -53,6 +47,7 @@ class GroupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Group]: ...
     def filter(
         self,
@@ -77,6 +72,7 @@ class GroupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Group]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Group: ...
@@ -120,6 +116,7 @@ class GroupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class PermissionsEndpoint(Endpoint):
@@ -171,6 +168,7 @@ class PermissionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ObjectPermission]: ...
     def filter(
         self,
@@ -217,6 +215,7 @@ class PermissionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ObjectPermission]: ...
     @overload
     def create(
@@ -292,6 +291,7 @@ class PermissionsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class TokensEndpoint(Endpoint):
@@ -341,6 +341,7 @@ class TokensEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Token]: ...
     def filter(
         self,
@@ -387,6 +388,7 @@ class TokensEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Token]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Token: ...
@@ -458,16 +460,13 @@ class TokensEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Tokens_provisionEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[Record]: ...
-    def get(
-        self,
-    ) -> Optional[Record]: ...
-    def filter(
-        self,
-    ) -> RecordSet[Record]: ...
+    def get(self, **kwargs: Optional[Any]) -> Optional[Record]: ...
+    def filter(self, **kwargs: Optional[Any]) -> RecordSet[Record]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
     @overload
@@ -478,9 +477,7 @@ class Tokens_provisionEndpoint(Endpoint):
     def update(self, objects: Iterable[Record]) -> RecordSet[Record]: ...
     def delete(self, objects: Iterable[Record]) -> bool: ...
     def choices(self) -> dict: ...
-    def count(
-        self,
-    ) -> int: ...
+    def count(self, **kwargs: Optional[Any]) -> int: ...
 
 class UsersEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.User]: ...
@@ -546,6 +543,7 @@ class UsersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.User]: ...
     def filter(
         self,
@@ -609,6 +607,7 @@ class UsersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.User]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.User: ...
@@ -698,10 +697,11 @@ class UsersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class UsersApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.config: ConfigEndpoint = ...
         self.groups: GroupsEndpoint = ...
         self.permissions: PermissionsEndpoint = ...

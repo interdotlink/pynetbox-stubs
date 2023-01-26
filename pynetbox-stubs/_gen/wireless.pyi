@@ -70,6 +70,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.WirelessLANGroup]: ...
     def filter(
         self,
@@ -131,6 +132,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.WirelessLANGroup]: ...
     @overload
     def create(
@@ -223,6 +225,7 @@ class Wireless_lan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Wireless_lansEndpoint(Endpoint):
@@ -303,6 +306,7 @@ class Wireless_lansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.WirelessLAN]: ...
     def filter(
         self,
@@ -378,6 +382,7 @@ class Wireless_lansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.WirelessLAN]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.WirelessLAN: ...
@@ -482,6 +487,7 @@ class Wireless_lansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Wireless_linksEndpoint(Endpoint):
@@ -570,6 +576,7 @@ class Wireless_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.WirelessLink]: ...
     def filter(
         self,
@@ -653,6 +660,7 @@ class Wireless_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.WirelessLink]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.WirelessLink: ...
@@ -766,10 +774,11 @@ class Wireless_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class WirelessApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.wireless_lan_groups: Wireless_lan_groupsEndpoint = ...
         self.wireless_lans: Wireless_lansEndpoint = ...
         self.wireless_links: Wireless_linksEndpoint = ...

@@ -93,6 +93,7 @@ class Config_contextsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ConfigContext]: ...
     def filter(
         self,
@@ -177,6 +178,7 @@ class Config_contextsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ConfigContext]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ConfigContext: ...
@@ -298,6 +300,7 @@ class Config_contextsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Content_typesEndpoint(Endpoint):
@@ -313,6 +316,7 @@ class Content_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ContentType]: ...
     def filter(
         self,
@@ -323,6 +327,7 @@ class Content_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ContentType]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ContentType: ...
@@ -347,6 +352,7 @@ class Content_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Custom_fieldsEndpoint(Endpoint):
@@ -424,6 +430,7 @@ class Custom_fieldsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.CustomField]: ...
     def filter(
         self,
@@ -496,6 +503,7 @@ class Custom_fieldsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.CustomField]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.CustomField: ...
@@ -604,6 +612,7 @@ class Custom_fieldsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Custom_linksEndpoint(Endpoint):
@@ -672,6 +681,7 @@ class Custom_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.CustomLink]: ...
     def filter(
         self,
@@ -735,6 +745,7 @@ class Custom_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.CustomLink]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.CustomLink: ...
@@ -826,6 +837,7 @@ class Custom_linksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Export_templatesEndpoint(Endpoint):
@@ -866,6 +878,7 @@ class Export_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ExportTemplate]: ...
     def filter(
         self,
@@ -901,6 +914,7 @@ class Export_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ExportTemplate]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ExportTemplate: ...
@@ -964,6 +978,7 @@ class Export_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Image_attachmentsEndpoint(Endpoint):
@@ -1003,6 +1018,7 @@ class Image_attachmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ImageAttachment]: ...
     def filter(
         self,
@@ -1037,6 +1053,7 @@ class Image_attachmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ImageAttachment]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ImageAttachment: ...
@@ -1099,6 +1116,7 @@ class Image_attachmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Job_resultsEndpoint(Endpoint):
@@ -1135,6 +1153,7 @@ class Job_resultsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.JobResult]: ...
     def filter(
         self,
@@ -1166,6 +1185,7 @@ class Job_resultsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.JobResult]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.JobResult: ...
@@ -1211,6 +1231,7 @@ class Job_resultsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Journal_entriesEndpoint(Endpoint):
@@ -1254,6 +1275,7 @@ class Journal_entriesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.JournalEntry]: ...
     def filter(
         self,
@@ -1292,6 +1314,7 @@ class Journal_entriesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.JournalEntry]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.JournalEntry: ...
@@ -1357,6 +1380,7 @@ class Journal_entriesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Object_changesEndpoint(Endpoint):
@@ -1413,6 +1437,7 @@ class Object_changesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ObjectChange]: ...
     def filter(
         self,
@@ -1464,6 +1489,7 @@ class Object_changesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ObjectChange]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ObjectChange: ...
@@ -1529,16 +1555,13 @@ class Object_changesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ReportsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[Record]: ...
-    def get(
-        self,
-    ) -> Optional[Record]: ...
-    def filter(
-        self,
-    ) -> RecordSet[Record]: ...
+    def get(self, **kwargs: Optional[Any]) -> Optional[Record]: ...
+    def filter(self, **kwargs: Optional[Any]) -> RecordSet[Record]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
     @overload
@@ -1549,18 +1572,12 @@ class ReportsEndpoint(Endpoint):
     def update(self, objects: Iterable[Record]) -> RecordSet[Record]: ...
     def delete(self, objects: Iterable[Record]) -> bool: ...
     def choices(self) -> dict: ...
-    def count(
-        self,
-    ) -> int: ...
+    def count(self, **kwargs: Optional[Any]) -> int: ...
 
 class ScriptsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[Record]: ...
-    def get(
-        self,
-    ) -> Optional[Record]: ...
-    def filter(
-        self,
-    ) -> RecordSet[Record]: ...
+    def get(self, **kwargs: Optional[Any]) -> Optional[Record]: ...
+    def filter(self, **kwargs: Optional[Any]) -> RecordSet[Record]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
     @overload
@@ -1571,9 +1588,7 @@ class ScriptsEndpoint(Endpoint):
     def update(self, objects: Iterable[Record]) -> RecordSet[Record]: ...
     def delete(self, objects: Iterable[Record]) -> bool: ...
     def choices(self) -> dict: ...
-    def count(
-        self,
-    ) -> int: ...
+    def count(self, **kwargs: Optional[Any]) -> int: ...
 
 class TagsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Tag]: ...
@@ -1643,6 +1658,7 @@ class TagsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Tag]: ...
     def filter(
         self,
@@ -1710,6 +1726,7 @@ class TagsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Tag]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Tag: ...
@@ -1801,6 +1818,7 @@ class TagsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class WebhooksEndpoint(Endpoint):
@@ -1890,6 +1908,7 @@ class WebhooksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Webhook]: ...
     def filter(
         self,
@@ -1976,6 +1995,7 @@ class WebhooksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Webhook]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Webhook: ...
@@ -2096,10 +2116,11 @@ class WebhooksEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ExtrasApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.config_contexts: Config_contextsEndpoint = ...
         self.content_types: Content_typesEndpoint = ...
         self.custom_fields: Custom_fieldsEndpoint = ...

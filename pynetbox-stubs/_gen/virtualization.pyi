@@ -72,6 +72,7 @@ class Cluster_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ClusterGroup]: ...
     def filter(
         self,
@@ -135,6 +136,7 @@ class Cluster_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ClusterGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ClusterGroup: ...
@@ -223,6 +225,7 @@ class Cluster_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Cluster_typesEndpoint(Endpoint):
@@ -285,6 +288,7 @@ class Cluster_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ClusterType]: ...
     def filter(
         self,
@@ -342,6 +346,7 @@ class Cluster_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ClusterType]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ClusterType: ...
@@ -424,6 +429,7 @@ class Cluster_typesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ClustersEndpoint(Endpoint):
@@ -500,6 +506,7 @@ class ClustersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Cluster]: ...
     def filter(
         self,
@@ -573,6 +580,7 @@ class ClustersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Cluster]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Cluster: ...
@@ -676,6 +684,7 @@ class ClustersEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class InterfacesEndpoint(Endpoint):
@@ -761,6 +770,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VMInterface]: ...
     def filter(
         self,
@@ -841,6 +851,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VMInterface]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VMInterface: ...
@@ -957,6 +968,7 @@ class InterfacesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Virtual_machinesEndpoint(Endpoint):
@@ -1081,6 +1093,7 @@ class Virtual_machinesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VirtualMachineWithConfigContext]: ...
     def filter(
         self,
@@ -1200,6 +1213,7 @@ class Virtual_machinesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VirtualMachineWithConfigContext]: ...
     @overload
     def create(
@@ -1361,10 +1375,11 @@ class Virtual_machinesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class VirtualizationApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.cluster_groups: Cluster_groupsEndpoint = ...
         self.cluster_types: Cluster_typesEndpoint = ...
         self.clusters: ClustersEndpoint = ...

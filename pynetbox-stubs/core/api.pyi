@@ -16,10 +16,13 @@ class Api:
         self,
         url: str,
         token: Optional[str] = None,
-        private_key: Optional[str] = None,
-        private_key_file: Optional[str] = None,
         threading: bool = False,
     ):
+        base_url: Optional[str] = None
+        self.token = token
+        self.base_url: base_url
+        self.http_session: requests.Session
+        self.threading = threading
         self.dcim = DcimApp(self, "dcim")
         self.ipam = IpamApp(self, "ipam")
         self.circuits = CircuitsApp(self, "circuits")
@@ -30,8 +33,6 @@ class Api:
         self.users = UsersApp(self, "users")
         self.wireless = WirelessApp(self, "wireless")
         self.plugins = PluginsApp(self)
-
-        self.http_session = requests.Session()
     @property
     def version(self) -> str: ...
     def openapi(self) -> dict: ...

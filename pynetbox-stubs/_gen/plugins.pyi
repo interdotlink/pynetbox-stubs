@@ -19,6 +19,7 @@ class Bgp_bgppeergroupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.BGPPeerGroup]: ...
     def filter(
         self,
@@ -29,6 +30,7 @@ class Bgp_bgppeergroupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.BGPPeerGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPPeerGroup: ...
@@ -64,32 +66,7 @@ class Bgp_bgppeergroupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-    ) -> int: ...
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.BGPPeerGroup]: ...
-    def get(
-        self,
-    ) -> Optional[definitions.BGPPeerGroup]: ...
-    def filter(
-        self,
-    ) -> RecordSet[definitions.BGPPeerGroup]: ...
-    @overload
-    def create(self, *args: Dict[str, Any]) -> definitions.BGPPeerGroup: ...
-    @overload
-    def create(
-        self,
-    ) -> definitions.BGPPeerGroup: ...
-    def create(
-        self, *args: Dict[str, Any], **kwargs: Any
-    ) -> definitions.BGPPeerGroup: ...
-    def update(
-        self, objects: Iterable[definitions.BGPPeerGroup]
-    ) -> RecordSet[definitions.BGPPeerGroup]: ...
-    def delete(self, objects: Iterable[definitions.BGPPeerGroup]) -> bool: ...
-    def choices(self) -> dict: ...
-    def count(
-        self,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_bgpsessionEndpoint(Endpoint):
@@ -122,6 +99,7 @@ class Bgp_bgpsessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.BGPSession]: ...
     def filter(
         self,
@@ -149,6 +127,7 @@ class Bgp_bgpsessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.BGPSession]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPSession: ...
@@ -210,32 +189,7 @@ class Bgp_bgpsessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
-    ) -> int: ...
-    def all(
-        self, limit=0, offset=None
-    ) -> RecordSet[definitions.BGPSession]: ...
-    def get(
-        self,
-    ) -> Optional[definitions.BGPSession]: ...
-    def filter(
-        self,
-    ) -> RecordSet[definitions.BGPSession]: ...
-    @overload
-    def create(self, *args: Dict[str, Any]) -> definitions.BGPSession: ...
-    @overload
-    def create(
-        self,
-    ) -> definitions.BGPSession: ...
-    def create(
-        self, *args: Dict[str, Any], **kwargs: Any
-    ) -> definitions.BGPSession: ...
-    def update(
-        self, objects: Iterable[definitions.BGPSession]
-    ) -> RecordSet[definitions.BGPSession]: ...
-    def delete(self, objects: Iterable[definitions.BGPSession]) -> bool: ...
-    def choices(self) -> dict: ...
-    def count(
-        self,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_communityEndpoint(Endpoint):
@@ -253,6 +207,7 @@ class Bgp_communityEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Community]: ...
     def filter(
         self,
@@ -265,6 +220,7 @@ class Bgp_communityEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Community]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Community: ...
@@ -304,6 +260,7 @@ class Bgp_communityEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_peer_groupEndpoint(Endpoint):
@@ -319,6 +276,7 @@ class Bgp_peer_groupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.BGPPeerGroup]: ...
     def filter(
         self,
@@ -329,6 +287,7 @@ class Bgp_peer_groupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.BGPPeerGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPPeerGroup: ...
@@ -364,6 +323,7 @@ class Bgp_peer_groupEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_prefix_listEndpoint(Endpoint):
@@ -379,6 +339,7 @@ class Bgp_prefix_listEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.PrefixList]: ...
     def filter(
         self,
@@ -389,6 +350,7 @@ class Bgp_prefix_listEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.PrefixList]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.PrefixList: ...
@@ -423,6 +385,7 @@ class Bgp_prefix_listEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_routing_policyEndpoint(Endpoint):
@@ -438,6 +401,7 @@ class Bgp_routing_policyEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RoutingPolicy]: ...
     def filter(
         self,
@@ -448,6 +412,7 @@ class Bgp_routing_policyEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RoutingPolicy]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RoutingPolicy: ...
@@ -481,6 +446,7 @@ class Bgp_routing_policyEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Bgp_sessionEndpoint(Endpoint):
@@ -513,6 +479,7 @@ class Bgp_sessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.BGPSession]: ...
     def filter(
         self,
@@ -540,6 +507,7 @@ class Bgp_sessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.BGPSession]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPSession: ...
@@ -601,6 +569,7 @@ class Bgp_sessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class PluginsApp(App):

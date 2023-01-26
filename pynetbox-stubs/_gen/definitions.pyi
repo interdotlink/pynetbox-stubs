@@ -3395,8 +3395,7 @@ class WritableObjectPermission(Record):
         self.actions: List[Any]
         self.constraints: Any
 
-class IPNetwork(Record):
-    def __init__(self): ...
+class IPNetwork(Record): ...
 
 class Token(Record):
     def __init__(self):

@@ -66,6 +66,7 @@ class AggregatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Aggregate]: ...
     def filter(
         self,
@@ -123,6 +124,7 @@ class AggregatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Aggregate]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Aggregate: ...
@@ -207,6 +209,7 @@ class AggregatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class AsnsEndpoint(Endpoint):
@@ -269,6 +272,7 @@ class AsnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ASN]: ...
     def filter(
         self,
@@ -328,6 +332,7 @@ class AsnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ASN]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ASN: ...
@@ -414,6 +419,7 @@ class AsnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Fhrp_group_assignmentsEndpoint(Endpoint):
@@ -463,6 +469,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.FHRPGroupAssignment]: ...
     def filter(
         self,
@@ -507,6 +514,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.FHRPGroupAssignment]: ...
     @overload
     def create(
@@ -579,6 +587,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Fhrp_groupsEndpoint(Endpoint):
@@ -632,6 +641,7 @@ class Fhrp_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.FHRPGroup]: ...
     def filter(
         self,
@@ -680,6 +690,7 @@ class Fhrp_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.FHRPGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.FHRPGroup: ...
@@ -755,6 +766,7 @@ class Fhrp_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Ip_addressesEndpoint(Endpoint):
@@ -844,6 +856,7 @@ class Ip_addressesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.IPAddress]: ...
     def filter(
         self,
@@ -928,6 +941,7 @@ class Ip_addressesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.IPAddress]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.IPAddress: ...
@@ -1046,6 +1060,7 @@ class Ip_addressesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Ip_rangesEndpoint(Endpoint):
@@ -1106,6 +1121,7 @@ class Ip_rangesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.IPRange]: ...
     def filter(
         self,
@@ -1163,6 +1179,7 @@ class Ip_rangesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.IPRange]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.IPRange: ...
@@ -1251,6 +1268,7 @@ class Ip_rangesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class L2vpn_terminationsEndpoint(Endpoint):
@@ -1321,6 +1339,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.L2VPNTermination]: ...
     def filter(
         self,
@@ -1386,6 +1405,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.L2VPNTermination]: ...
     @overload
     def create(
@@ -1480,6 +1500,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class L2vpnsEndpoint(Endpoint):
@@ -1564,6 +1585,7 @@ class L2vpnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.L2VPN]: ...
     def filter(
         self,
@@ -1645,6 +1667,7 @@ class L2vpnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.L2VPN]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.L2VPN: ...
@@ -1755,6 +1778,7 @@ class L2vpnsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class PrefixesEndpoint(Endpoint):
@@ -1857,6 +1881,7 @@ class PrefixesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Prefix]: ...
     def filter(
         self,
@@ -1956,6 +1981,7 @@ class PrefixesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Prefix]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Prefix: ...
@@ -2089,6 +2115,7 @@ class PrefixesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class RirsEndpoint(Endpoint):
@@ -2150,6 +2177,7 @@ class RirsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RIR]: ...
     def filter(
         self,
@@ -2208,6 +2236,7 @@ class RirsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RIR]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RIR: ...
@@ -2292,6 +2321,7 @@ class RirsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class RolesEndpoint(Endpoint):
@@ -2352,6 +2382,7 @@ class RolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Role]: ...
     def filter(
         self,
@@ -2409,6 +2440,7 @@ class RolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Role]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Role: ...
@@ -2493,6 +2525,7 @@ class RolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Route_targetsEndpoint(Endpoint):
@@ -2561,6 +2594,7 @@ class Route_targetsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.RouteTarget]: ...
     def filter(
         self,
@@ -2624,6 +2658,7 @@ class Route_targetsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.RouteTarget]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.RouteTarget: ...
@@ -2711,6 +2746,7 @@ class Route_targetsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Service_templatesEndpoint(Endpoint):
@@ -2756,6 +2792,7 @@ class Service_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ServiceTemplate]: ...
     def filter(
         self,
@@ -2796,6 +2833,7 @@ class Service_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ServiceTemplate]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ServiceTemplate: ...
@@ -2863,6 +2901,7 @@ class Service_templatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ServicesEndpoint(Endpoint):
@@ -2924,6 +2963,7 @@ class ServicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Service]: ...
     def filter(
         self,
@@ -2982,6 +3022,7 @@ class ServicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Service]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Service: ...
@@ -3068,6 +3109,7 @@ class ServicesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Vlan_groupsEndpoint(Endpoint):
@@ -3157,6 +3199,7 @@ class Vlan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VLANGroup]: ...
     def filter(
         self,
@@ -3241,6 +3284,7 @@ class Vlan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VLANGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VLANGroup: ...
@@ -3355,6 +3399,7 @@ class Vlan_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class VlansEndpoint(Endpoint):
@@ -3443,6 +3488,7 @@ class VlansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VLAN]: ...
     def filter(
         self,
@@ -3528,6 +3574,7 @@ class VlansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VLAN]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VLAN: ...
@@ -3644,6 +3691,7 @@ class VlansEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class VrfsEndpoint(Endpoint):
@@ -3721,6 +3769,7 @@ class VrfsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.VRF]: ...
     def filter(
         self,
@@ -3795,6 +3844,7 @@ class VrfsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.VRF]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VRF: ...
@@ -3899,10 +3949,11 @@ class VrfsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class IpamApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.aggregates: AggregatesEndpoint = ...
         self.asns: AsnsEndpoint = ...
         self.fhrp_group_assignments: Fhrp_group_assignmentsEndpoint = ...

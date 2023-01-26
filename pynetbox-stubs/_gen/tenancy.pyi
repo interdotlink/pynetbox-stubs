@@ -51,6 +51,7 @@ class Contact_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ContactAssignment]: ...
     def filter(
         self,
@@ -93,6 +94,7 @@ class Contact_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ContactAssignment]: ...
     @overload
     def create(
@@ -164,6 +166,7 @@ class Contact_assignmentsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Contact_groupsEndpoint(Endpoint):
@@ -230,6 +233,7 @@ class Contact_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ContactGroup]: ...
     def filter(
         self,
@@ -291,6 +295,7 @@ class Contact_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ContactGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ContactGroup: ...
@@ -379,6 +384,7 @@ class Contact_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Contact_rolesEndpoint(Endpoint):
@@ -441,6 +447,7 @@ class Contact_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.ContactRole]: ...
     def filter(
         self,
@@ -498,6 +505,7 @@ class Contact_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.ContactRole]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.ContactRole: ...
@@ -579,6 +587,7 @@ class Contact_rolesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class ContactsEndpoint(Endpoint):
@@ -673,6 +682,7 @@ class ContactsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Contact]: ...
     def filter(
         self,
@@ -764,6 +774,7 @@ class ContactsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Contact]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Contact: ...
@@ -884,6 +895,7 @@ class ContactsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class Tenant_groupsEndpoint(Endpoint):
@@ -950,6 +962,7 @@ class Tenant_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.TenantGroup]: ...
     def filter(
         self,
@@ -1011,6 +1024,7 @@ class Tenant_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.TenantGroup]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.TenantGroup: ...
@@ -1099,6 +1113,7 @@ class Tenant_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class TenantsEndpoint(Endpoint):
@@ -1169,6 +1184,7 @@ class TenantsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[definitions.Tenant]: ...
     def filter(
         self,
@@ -1236,6 +1252,7 @@ class TenantsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[definitions.Tenant]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Tenant: ...
@@ -1339,10 +1356,11 @@ class TenantsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class TenancyApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.contact_assignments: Contact_assignmentsEndpoint = ...
         self.contact_groups: Contact_groupsEndpoint = ...
         self.contact_roles: Contact_rolesEndpoint = ...

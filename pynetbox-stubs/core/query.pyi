@@ -2,6 +2,8 @@ from typing import Any, Dict, Iterator, Optional
 
 from requests import Response
 
+def calc_pages(limit: int, count: int) -> int: ...
+
 class RequestError(Exception):
     message: str
     req: Response
