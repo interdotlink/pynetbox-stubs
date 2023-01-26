@@ -1,10 +1,9 @@
-from typing import Any, Dict, Iterable, List, Optional, Union, overload
-
-from pynetbox._gen import definitions
+from typing import Any, Dict, List, Optional, Union, Iterable, overload
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
-from pynetbox.core.response import Record, RecordSet
+from pynetbox.core.response import RecordSet, Record
+from pynetbox._gen import definitions
 
 class Wireless_lan_groupsEndpoint(Endpoint):
     def all(
@@ -769,7 +768,7 @@ class Wireless_linksEndpoint(Endpoint):
     ) -> int: ...
 
 class WirelessApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.wireless_lan_groups: Wireless_lan_groupsEndpoint = ...
         self.wireless_lans: Wireless_lansEndpoint = ...
         self.wireless_links: Wireless_linksEndpoint = ...

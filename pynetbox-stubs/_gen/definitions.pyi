@@ -1,11 +1,10 @@
-from typing import Any, Dict, Iterable, List, Optional, Union
 
+from typing import Any, Dict, List, Optional, Union, Iterable
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
-from pynetbox.core.response import Record, RecordSet
+from pynetbox.core.response import RecordSet, Record
 from pynetbox.models import dcim
-
 class NestedCircuit(Record):
     def __init__(self):
         self.id: int
@@ -3396,7 +3395,8 @@ class WritableObjectPermission(Record):
         self.constraints: Any
 
 class IPNetwork(Record):
-    def __init__(self): ...
+    def __init__(self):
+
 
 class Token(Record):
     def __init__(self):

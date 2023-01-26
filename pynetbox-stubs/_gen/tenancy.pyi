@@ -1,10 +1,9 @@
-from typing import Any, Dict, Iterable, List, Optional, Union, overload
-
-from pynetbox._gen import definitions
+from typing import Any, Dict, List, Optional, Union, Iterable, overload
 from pynetbox.core.api import Api
 from pynetbox.core.app import App
 from pynetbox.core.endpoint import Endpoint
-from pynetbox.core.response import Record, RecordSet
+from pynetbox.core.response import RecordSet, Record
+from pynetbox._gen import definitions
 
 class Contact_assignmentsEndpoint(Endpoint):
     def all(
@@ -1342,7 +1341,7 @@ class TenantsEndpoint(Endpoint):
     ) -> int: ...
 
 class TenancyApp(App):
-    def __init__(self, api: "Api", name):
+    def __init__(self, api: 'Api', name):
         self.contact_assignments: Contact_assignmentsEndpoint = ...
         self.contact_groups: Contact_groupsEndpoint = ...
         self.contact_roles: Contact_rolesEndpoint = ...

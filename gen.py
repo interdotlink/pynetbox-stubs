@@ -342,8 +342,8 @@ def main() -> None:
         visit_prefix(p, data, defs)
 
     visit_definitions(defs)
-    os.system("black pynetbox-stubs/_gen")
-    os.system("isort pynetbox-stubs/_gen")
+    os.system("black --skip-string-normalization -l 79 pynetbox-stubs/_gen")
+    os.system("isort --profile blackpynetbox-stubs/_gen")
 
 
 if __name__ == "__main__":

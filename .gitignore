@@ -1,3 +1,4 @@
+_gen/plugins.pyi
 .idea
 openapi.json
 out/
