@@ -66,6 +66,7 @@ class AggregatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.Aggregate]: ...
     def filter(
         self,
@@ -123,6 +124,7 @@ class AggregatesEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> RecordSet[definitions.Aggregate]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Aggregate: ...
@@ -3721,6 +3723,7 @@ class VrfsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.VRF]: ...
     def filter(
         self,
@@ -3795,6 +3798,7 @@ class VrfsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> RecordSet[definitions.VRF]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.VRF: ...

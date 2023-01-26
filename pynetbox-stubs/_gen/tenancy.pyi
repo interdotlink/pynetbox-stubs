@@ -950,6 +950,7 @@ class Tenant_groupsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.TenantGroup]: ...
     def filter(
         self,
@@ -1169,6 +1170,7 @@ class TenantsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.Tenant]: ...
     def filter(
         self,
@@ -1236,6 +1238,7 @@ class TenantsEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> RecordSet[definitions.Tenant]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.Tenant: ...

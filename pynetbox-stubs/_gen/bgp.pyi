@@ -98,6 +98,7 @@ class Bgp_bgpsessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.BGPSession]: ...
     def filter(
         self,
@@ -126,6 +127,7 @@ class Bgp_bgpsessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> RecordSet[definitions.BGPSession]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPSession: ...
@@ -468,6 +470,7 @@ class Bgp_sessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> Optional[definitions.BGPSession]: ...
     def filter(
         self,
@@ -496,6 +499,7 @@ class Bgp_sessionEndpoint(Endpoint):
         ordering: Optional[str] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
+        **kwargs: Optional[Any],
     ) -> RecordSet[definitions.BGPSession]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> definitions.BGPSession: ...
