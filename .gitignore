@@ -1,7 +1,9 @@
 _gen/plugins.pyi
 .idea
 openapi.json
+openapi-*.json
 out/
 pynetbox_stubs.egg-info
 .venv/
 venv/
+build/
