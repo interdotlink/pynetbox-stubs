@@ -1,11 +1,11 @@
 import json
 import os
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 from typing import Any, Dict, List, Literal, NamedTuple, Optional, Union
 
 
-class PythonType(str, Enum):
+class PythonType(StrEnum):
     str = "str"
     int = "int"
     float = "float"
@@ -28,6 +28,11 @@ class PythonType(str, Enum):
         }[json_type]
 
 
+#    @classmethod
+#    def __str__(cls) -> str:
+#        return str(cls.value)
+
+
 class Parameter(NamedTuple):
     name: str
     required: bool
@@ -39,9 +44,9 @@ class Parameter(NamedTuple):
             self.name == "id"
             or self.name.endswith("_id")
             or self.name == "depth"
-        ):
+        ) and not self.type == "int":
             return f"{self.type} | int"
-        return self.type
+        return f"{self.type}"
 
     def __str__(self) -> str:
         if self.name == "**kwargs":
@@ -73,6 +78,8 @@ class RawPathKey(NamedTuple):
     def from_path(cls, path: str) -> "RawPathKey":
         if path.endswith("s/{id}/"):
             return cls(path, path[: -len("s/{id}/")], True)
+        elif path.endswith("/{id}/"):
+            return cls(path, path[: -len("/{id}/")], True)
         return cls(path, path.rstrip("/"), False)
 
 
@@ -104,7 +111,6 @@ class PathKey(NamedTuple):
 def visit_prefix(
     prefix: str, data: Dict[str, dict], defs: List["RecordDefinition"]
 ) -> None:
-
     header = """
 from typing import Any, Dict, Iterable, List, Optional, Union, overload
 
@@ -184,11 +190,25 @@ def visit_endpoint(
     )
 
     response_type_ref = get_response_type_ref(data)
+    if response_type_ref and response_type_ref.startswith(
+        "#/components/schemas/Paginated"
+    ):
+        for definition in defs:
+            if (
+                definition.name
+                == response_type_ref[len("#/components/schemas/") :]
+            ):
+                response_type_ref = definition.properties[-1].ref
+                break
+        else:
+            assert False, f"Referenced {response_type_ref=} not found"
     response_type = (
-        "definitions." + response_type_ref[len("#/definitions/") :]
+        "definitions." + response_type_ref[len("#/components/schemas/") :]
         if response_type_ref
         else "Record"
     )
+
+    assert not "{" in key.class_name, f"{key=}"
 
     cls = f"""class {key.class_name}(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[{response_type}]: ...
@@ -211,13 +231,15 @@ def visit_endpoint(
 
 def get_response_type_ref(data: dict) -> Optional[str]:
     if "get" in data:
-        _200 = data["get"]["responses"]["200"]
+        _200 = data["get"]["responses"]["200"]["content"]["application/json"]
         if "schema" in _200:
-            schema = data["get"]["responses"]["200"]["schema"]
-            if "properties" in schema:
-                return schema["properties"]["results"]["items"]["$ref"]
+            schema = _200["schema"]
+            if "items" in schema:
+                return schema["items"]["$ref"]
             elif "$ref" in schema:
                 return schema["$ref"]
+            elif schema["type"] == "object":
+                return None
             assert False, schema
         elif _200 == {"description": ""}:
             return None
@@ -226,23 +248,38 @@ def get_response_type_ref(data: dict) -> Optional[str]:
 
 
 def visit_get(data: dict) -> ParameterList:
-    parameters = data["parameters"]
-    return ParameterList(
-        [
-            Parameter(
-                p["name"], p["required"], PythonType.from_json(p["type"])
-            )
-            for p in parameters
-        ]
-    )
+    if "parameters" in data:
+        parameters = data["parameters"]
+        return ParameterList(
+            [
+                Parameter(
+                    p["name"],
+                    p.get("required", False),
+                    PythonType.from_json(
+                        p["schema"]["items"]["type"]
+                        if "items" in p["schema"]
+                        else p["schema"]["type"]
+                    ),
+                )
+                for p in parameters
+            ]
+        )
+
+    return ParameterList([])
 
 
 def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
     try:
         parameter = data["parameters"][0]
+        schema_name = parameter["schema"]["$ref"][
+            len("#/components/schemas/") :
+        ]
     except IndexError:
         return ParameterList([])
-    schema_name = parameter["schema"]["$ref"][len("#/definitions/") :]
+    except KeyError:
+        schema_name = data["requestBody"]["content"]["application/json"][
+            "schema"
+        ]["$ref"][len("#/components/schemas/") :]
     try:
         definition: "RecordDefinition" = next(
             d for d in defs if d.name == schema_name
@@ -280,30 +317,41 @@ class Property(NamedTuple):
     def __str__(self) -> str:
         if self.type:
             return f"{self.name}: {self.type}"
-        if "#/definitions/" in self.ref:
+        if "#/components/schemas/" in self.ref:
             # "Nested" classes are calling "full_details" for unknown properties, so internally they
             # convert themselves to the non-nested class.
-            ref = self.ref[len("#/definitions/") :]
+            ref = self.ref[len("#/components/schemas/") :]
             ref = ref[len("Nested") :] if ref.startswith("Nested") else ref
 
             if ref == "VirtualMachine":
                 ref = "VirtualMachineWithConfigContext"  # TODO wild guess
 
             return f"{self.name}: '{ref}'"
-        assert False, f"{self.ref}"
+        assert False, f"{self.name=} {self.ref=}"
 
     @classmethod
     def from_definition(
         cls,
         name: str,
-        defi: Dict[str, Literal[PythonType.str]],
+        defi: Dict[str, Any],
         required: bool,
     ) -> "Property":
+        if "$ref" in defi:
+            ref = defi["$ref"]
+        elif "allOf" in defi:
+            ref = defi["allOf"][0]["$ref"]
+        elif "items" in defi and "$ref" in defi["items"]:
+            assert "$ref" in defi["items"], f"{defi=}"
+            ref = defi["items"]["$ref"]
+        elif "type" in defi:
+            ref = ""
+        else:
+            assert False, f"{name=} {defi=}"
         return cls(
             name,
             required,
             PythonType.from_json(defi["type"]) if "type" in defi else None,
-            defi.get("$ref", ""),
+            ref,
         )
 
 
@@ -344,20 +392,19 @@ def main() -> None:
     with open("openapi.json", "r") as f:
         openapi = json.load(f)
     paths = openapi["paths"]
-    prefixes = {p.split("/")[1] for p in paths}
+    prefixes = {p.split("/")[2] for p in paths}
     if not os.path.exists("pynetbox-stubs/_gen"):
         os.mkdir("pynetbox-stubs/_gen")
 
-    defs = RecordDefinition.mk_all(openapi["definitions"])
+    defs = RecordDefinition.mk_all(openapi["components"]["schemas"])
 
     Path("pynetbox-stubs/_gen/__init__.py").touch()
 
     for p in prefixes:
-
         data = {
-            path[len(p + "/") + 1 :]: value
+            path[len(f"/api/{p}/") :]: value
             for path, value in paths.items()
-            if path.startswith(f"/{p}")
+            if path.startswith(f"/api/{p}")
         }
         visit_prefix(p, data, defs)
 
