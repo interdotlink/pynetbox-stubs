@@ -28,11 +28,6 @@ class PythonType(StrEnum):
         }[json_type]
 
 
-#    @classmethod
-#    def __str__(cls) -> str:
-#        return str(cls.value)
-
-
 class Parameter(NamedTuple):
     name: str
     required: bool
