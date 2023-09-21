@@ -12,6 +12,7 @@ class Contact_assignmentsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ContactAssignment]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact_id: Optional[int] = None,
         contact_id__n: Optional[int] = None,
         content_type: Optional[str] = None,
@@ -26,7 +27,6 @@ class Contact_assignmentsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -63,6 +63,7 @@ class Contact_assignmentsEndpoint(Endpoint):
     ) -> Optional[definitions.ContactAssignment]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact_id: Optional[int] = None,
         contact_id__n: Optional[int] = None,
         content_type: Optional[str] = None,
@@ -77,7 +78,6 @@ class Contact_assignmentsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -137,6 +137,7 @@ class Contact_assignmentsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact_id: Optional[int] = None,
         contact_id__n: Optional[int] = None,
         content_type: Optional[str] = None,
@@ -151,7 +152,6 @@ class Contact_assignmentsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -193,6 +193,7 @@ class Contact_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ContactGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -212,7 +213,6 @@ class Contact_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -264,6 +264,7 @@ class Contact_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.ContactGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -283,7 +284,6 @@ class Contact_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -355,6 +355,7 @@ class Contact_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -374,7 +375,6 @@ class Contact_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -431,6 +431,7 @@ class Contact_rolesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ContactRole]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -450,7 +451,6 @@ class Contact_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -498,6 +498,7 @@ class Contact_rolesEndpoint(Endpoint):
     ) -> Optional[definitions.ContactRole]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -517,7 +518,6 @@ class Contact_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -584,6 +584,7 @@ class Contact_rolesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -603,7 +604,6 @@ class Contact_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -654,6 +654,7 @@ class ContactsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Contact]: ...
     def get(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         address__empty: Optional[bool] = None,
         address__ic: Optional[str] = None,
@@ -688,7 +689,6 @@ class ContactsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -758,6 +758,7 @@ class ContactsEndpoint(Endpoint):
     ) -> Optional[definitions.Contact]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         address__empty: Optional[bool] = None,
         address__ic: Optional[str] = None,
@@ -792,7 +793,6 @@ class ContactsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -887,6 +887,7 @@ class ContactsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         address__empty: Optional[bool] = None,
         address__ic: Optional[str] = None,
@@ -921,7 +922,6 @@ class ContactsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -996,6 +996,7 @@ class Tenant_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.TenantGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1015,7 +1016,6 @@ class Tenant_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1067,6 +1067,7 @@ class Tenant_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.TenantGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1086,7 +1087,6 @@ class Tenant_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1158,6 +1158,7 @@ class Tenant_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1177,7 +1178,6 @@ class Tenant_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1232,6 +1232,7 @@ class TenantsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Tenant]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -1261,7 +1262,6 @@ class TenantsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1309,6 +1309,7 @@ class TenantsEndpoint(Endpoint):
     ) -> Optional[definitions.Tenant]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -1338,7 +1339,6 @@ class TenantsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1407,6 +1407,7 @@ class TenantsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -1436,7 +1437,6 @@ class TenantsEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

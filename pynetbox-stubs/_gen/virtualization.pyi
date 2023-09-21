@@ -12,6 +12,7 @@ class Cluster_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ClusterGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -37,7 +38,6 @@ class Cluster_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -85,6 +85,7 @@ class Cluster_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.ClusterGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -110,7 +111,6 @@ class Cluster_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -177,6 +177,7 @@ class Cluster_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -202,7 +203,6 @@ class Cluster_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -255,6 +255,7 @@ class Cluster_typesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ClusterType]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -274,7 +275,6 @@ class Cluster_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -322,6 +322,7 @@ class Cluster_typesEndpoint(Endpoint):
     ) -> Optional[definitions.ClusterType]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -341,7 +342,6 @@ class Cluster_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -408,6 +408,7 @@ class Cluster_typesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -427,7 +428,6 @@ class Cluster_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -478,6 +478,7 @@ class ClustersEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Cluster]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -496,7 +497,6 @@ class ClustersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -559,6 +559,7 @@ class ClustersEndpoint(Endpoint):
     ) -> Optional[definitions.Cluster]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -577,7 +578,6 @@ class ClustersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -664,6 +664,7 @@ class ClustersEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -682,7 +683,6 @@ class ClustersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -750,6 +750,7 @@ class InterfacesEndpoint(Endpoint):
     ) -> RecordSet[definitions.VMInterface]: ...
     def get(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cluster: Optional[str] = None,
@@ -776,7 +777,6 @@ class InterfacesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -846,6 +846,7 @@ class InterfacesEndpoint(Endpoint):
     ) -> Optional[definitions.VMInterface]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cluster: Optional[str] = None,
@@ -872,7 +873,6 @@ class InterfacesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -970,6 +970,7 @@ class InterfacesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cluster: Optional[str] = None,
@@ -996,7 +997,6 @@ class InterfacesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1071,6 +1071,7 @@ class Virtual_machinesEndpoint(Endpoint):
     ) -> RecordSet[definitions.VirtualMachineWithConfigContext]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cluster: Optional[str] = None,
         cluster__n: Optional[str] = None,
         cluster_group: Optional[str] = None,
@@ -1109,7 +1110,6 @@ class Virtual_machinesEndpoint(Endpoint):
         disk__lte: Optional[int] = None,
         disk__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1201,6 +1201,7 @@ class Virtual_machinesEndpoint(Endpoint):
     ) -> Optional[definitions.VirtualMachineWithConfigContext]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cluster: Optional[str] = None,
         cluster__n: Optional[str] = None,
         cluster_group: Optional[str] = None,
@@ -1239,7 +1240,6 @@ class Virtual_machinesEndpoint(Endpoint):
         disk__lte: Optional[int] = None,
         disk__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1367,6 +1367,7 @@ class Virtual_machinesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cluster: Optional[str] = None,
         cluster__n: Optional[str] = None,
         cluster_group: Optional[str] = None,
@@ -1405,7 +1406,6 @@ class Virtual_machinesEndpoint(Endpoint):
         disk__lte: Optional[int] = None,
         disk__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

@@ -244,7 +244,10 @@ def get_response_type_ref(data: dict) -> Optional[str]:
 
 def visit_get(data: dict) -> ParameterList:
     if "parameters" in data:
-        parameters = data["parameters"]
+        parameters = sorted(
+            data["parameters"], key=lambda x: x["name"] == "id", reverse=True
+        )
+
         return ParameterList(
             [
                 Parameter(

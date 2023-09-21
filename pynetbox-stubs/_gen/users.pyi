@@ -121,6 +121,7 @@ class PermissionsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ObjectPermission]: ...
     def get(
         self,
+        id: Optional[int] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -137,7 +138,6 @@ class PermissionsEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -169,6 +169,7 @@ class PermissionsEndpoint(Endpoint):
     ) -> Optional[definitions.ObjectPermission]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -185,7 +186,6 @@ class PermissionsEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -243,6 +243,7 @@ class PermissionsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -259,7 +260,6 @@ class PermissionsEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -294,6 +294,7 @@ class TokensEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Token]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
         created__lte: Optional[str] = None,
@@ -311,7 +312,6 @@ class TokensEndpoint(Endpoint):
         expires: Optional[str] = None,
         expires__gte: Optional[str] = None,
         expires__lte: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -342,6 +342,7 @@ class TokensEndpoint(Endpoint):
     ) -> Optional[definitions.Token]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
         created__lte: Optional[str] = None,
@@ -359,7 +360,6 @@ class TokensEndpoint(Endpoint):
         expires: Optional[str] = None,
         expires__gte: Optional[str] = None,
         expires__lte: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -410,6 +410,7 @@ class TokensEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__gte: Optional[str] = None,
         created__lte: Optional[str] = None,
@@ -427,7 +428,6 @@ class TokensEndpoint(Endpoint):
         expires: Optional[str] = None,
         expires__gte: Optional[str] = None,
         expires__lte: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -475,6 +475,7 @@ class UsersEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.User]: ...
     def get(
         self,
+        id: Optional[int] = None,
         email: Optional[str] = None,
         email__empty: Optional[bool] = None,
         email__ic: Optional[str] = None,
@@ -501,7 +502,6 @@ class UsersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -540,6 +540,7 @@ class UsersEndpoint(Endpoint):
     ) -> Optional[definitions.User]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         email: Optional[str] = None,
         email__empty: Optional[bool] = None,
         email__ic: Optional[str] = None,
@@ -566,7 +567,6 @@ class UsersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -628,6 +628,7 @@ class UsersEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         email: Optional[str] = None,
         email__empty: Optional[bool] = None,
         email__ic: Optional[str] = None,
@@ -654,7 +655,6 @@ class UsersEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

@@ -765,9 +765,9 @@ class Bgp_prefix_list_ruleEndpoint(Endpoint):
     ) -> RecordSet[definitions.PrefixListRule]: ...
     def get(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         ge: Optional[int] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         le: Optional[int] = None,
         limit: Optional[int] = None,
@@ -781,9 +781,9 @@ class Bgp_prefix_list_ruleEndpoint(Endpoint):
     ) -> Optional[definitions.PrefixListRule]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         ge: Optional[int] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         le: Optional[int] = None,
         limit: Optional[int] = None,
@@ -822,9 +822,9 @@ class Bgp_prefix_list_ruleEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         ge: Optional[int] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         le: Optional[int] = None,
         limit: Optional[int] = None,
@@ -1014,10 +1014,10 @@ class Bgp_routing_policy_ruleEndpoint(Endpoint):
     ) -> RecordSet[definitions.RoutingPolicyRule]: ...
     def get(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         continue_entry: Optional[int] = None,
         description: Optional[str] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -1029,10 +1029,10 @@ class Bgp_routing_policy_ruleEndpoint(Endpoint):
     ) -> Optional[definitions.RoutingPolicyRule]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         continue_entry: Optional[int] = None,
         description: Optional[str] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,
@@ -1075,10 +1075,10 @@ class Bgp_routing_policy_ruleEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         action: Optional[str] = None,
         continue_entry: Optional[int] = None,
         description: Optional[str] = None,
-        id: Optional[int] = None,
         index: Optional[int] = None,
         limit: Optional[int] = None,
         offset: Optional[int] = None,

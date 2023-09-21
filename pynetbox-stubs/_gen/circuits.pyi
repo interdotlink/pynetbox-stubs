@@ -12,6 +12,7 @@ class Circuit_terminationsEndpoint(Endpoint):
     ) -> RecordSet[definitions.CircuitTermination]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -36,7 +37,6 @@ class Circuit_terminationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -96,6 +96,7 @@ class Circuit_terminationsEndpoint(Endpoint):
     ) -> Optional[definitions.CircuitTermination]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -120,7 +121,6 @@ class Circuit_terminationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -210,6 +210,7 @@ class Circuit_terminationsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -234,7 +235,6 @@ class Circuit_terminationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -299,6 +299,7 @@ class Circuit_typesEndpoint(Endpoint):
     ) -> RecordSet[definitions.CircuitType]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -318,7 +319,6 @@ class Circuit_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -366,6 +366,7 @@ class Circuit_typesEndpoint(Endpoint):
     ) -> Optional[definitions.CircuitType]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -385,7 +386,6 @@ class Circuit_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -452,6 +452,7 @@ class Circuit_typesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -471,7 +472,6 @@ class Circuit_typesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -522,6 +522,7 @@ class CircuitsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Circuit]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cid: Optional[str] = None,
         cid__empty: Optional[bool] = None,
         cid__ic: Optional[str] = None,
@@ -565,7 +566,6 @@ class CircuitsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -639,6 +639,7 @@ class CircuitsEndpoint(Endpoint):
     ) -> Optional[definitions.Circuit]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cid: Optional[str] = None,
         cid__empty: Optional[bool] = None,
         cid__ic: Optional[str] = None,
@@ -682,7 +683,6 @@ class CircuitsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -783,6 +783,7 @@ class CircuitsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cid: Optional[str] = None,
         cid__empty: Optional[bool] = None,
         cid__ic: Optional[str] = None,
@@ -826,7 +827,6 @@ class CircuitsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -905,6 +905,7 @@ class Provider_accountsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ProviderAccount]: ...
     def get(
         self,
+        id: Optional[int] = None,
         account: Optional[str] = None,
         account__empty: Optional[bool] = None,
         account__ic: Optional[str] = None,
@@ -935,7 +936,6 @@ class Provider_accountsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -976,6 +976,7 @@ class Provider_accountsEndpoint(Endpoint):
     ) -> Optional[definitions.ProviderAccount]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         account: Optional[str] = None,
         account__empty: Optional[bool] = None,
         account__ic: Optional[str] = None,
@@ -1006,7 +1007,6 @@ class Provider_accountsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1070,6 +1070,7 @@ class Provider_accountsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         account: Optional[str] = None,
         account__empty: Optional[bool] = None,
         account__ic: Optional[str] = None,
@@ -1100,7 +1101,6 @@ class Provider_accountsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1146,6 +1146,7 @@ class Provider_networksEndpoint(Endpoint):
     ) -> RecordSet[definitions.ProviderNetwork]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1165,7 +1166,6 @@ class Provider_networksEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1217,6 +1217,7 @@ class Provider_networksEndpoint(Endpoint):
     ) -> Optional[definitions.ProviderNetwork]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1236,7 +1237,6 @@ class Provider_networksEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1311,6 +1311,7 @@ class Provider_networksEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1330,7 +1331,6 @@ class Provider_networksEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1385,6 +1385,7 @@ class ProvidersEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Provider]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asn_id: Optional[int] = None,
         asn_id__n: Optional[int] = None,
         contact: Optional[int] = None,
@@ -1401,7 +1402,6 @@ class ProvidersEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1461,6 +1461,7 @@ class ProvidersEndpoint(Endpoint):
     ) -> Optional[definitions.Provider]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asn_id: Optional[int] = None,
         asn_id__n: Optional[int] = None,
         contact: Optional[int] = None,
@@ -1477,7 +1478,6 @@ class ProvidersEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1559,6 +1559,7 @@ class ProvidersEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asn_id: Optional[int] = None,
         asn_id__n: Optional[int] = None,
         contact: Optional[int] = None,
@@ -1575,7 +1576,6 @@ class ProvidersEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

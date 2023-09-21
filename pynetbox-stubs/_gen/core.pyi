@@ -10,6 +10,7 @@ class Data_filesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.DataFile]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -29,7 +30,6 @@ class Data_filesEndpoint(Endpoint):
         hash__nie: Optional[str] = None,
         hash__niew: Optional[str] = None,
         hash__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -75,6 +75,7 @@ class Data_filesEndpoint(Endpoint):
     ) -> Optional[definitions.DataFile]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -94,7 +95,6 @@ class Data_filesEndpoint(Endpoint):
         hash__nie: Optional[str] = None,
         hash__niew: Optional[str] = None,
         hash__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -154,6 +154,7 @@ class Data_filesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -173,7 +174,6 @@ class Data_filesEndpoint(Endpoint):
         hash__nie: Optional[str] = None,
         hash__niew: Optional[str] = None,
         hash__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -224,6 +224,7 @@ class Data_sourcesEndpoint(Endpoint):
     ) -> RecordSet[definitions.DataSource]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -233,7 +234,6 @@ class Data_sourcesEndpoint(Endpoint):
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -274,6 +274,7 @@ class Data_sourcesEndpoint(Endpoint):
     ) -> Optional[definitions.DataSource]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -283,7 +284,6 @@ class Data_sourcesEndpoint(Endpoint):
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -346,6 +346,7 @@ class Data_sourcesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -355,7 +356,6 @@ class Data_sourcesEndpoint(Endpoint):
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -399,13 +399,13 @@ class JobsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Job]: ...
     def get(
         self,
+        id: Optional[int] = None,
         completed: Optional[str] = None,
         completed__after: Optional[str] = None,
         completed__before: Optional[str] = None,
         created: Optional[str] = None,
         created__after: Optional[str] = None,
         created__before: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -457,13 +457,13 @@ class JobsEndpoint(Endpoint):
     ) -> Optional[definitions.Job]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         completed: Optional[str] = None,
         completed__after: Optional[str] = None,
         completed__before: Optional[str] = None,
         created: Optional[str] = None,
         created__after: Optional[str] = None,
         created__before: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -529,13 +529,13 @@ class JobsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         completed: Optional[str] = None,
         completed__after: Optional[str] = None,
         completed__before: Optional[str] = None,
         created: Optional[str] = None,
         created__after: Optional[str] = None,
         created__before: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

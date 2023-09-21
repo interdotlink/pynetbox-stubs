@@ -12,6 +12,7 @@ class AggregatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.Aggregate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -39,7 +40,6 @@ class AggregatesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -78,6 +78,7 @@ class AggregatesEndpoint(Endpoint):
     ) -> Optional[definitions.Aggregate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -105,7 +106,6 @@ class AggregatesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -166,6 +166,7 @@ class AggregatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -193,7 +194,6 @@ class AggregatesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -235,6 +235,7 @@ class Asn_rangesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.ASNRange]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -261,7 +262,6 @@ class Asn_rangesEndpoint(Endpoint):
         end__lt: Optional[int] = None,
         end__lte: Optional[int] = None,
         end__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -317,6 +317,7 @@ class Asn_rangesEndpoint(Endpoint):
     ) -> Optional[definitions.ASNRange]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -343,7 +344,6 @@ class Asn_rangesEndpoint(Endpoint):
         end__lt: Optional[int] = None,
         end__lte: Optional[int] = None,
         end__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -422,6 +422,7 @@ class Asn_rangesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -448,7 +449,6 @@ class Asn_rangesEndpoint(Endpoint):
         end__lt: Optional[int] = None,
         end__lte: Optional[int] = None,
         end__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -507,6 +507,7 @@ class AsnsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.ASN]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__empty: Optional[bool] = None,
         asn__gt: Optional[int] = None,
@@ -533,7 +534,6 @@ class AsnsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -575,6 +575,7 @@ class AsnsEndpoint(Endpoint):
     ) -> Optional[definitions.ASN]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__empty: Optional[bool] = None,
         asn__gt: Optional[int] = None,
@@ -601,7 +602,6 @@ class AsnsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -664,6 +664,7 @@ class AsnsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__empty: Optional[bool] = None,
         asn__gt: Optional[int] = None,
@@ -690,7 +691,6 @@ class AsnsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -737,6 +737,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
     ) -> RecordSet[definitions.FHRPGroupAssignment]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -749,7 +750,6 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -790,6 +790,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
     ) -> Optional[definitions.FHRPGroupAssignment]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -802,7 +803,6 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -861,6 +861,7 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -873,7 +874,6 @@ class Fhrp_group_assignmentsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -919,6 +919,7 @@ class Fhrp_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.FHRPGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         auth_key: Optional[str] = None,
         auth_key__empty: Optional[bool] = None,
         auth_key__ic: Optional[str] = None,
@@ -947,7 +948,6 @@ class Fhrp_groupsEndpoint(Endpoint):
         group_id__lt: Optional[int] = None,
         group_id__lte: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -987,6 +987,7 @@ class Fhrp_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.FHRPGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         auth_key: Optional[str] = None,
         auth_key__empty: Optional[bool] = None,
         auth_key__ic: Optional[str] = None,
@@ -1015,7 +1016,6 @@ class Fhrp_groupsEndpoint(Endpoint):
         group_id__lt: Optional[int] = None,
         group_id__lte: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1078,6 +1078,7 @@ class Fhrp_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         auth_key: Optional[str] = None,
         auth_key__empty: Optional[bool] = None,
         auth_key__ic: Optional[str] = None,
@@ -1106,7 +1107,6 @@ class Fhrp_groupsEndpoint(Endpoint):
         group_id__lt: Optional[int] = None,
         group_id__lte: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1151,6 +1151,7 @@ class Ip_addressesEndpoint(Endpoint):
     ) -> RecordSet[definitions.IPAddress]: ...
     def get(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         assigned: Optional[bool] = None,
         assigned_to_interface: Optional[bool] = None,
@@ -1189,7 +1190,6 @@ class Ip_addressesEndpoint(Endpoint):
         family: Optional[float] = None,
         fhrpgroup_id: Optional[int] = None,
         fhrpgroup_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1245,6 +1245,7 @@ class Ip_addressesEndpoint(Endpoint):
     ) -> Optional[definitions.IPAddress]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         assigned: Optional[bool] = None,
         assigned_to_interface: Optional[bool] = None,
@@ -1283,7 +1284,6 @@ class Ip_addressesEndpoint(Endpoint):
         family: Optional[float] = None,
         fhrpgroup_id: Optional[int] = None,
         fhrpgroup_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1366,6 +1366,7 @@ class Ip_addressesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         address: Optional[str] = None,
         assigned: Optional[bool] = None,
         assigned_to_interface: Optional[bool] = None,
@@ -1404,7 +1405,6 @@ class Ip_addressesEndpoint(Endpoint):
         family: Optional[float] = None,
         fhrpgroup_id: Optional[int] = None,
         fhrpgroup_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1463,6 +1463,7 @@ class Ip_rangesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.IPRange]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contains: Optional[str] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
@@ -1485,7 +1486,6 @@ class Ip_rangesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         end_address: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1532,6 +1532,7 @@ class Ip_rangesEndpoint(Endpoint):
     ) -> Optional[definitions.IPRange]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contains: Optional[str] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
@@ -1554,7 +1555,6 @@ class Ip_rangesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         end_address: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1626,6 +1626,7 @@ class Ip_rangesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contains: Optional[str] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
@@ -1648,7 +1649,6 @@ class Ip_rangesEndpoint(Endpoint):
         description__nisw: Optional[str] = None,
         end_address: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1700,6 +1700,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
     ) -> RecordSet[definitions.L2VPNTermination]: ...
     def get(
         self,
+        id: Optional[int] = None,
         assigned_object_type: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         assigned_object_type_id: Optional[int] = None,
@@ -1716,7 +1717,6 @@ class L2vpn_terminationsEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1773,6 +1773,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
     ) -> Optional[definitions.L2VPNTermination]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         assigned_object_type: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         assigned_object_type_id: Optional[int] = None,
@@ -1789,7 +1790,6 @@ class L2vpn_terminationsEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1869,6 +1869,7 @@ class L2vpn_terminationsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         assigned_object_type: Optional[str] = None,
         assigned_object_type__n: Optional[str] = None,
         assigned_object_type_id: Optional[int] = None,
@@ -1885,7 +1886,6 @@ class L2vpn_terminationsEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1945,6 +1945,7 @@ class L2vpnsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.L2VPN]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1968,7 +1969,6 @@ class L2vpnsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2037,6 +2037,7 @@ class L2vpnsEndpoint(Endpoint):
     ) -> Optional[definitions.L2VPN]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2060,7 +2061,6 @@ class L2vpnsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2154,6 +2154,7 @@ class L2vpnsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2177,7 +2178,6 @@ class L2vpnsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2249,6 +2249,7 @@ class PrefixesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Prefix]: ...
     def get(
         self,
+        id: Optional[int] = None,
         children: Optional[int] = None,
         children__empty: Optional[int] = None,
         children__gt: Optional[int] = None,
@@ -2284,7 +2285,6 @@ class PrefixesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2359,6 +2359,7 @@ class PrefixesEndpoint(Endpoint):
     ) -> Optional[definitions.Prefix]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         children: Optional[int] = None,
         children__empty: Optional[int] = None,
         children__gt: Optional[int] = None,
@@ -2394,7 +2395,6 @@ class PrefixesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2496,6 +2496,7 @@ class PrefixesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         children: Optional[int] = None,
         children__empty: Optional[int] = None,
         children__gt: Optional[int] = None,
@@ -2531,7 +2532,6 @@ class PrefixesEndpoint(Endpoint):
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
         family: Optional[float] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2609,6 +2609,7 @@ class RirsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.RIR]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2628,7 +2629,6 @@ class RirsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2677,6 +2677,7 @@ class RirsEndpoint(Endpoint):
     ) -> Optional[definitions.RIR]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2696,7 +2697,6 @@ class RirsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2765,6 +2765,7 @@ class RirsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2784,7 +2785,6 @@ class RirsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2836,6 +2836,7 @@ class RolesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Role]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2855,7 +2856,6 @@ class RolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2903,6 +2903,7 @@ class RolesEndpoint(Endpoint):
     ) -> Optional[definitions.Role]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -2922,7 +2923,6 @@ class RolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2990,6 +2990,7 @@ class RolesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3009,7 +3010,6 @@ class RolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3062,6 +3062,7 @@ class Route_targetsEndpoint(Endpoint):
     ) -> RecordSet[definitions.RouteTarget]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3085,7 +3086,6 @@ class Route_targetsEndpoint(Endpoint):
         exporting_vrf__n: Optional[str] = None,
         exporting_vrf_id: Optional[int] = None,
         exporting_vrf_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3134,6 +3134,7 @@ class Route_targetsEndpoint(Endpoint):
     ) -> Optional[definitions.RouteTarget]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3157,7 +3158,6 @@ class Route_targetsEndpoint(Endpoint):
         exporting_vrf__n: Optional[str] = None,
         exporting_vrf_id: Optional[int] = None,
         exporting_vrf_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3226,6 +3226,7 @@ class Route_targetsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3249,7 +3250,6 @@ class Route_targetsEndpoint(Endpoint):
         exporting_vrf__n: Optional[str] = None,
         exporting_vrf_id: Optional[int] = None,
         exporting_vrf_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3303,6 +3303,7 @@ class Service_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ServiceTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3311,7 +3312,6 @@ class Service_templatesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3351,6 +3351,7 @@ class Service_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.ServiceTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3359,7 +3360,6 @@ class Service_templatesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3422,6 +3422,7 @@ class Service_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3430,7 +3431,6 @@ class Service_templatesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3473,6 +3473,7 @@ class ServicesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Service]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3496,7 +3497,6 @@ class ServicesEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3544,6 +3544,7 @@ class ServicesEndpoint(Endpoint):
     ) -> Optional[definitions.Service]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3567,7 +3568,6 @@ class ServicesEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3639,6 +3639,7 @@ class ServicesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -3662,7 +3663,6 @@ class ServicesEndpoint(Endpoint):
         device__n: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3715,6 +3715,7 @@ class Vlan_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.VLANGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cluster: Optional[int] = None,
         clustergroup: Optional[float] = None,
         created: Optional[str] = None,
@@ -3736,7 +3737,6 @@ class Vlan_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3812,6 +3812,7 @@ class Vlan_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.VLANGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cluster: Optional[int] = None,
         clustergroup: Optional[float] = None,
         created: Optional[str] = None,
@@ -3833,7 +3834,6 @@ class Vlan_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3932,6 +3932,7 @@ class Vlan_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cluster: Optional[int] = None,
         clustergroup: Optional[float] = None,
         created: Optional[str] = None,
@@ -3953,7 +3954,6 @@ class Vlan_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4032,6 +4032,7 @@ class VlansEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.VLAN]: ...
     def get(
         self,
+        id: Optional[int] = None,
         available_on_device: Optional[str] = None,
         available_on_virtualmachine: Optional[str] = None,
         created: Optional[str] = None,
@@ -4057,7 +4058,6 @@ class VlansEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4131,6 +4131,7 @@ class VlansEndpoint(Endpoint):
     ) -> Optional[definitions.VLAN]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         available_on_device: Optional[str] = None,
         available_on_virtualmachine: Optional[str] = None,
         created: Optional[str] = None,
@@ -4156,7 +4157,6 @@ class VlansEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4255,6 +4255,7 @@ class VlansEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         available_on_device: Optional[str] = None,
         available_on_virtualmachine: Optional[str] = None,
         created: Optional[str] = None,
@@ -4280,7 +4281,6 @@ class VlansEndpoint(Endpoint):
         group__n: Optional[str] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4357,6 +4357,7 @@ class VrfsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.VRF]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -4381,7 +4382,6 @@ class VrfsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4441,6 +4441,7 @@ class VrfsEndpoint(Endpoint):
     ) -> Optional[definitions.VRF]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -4465,7 +4466,6 @@ class VrfsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4549,6 +4549,7 @@ class VrfsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -4573,7 +4574,6 @@ class VrfsEndpoint(Endpoint):
         export_target__n: Optional[str] = None,
         export_target_id: Optional[int] = None,
         export_target_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,

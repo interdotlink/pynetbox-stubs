@@ -12,11 +12,11 @@ class Cable_terminationsEndpoint(Endpoint):
     ) -> RecordSet[definitions.CableTermination]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable: Optional[int] = None,
         cable__n: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -39,11 +39,11 @@ class Cable_terminationsEndpoint(Endpoint):
     ) -> Optional[definitions.CableTermination]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable: Optional[int] = None,
         cable__n: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -88,11 +88,11 @@ class Cable_terminationsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable: Optional[int] = None,
         cable__n: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -118,6 +118,7 @@ class CablesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Cable]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__n: Optional[str] = None,
         created: Optional[str] = None,
@@ -130,7 +131,6 @@ class CablesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device: Optional[str] = None,
         device_id: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -200,6 +200,7 @@ class CablesEndpoint(Endpoint):
     ) -> Optional[definitions.Cable]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__n: Optional[str] = None,
         created: Optional[str] = None,
@@ -212,7 +213,6 @@ class CablesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device: Optional[str] = None,
         device_id: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -309,6 +309,7 @@ class CablesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__n: Optional[str] = None,
         created: Optional[str] = None,
@@ -321,7 +322,6 @@ class CablesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device: Optional[str] = None,
         device_id: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -422,6 +422,7 @@ class Console_port_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ConsolePortTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -432,7 +433,6 @@ class Console_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -471,6 +471,7 @@ class Console_port_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.ConsolePortTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -481,7 +482,6 @@ class Console_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -544,6 +544,7 @@ class Console_port_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -554,7 +555,6 @@ class Console_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -598,6 +598,7 @@ class Console_portsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ConsolePort]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -633,7 +634,6 @@ class Console_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -710,6 +710,7 @@ class Console_portsEndpoint(Endpoint):
     ) -> Optional[definitions.ConsolePort]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -745,7 +746,6 @@ class Console_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -846,6 +846,7 @@ class Console_portsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -881,7 +882,6 @@ class Console_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -963,6 +963,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ConsoleServerPortTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -973,7 +974,6 @@ class Console_server_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1012,6 +1012,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.ConsoleServerPortTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1022,7 +1023,6 @@ class Console_server_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1085,6 +1085,7 @@ class Console_server_port_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1095,7 +1096,6 @@ class Console_server_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1139,6 +1139,7 @@ class Console_server_portsEndpoint(Endpoint):
     ) -> RecordSet[definitions.ConsoleServerPort]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -1174,7 +1175,6 @@ class Console_server_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1251,6 +1251,7 @@ class Console_server_portsEndpoint(Endpoint):
     ) -> Optional[definitions.ConsoleServerPort]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -1286,7 +1287,6 @@ class Console_server_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1391,6 +1391,7 @@ class Console_server_portsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -1426,7 +1427,6 @@ class Console_server_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1508,6 +1508,7 @@ class Device_bay_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.DeviceBayTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1518,7 +1519,6 @@ class Device_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1553,6 +1553,7 @@ class Device_bay_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.DeviceBayTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1563,7 +1564,6 @@ class Device_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1620,6 +1620,7 @@ class Device_bay_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1630,7 +1631,6 @@ class Device_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1670,6 +1670,7 @@ class Device_baysEndpoint(Endpoint):
     ) -> RecordSet[definitions.DeviceBay]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1701,7 +1702,6 @@ class Device_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1773,6 +1773,7 @@ class Device_baysEndpoint(Endpoint):
     ) -> Optional[definitions.DeviceBay]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1804,7 +1805,6 @@ class Device_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -1897,6 +1897,7 @@ class Device_baysEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -1928,7 +1929,6 @@ class Device_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2005,6 +2005,7 @@ class Device_rolesEndpoint(Endpoint):
     ) -> RecordSet[definitions.DeviceRole]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -2037,7 +2038,6 @@ class Device_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2086,6 +2086,7 @@ class Device_rolesEndpoint(Endpoint):
     ) -> Optional[definitions.DeviceRole]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -2118,7 +2119,6 @@ class Device_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2189,6 +2189,7 @@ class Device_rolesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -2221,7 +2222,6 @@ class Device_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2275,6 +2275,7 @@ class Device_typesEndpoint(Endpoint):
     ) -> RecordSet[definitions.DeviceType]: ...
     def get(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         console_ports: Optional[bool] = None,
@@ -2294,7 +2295,6 @@ class Device_typesEndpoint(Endpoint):
         device_bays: Optional[bool] = None,
         has_front_image: Optional[bool] = None,
         has_rear_image: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2382,6 +2382,7 @@ class Device_typesEndpoint(Endpoint):
     ) -> Optional[definitions.DeviceType]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         console_ports: Optional[bool] = None,
@@ -2401,7 +2402,6 @@ class Device_typesEndpoint(Endpoint):
         device_bays: Optional[bool] = None,
         has_front_image: Optional[bool] = None,
         has_rear_image: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2520,6 +2520,7 @@ class Device_typesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         console_ports: Optional[bool] = None,
@@ -2539,7 +2540,6 @@ class Device_typesEndpoint(Endpoint):
         device_bays: Optional[bool] = None,
         has_front_image: Optional[bool] = None,
         has_rear_image: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2632,6 +2632,7 @@ class DevicesEndpoint(Endpoint):
     ) -> RecordSet[definitions.DeviceWithConfigContext]: ...
     def get(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         asset_tag: Optional[str] = None,
@@ -2673,7 +2674,6 @@ class DevicesEndpoint(Endpoint):
         face: Optional[str] = None,
         face__n: Optional[str] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -2808,6 +2808,7 @@ class DevicesEndpoint(Endpoint):
     ) -> Optional[definitions.DeviceWithConfigContext]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         asset_tag: Optional[str] = None,
@@ -2849,7 +2850,6 @@ class DevicesEndpoint(Endpoint):
         face: Optional[str] = None,
         face__n: Optional[str] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3028,6 +3028,7 @@ class DevicesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         airflow: Optional[str] = None,
         airflow__n: Optional[str] = None,
         asset_tag: Optional[str] = None,
@@ -3069,7 +3070,6 @@ class DevicesEndpoint(Endpoint):
         face: Optional[str] = None,
         face__n: Optional[str] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3209,6 +3209,7 @@ class Front_port_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.FrontPortTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -3230,7 +3231,6 @@ class Front_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3269,6 +3269,7 @@ class Front_port_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.FrontPortTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -3290,7 +3291,6 @@ class Front_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3356,6 +3356,7 @@ class Front_port_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -3377,7 +3378,6 @@ class Front_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3421,6 +3421,7 @@ class Front_portsEndpoint(Endpoint):
     ) -> RecordSet[definitions.FrontPort]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -3466,7 +3467,6 @@ class Front_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3543,6 +3543,7 @@ class Front_portsEndpoint(Endpoint):
     ) -> Optional[definitions.FrontPort]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -3588,7 +3589,6 @@ class Front_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3691,6 +3691,7 @@ class Front_portsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -3736,7 +3737,6 @@ class Front_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3818,6 +3818,7 @@ class Interface_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.InterfaceTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -3831,7 +3832,6 @@ class Interface_templatesEndpoint(Endpoint):
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3875,6 +3875,7 @@ class Interface_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.InterfaceTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -3888,7 +3889,6 @@ class Interface_templatesEndpoint(Endpoint):
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -3961,6 +3961,7 @@ class Interface_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -3974,7 +3975,6 @@ class Interface_templatesEndpoint(Endpoint):
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4023,6 +4023,7 @@ class InterfacesEndpoint(Endpoint):
     ) -> RecordSet[definitions.Interface]: ...
     def get(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cable_end: Optional[str] = None,
@@ -4061,7 +4062,6 @@ class InterfacesEndpoint(Endpoint):
         duplex: Optional[str] = None,
         duplex__n: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4225,6 +4225,7 @@ class InterfacesEndpoint(Endpoint):
     ) -> Optional[definitions.Interface]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cable_end: Optional[str] = None,
@@ -4263,7 +4264,6 @@ class InterfacesEndpoint(Endpoint):
         duplex: Optional[str] = None,
         duplex__n: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4473,6 +4473,7 @@ class InterfacesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         bridge_id: Optional[int] = None,
         bridge_id__n: Optional[int] = None,
         cable_end: Optional[str] = None,
@@ -4511,7 +4512,6 @@ class InterfacesEndpoint(Endpoint):
         duplex: Optional[str] = None,
         duplex__n: Optional[str] = None,
         enabled: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4680,6 +4680,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
     ) -> RecordSet[definitions.InventoryItemRole]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -4699,7 +4700,6 @@ class Inventory_item_rolesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4747,6 +4747,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
     ) -> Optional[definitions.InventoryItemRole]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -4766,7 +4767,6 @@ class Inventory_item_rolesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4838,6 +4838,7 @@ class Inventory_item_rolesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -4857,7 +4858,6 @@ class Inventory_item_rolesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4910,6 +4910,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.InventoryItemTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         component_id: Optional[int] = None,
         component_id__empty: Optional[int] = None,
         component_id__gt: Optional[int] = None,
@@ -4929,7 +4930,6 @@ class Inventory_item_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -4996,6 +4996,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.InventoryItemTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         component_id: Optional[int] = None,
         component_id__empty: Optional[int] = None,
         component_id__gt: Optional[int] = None,
@@ -5015,7 +5016,6 @@ class Inventory_item_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5110,6 +5110,7 @@ class Inventory_item_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         component_id: Optional[int] = None,
         component_id__empty: Optional[int] = None,
         component_id__gt: Optional[int] = None,
@@ -5129,7 +5130,6 @@ class Inventory_item_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5201,6 +5201,7 @@ class Inventory_itemsEndpoint(Endpoint):
     ) -> RecordSet[definitions.InventoryItem]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -5242,7 +5243,6 @@ class Inventory_itemsEndpoint(Endpoint):
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
         discovered: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5346,6 +5346,7 @@ class Inventory_itemsEndpoint(Endpoint):
     ) -> Optional[definitions.InventoryItem]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -5387,7 +5388,6 @@ class Inventory_itemsEndpoint(Endpoint):
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
         discovered: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5520,6 +5520,7 @@ class Inventory_itemsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -5561,7 +5562,6 @@ class Inventory_itemsEndpoint(Endpoint):
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
         discovered: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5668,6 +5668,7 @@ class LocationsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Location]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -5693,7 +5694,6 @@ class LocationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5767,6 +5767,7 @@ class LocationsEndpoint(Endpoint):
     ) -> Optional[definitions.Location]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -5792,7 +5793,6 @@ class LocationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5889,6 +5889,7 @@ class LocationsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -5914,7 +5915,6 @@ class LocationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -5993,6 +5993,7 @@ class ManufacturersEndpoint(Endpoint):
     ) -> RecordSet[definitions.Manufacturer]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -6018,7 +6019,6 @@ class ManufacturersEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6066,6 +6066,7 @@ class ManufacturersEndpoint(Endpoint):
     ) -> Optional[definitions.Manufacturer]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -6091,7 +6092,6 @@ class ManufacturersEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6158,6 +6158,7 @@ class ManufacturersEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -6183,7 +6184,6 @@ class ManufacturersEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6236,6 +6236,7 @@ class Module_bay_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ModuleBayTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6246,7 +6247,6 @@ class Module_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6281,6 +6281,7 @@ class Module_bay_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.ModuleBayTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6291,7 +6292,6 @@ class Module_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6349,6 +6349,7 @@ class Module_bay_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6359,7 +6360,6 @@ class Module_bay_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6399,6 +6399,7 @@ class Module_baysEndpoint(Endpoint):
     ) -> RecordSet[definitions.ModuleBay]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6430,7 +6431,6 @@ class Module_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6502,6 +6502,7 @@ class Module_baysEndpoint(Endpoint):
     ) -> Optional[definitions.ModuleBay]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6533,7 +6534,6 @@ class Module_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6627,6 +6627,7 @@ class Module_baysEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -6658,7 +6659,6 @@ class Module_baysEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6735,6 +6735,7 @@ class Module_typesEndpoint(Endpoint):
     ) -> RecordSet[definitions.ModuleType]: ...
     def get(
         self,
+        id: Optional[int] = None,
         console_ports: Optional[bool] = None,
         console_server_ports: Optional[bool] = None,
         created: Optional[str] = None,
@@ -6745,7 +6746,6 @@ class Module_typesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6810,6 +6810,7 @@ class Module_typesEndpoint(Endpoint):
     ) -> Optional[definitions.ModuleType]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         console_ports: Optional[bool] = None,
         console_server_ports: Optional[bool] = None,
         created: Optional[str] = None,
@@ -6820,7 +6821,6 @@ class Module_typesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6908,6 +6908,7 @@ class Module_typesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         console_ports: Optional[bool] = None,
         console_server_ports: Optional[bool] = None,
         created: Optional[str] = None,
@@ -6918,7 +6919,6 @@ class Module_typesEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -6986,6 +6986,7 @@ class ModulesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Module]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -7007,7 +7008,6 @@ class ModulesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7056,6 +7056,7 @@ class ModulesEndpoint(Endpoint):
     ) -> Optional[definitions.Module]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -7077,7 +7078,6 @@ class ModulesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7150,6 +7150,7 @@ class ModulesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -7171,7 +7172,6 @@ class ModulesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7223,6 +7223,7 @@ class PlatformsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Platform]: ...
     def get(
         self,
+        id: Optional[int] = None,
         config_template_id: Optional[int] = None,
         config_template_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -7244,7 +7245,6 @@ class PlatformsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7307,6 +7307,7 @@ class PlatformsEndpoint(Endpoint):
     ) -> Optional[definitions.Platform]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         config_template_id: Optional[int] = None,
         config_template_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -7328,7 +7329,6 @@ class PlatformsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7414,6 +7414,7 @@ class PlatformsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         config_template_id: Optional[int] = None,
         config_template_id__n: Optional[int] = None,
         created: Optional[str] = None,
@@ -7435,7 +7436,6 @@ class PlatformsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7503,6 +7503,7 @@ class Power_feedsEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerFeed]: ...
     def get(
         self,
+        id: Optional[int] = None,
         amperage: Optional[int] = None,
         amperage__empty: Optional[bool] = None,
         amperage__gt: Optional[int] = None,
@@ -7522,7 +7523,6 @@ class Power_feedsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7598,6 +7598,7 @@ class Power_feedsEndpoint(Endpoint):
     ) -> Optional[definitions.PowerFeed]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         amperage: Optional[int] = None,
         amperage__empty: Optional[bool] = None,
         amperage__gt: Optional[int] = None,
@@ -7617,7 +7618,6 @@ class Power_feedsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7722,6 +7722,7 @@ class Power_feedsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         amperage: Optional[int] = None,
         amperage__empty: Optional[bool] = None,
         amperage__gt: Optional[int] = None,
@@ -7741,7 +7742,6 @@ class Power_feedsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7822,6 +7822,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerOutletTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -7834,7 +7835,6 @@ class Power_outlet_templatesEndpoint(Endpoint):
         devicetype_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7873,6 +7873,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.PowerOutletTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -7885,7 +7886,6 @@ class Power_outlet_templatesEndpoint(Endpoint):
         devicetype_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -7950,6 +7950,7 @@ class Power_outlet_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -7962,7 +7963,6 @@ class Power_outlet_templatesEndpoint(Endpoint):
         devicetype_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8006,6 +8006,7 @@ class Power_outletsEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerOutlet]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -8043,7 +8044,6 @@ class Power_outletsEndpoint(Endpoint):
         device_type_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8120,6 +8120,7 @@ class Power_outletsEndpoint(Endpoint):
     ) -> Optional[definitions.PowerOutlet]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -8157,7 +8158,6 @@ class Power_outletsEndpoint(Endpoint):
         device_type_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8259,6 +8259,7 @@ class Power_outletsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -8296,7 +8297,6 @@ class Power_outletsEndpoint(Endpoint):
         device_type_id__n: Optional[int] = None,
         feed_leg: Optional[str] = None,
         feed_leg__n: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8378,6 +8378,7 @@ class Power_panelsEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerPanel]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -8392,7 +8393,6 @@ class Power_panelsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8443,6 +8443,7 @@ class Power_panelsEndpoint(Endpoint):
     ) -> Optional[definitions.PowerPanel]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -8457,7 +8458,6 @@ class Power_panelsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8529,6 +8529,7 @@ class Power_panelsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -8543,7 +8544,6 @@ class Power_panelsEndpoint(Endpoint):
         created__lte: Optional[str] = None,
         created__n: Optional[str] = None,
         created_by_request: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8599,6 +8599,7 @@ class Power_port_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerPortTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -8616,7 +8617,6 @@ class Power_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8662,6 +8662,7 @@ class Power_port_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.PowerPortTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -8679,7 +8680,6 @@ class Power_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8751,6 +8751,7 @@ class Power_port_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -8768,7 +8769,6 @@ class Power_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8819,6 +8819,7 @@ class Power_portsEndpoint(Endpoint):
     ) -> RecordSet[definitions.PowerPort]: ...
     def get(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -8861,7 +8862,6 @@ class Power_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -8945,6 +8945,7 @@ class Power_portsEndpoint(Endpoint):
     ) -> Optional[definitions.PowerPort]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -8987,7 +8988,6 @@ class Power_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9096,6 +9096,7 @@ class Power_portsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         allocated_draw: Optional[int] = None,
         allocated_draw__empty: Optional[bool] = None,
         allocated_draw__gt: Optional[int] = None,
@@ -9138,7 +9139,6 @@ class Power_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9227,6 +9227,7 @@ class Rack_reservationsEndpoint(Endpoint):
     ) -> RecordSet[definitions.RackReservation]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -9246,7 +9247,6 @@ class Rack_reservationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9302,6 +9302,7 @@ class Rack_reservationsEndpoint(Endpoint):
     ) -> Optional[definitions.RackReservation]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -9321,7 +9322,6 @@ class Rack_reservationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9401,6 +9401,7 @@ class Rack_reservationsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -9420,7 +9421,6 @@ class Rack_reservationsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9479,6 +9479,7 @@ class Rack_rolesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.RackRole]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -9509,7 +9510,6 @@ class Rack_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9557,6 +9557,7 @@ class Rack_rolesEndpoint(Endpoint):
     ) -> Optional[definitions.RackRole]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -9587,7 +9588,6 @@ class Rack_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9655,6 +9655,7 @@ class Rack_rolesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -9685,7 +9686,6 @@ class Rack_rolesEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9736,6 +9736,7 @@ class RacksEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Rack]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -9773,7 +9774,6 @@ class RacksEndpoint(Endpoint):
         facility_id__nie: Optional[str] = None,
         facility_id__niew: Optional[str] = None,
         facility_id__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -9901,6 +9901,7 @@ class RacksEndpoint(Endpoint):
     ) -> Optional[definitions.Rack]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -9938,7 +9939,6 @@ class RacksEndpoint(Endpoint):
         facility_id__nie: Optional[str] = None,
         facility_id__niew: Optional[str] = None,
         facility_id__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10104,6 +10104,7 @@ class RacksEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asset_tag: Optional[str] = None,
         asset_tag__empty: Optional[bool] = None,
         asset_tag__ic: Optional[str] = None,
@@ -10141,7 +10142,6 @@ class RacksEndpoint(Endpoint):
         facility_id__nie: Optional[str] = None,
         facility_id__niew: Optional[str] = None,
         facility_id__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10274,6 +10274,7 @@ class Rear_port_templatesEndpoint(Endpoint):
     ) -> RecordSet[definitions.RearPortTemplate]: ...
     def get(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -10295,7 +10296,6 @@ class Rear_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10341,6 +10341,7 @@ class Rear_port_templatesEndpoint(Endpoint):
     ) -> Optional[definitions.RearPortTemplate]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -10362,7 +10363,6 @@ class Rear_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10434,6 +10434,7 @@ class Rear_port_templatesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         color: Optional[str] = None,
         color__empty: Optional[bool] = None,
         color__ic: Optional[str] = None,
@@ -10455,7 +10456,6 @@ class Rear_port_templatesEndpoint(Endpoint):
         created_by_request: Optional[str] = None,
         devicetype_id: Optional[int] = None,
         devicetype_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10504,6 +10504,7 @@ class Rear_portsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.RearPort]: ...
     def get(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -10549,7 +10550,6 @@ class Rear_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10633,6 +10633,7 @@ class Rear_portsEndpoint(Endpoint):
     ) -> Optional[definitions.RearPort]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -10678,7 +10679,6 @@ class Rear_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10787,6 +10787,7 @@ class Rear_portsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         cable_end: Optional[str] = None,
         cable_end__n: Optional[str] = None,
         cabled: Optional[bool] = None,
@@ -10832,7 +10833,6 @@ class Rear_portsEndpoint(Endpoint):
         device_type__n: Optional[str] = None,
         device_type_id: Optional[int] = None,
         device_type_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10919,6 +10919,7 @@ class RegionsEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Region]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -10944,7 +10945,6 @@ class RegionsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -10996,6 +10996,7 @@ class RegionsEndpoint(Endpoint):
     ) -> Optional[definitions.Region]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -11021,7 +11022,6 @@ class RegionsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11093,6 +11093,7 @@ class RegionsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -11118,7 +11119,6 @@ class RegionsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11175,6 +11175,7 @@ class Site_groupsEndpoint(Endpoint):
     ) -> RecordSet[definitions.SiteGroup]: ...
     def get(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -11200,7 +11201,6 @@ class Site_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11252,6 +11252,7 @@ class Site_groupsEndpoint(Endpoint):
     ) -> Optional[definitions.SiteGroup]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -11277,7 +11278,6 @@ class Site_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11349,6 +11349,7 @@ class Site_groupsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         contact: Optional[int] = None,
         contact__n: Optional[int] = None,
         contact_group: Optional[int] = None,
@@ -11374,7 +11375,6 @@ class Site_groupsEndpoint(Endpoint):
         description__nie: Optional[str] = None,
         description__niew: Optional[str] = None,
         description__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11429,6 +11429,7 @@ class SitesEndpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[definitions.Site]: ...
     def get(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__n: Optional[int] = None,
         asn_id: Optional[int] = None,
@@ -11473,7 +11474,6 @@ class SitesEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11549,6 +11549,7 @@ class SitesEndpoint(Endpoint):
     ) -> Optional[definitions.Site]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__n: Optional[int] = None,
         asn_id: Optional[int] = None,
@@ -11593,7 +11594,6 @@ class SitesEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11700,6 +11700,7 @@ class SitesEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         asn: Optional[int] = None,
         asn__n: Optional[int] = None,
         asn_id: Optional[int] = None,
@@ -11744,7 +11745,6 @@ class SitesEndpoint(Endpoint):
         group__n: Optional[int] = None,
         group_id: Optional[int] = None,
         group_id__n: Optional[int] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11825,6 +11825,7 @@ class Virtual_chassisEndpoint(Endpoint):
     ) -> RecordSet[definitions.VirtualChassis]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -11844,7 +11845,6 @@ class Virtual_chassisEndpoint(Endpoint):
         domain__nie: Optional[str] = None,
         domain__niew: Optional[str] = None,
         domain__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -11901,6 +11901,7 @@ class Virtual_chassisEndpoint(Endpoint):
     ) -> Optional[definitions.VirtualChassis]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -11920,7 +11921,6 @@ class Virtual_chassisEndpoint(Endpoint):
         domain__nie: Optional[str] = None,
         domain__niew: Optional[str] = None,
         domain__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -12000,6 +12000,7 @@ class Virtual_chassisEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -12019,7 +12020,6 @@ class Virtual_chassisEndpoint(Endpoint):
         domain__nie: Optional[str] = None,
         domain__niew: Optional[str] = None,
         domain__nisw: Optional[str] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -12081,6 +12081,7 @@ class Virtual_device_contextsEndpoint(Endpoint):
     ) -> RecordSet[definitions.VirtualDeviceContext]: ...
     def get(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -12094,7 +12095,6 @@ class Virtual_device_contextsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -12141,6 +12141,7 @@ class Virtual_device_contextsEndpoint(Endpoint):
     ) -> Optional[definitions.VirtualDeviceContext]: ...
     def filter(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -12154,7 +12155,6 @@ class Virtual_device_contextsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
@@ -12230,6 +12230,7 @@ class Virtual_device_contextsEndpoint(Endpoint):
     def choices(self) -> dict: ...
     def count(
         self,
+        id: Optional[int] = None,
         created: Optional[str] = None,
         created__empty: Optional[str] = None,
         created__gt: Optional[str] = None,
@@ -12243,7 +12244,6 @@ class Virtual_device_contextsEndpoint(Endpoint):
         device_id: Optional[int] = None,
         device_id__n: Optional[int] = None,
         has_primary_ip: Optional[bool] = None,
-        id: Optional[int] = None,
         id__empty: Optional[bool] = None,
         id__gt: Optional[int] = None,
         id__gte: Optional[int] = None,
