@@ -341,14 +341,16 @@ class Property(NamedTuple):
         elif "items" in defi and "$ref" in defi["items"]:
             assert "$ref" in defi["items"], f"{defi=}"
             ref = defi["items"]["$ref"]
-        elif "type" in defi:
-            ref = ""
         else:
-            assert False, f"{name=} {defi=}"
+            ref = ""
         return cls(
             name,
             required,
-            PythonType.from_json(defi["type"]) if "type" in defi else None,
+            (
+                PythonType.from_json(defi["type"])
+                if "type" in defi
+                else PythonType.any
+            ),
             ref,
         )
 
