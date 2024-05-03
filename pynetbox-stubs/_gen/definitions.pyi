@@ -12,8 +12,8 @@ class ASN(Record):
         self.url: str
         self.display: str
         self.asn: int
-        self.rir: 'RIR'
-        self.tenant: 'Tenant'
+        self.rir: Any
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -30,10 +30,10 @@ class ASNRange(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.rir: 'RIR'
+        self.rir: Any
         self.start: int
         self.end: int
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -45,10 +45,10 @@ class ASNRangeRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.rir: 'RIRRequest'
+        self.rir: Any
         self.start: int
         self.end: int
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -56,8 +56,8 @@ class ASNRangeRequest(Record):
 class ASNRequest(Record):
     def __init__(self):
         self.asn: int
-        self.rir: 'RIRRequest'
-        self.tenant: 'TenantRequest'
+        self.rir: Any
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -70,8 +70,8 @@ class Aggregate(Record):
         self.display: str
         self.family: Any
         self.prefix: str
-        self.rir: 'RIR'
-        self.tenant: 'Tenant'
+        self.rir: Any
+        self.tenant: Any
         self.date_added: str
         self.description: str
         self.comments: str
@@ -83,8 +83,8 @@ class Aggregate(Record):
 class AggregateRequest(Record):
     def __init__(self):
         self.prefix: str
-        self.rir: 'RIRRequest'
-        self.tenant: 'TenantRequest'
+        self.rir: Any
+        self.tenant: Any
         self.date_added: str
         self.description: str
         self.comments: str
@@ -94,47 +94,43 @@ class AggregateRequest(Record):
 class AvailableASN(Record):
     def __init__(self):
         self.asn: int
+        self.description: str
 
 class AvailableIP(Record):
     def __init__(self):
         self.family: int
         self.address: str
-        self.vrf: 'VRF'
+        self.vrf: Any
+        self.description: str
 
 class AvailablePrefix(Record):
     def __init__(self):
         self.family: int
         self.prefix: str
-        self.vrf: 'VRF'
+        self.vrf: Any
 
 class AvailableVLAN(Record):
     def __init__(self):
         self.vid: int
-        self.group: 'VLANGroup'
+        self.group: Any
 
 class BGPPeerGroup(Record):
     def __init__(self):
         self.id: int
-        self.tags: List[Any]
-        self.custom_fields: Any
         self.display: str
-        self.import_policies: List[Any]
-        self.export_policies: List[Any]
-        self.created: str
-        self.last_updated: str
-        self.custom_field_data: Any
         self.name: str
         self.description: str
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.comments: str
 
 class BGPPeerGroupRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.import_policies: List[Any]
-        self.export_policies: List[Any]
-        self.custom_field_data: Any
         self.name: str
         self.description: str
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.comments: str
 
 class BGPSession(Record):
     def __init__(self):
@@ -143,20 +139,40 @@ class BGPSession(Record):
         self.custom_fields: Any
         self.display: str
         self.status: Any
-        self.site: 'Site'
-        self.tenant: 'Tenant'
-        self.device: 'Device'
-        self.local_address: 'IPAddress'
-        self.remote_address: 'IPAddress'
-        self.local_as: 'ASN'
-        self.remote_as: 'ASN'
-        self.peer_group: 'BGPPeerGroup'
+        self.site: Any
+        self.tenant: Any
+        self.device: Any
+        self.local_address: Any
+        self.remote_address: Any
+        self.local_as: Any
+        self.remote_as: Any
+        self.peer_group: Any
         self.import_policies: List[Any]
         self.export_policies: List[Any]
+        self.prefix_list_in: Any
+        self.prefix_list_out: Any
         self.created: str
         self.last_updated: str
         self.name: str
         self.description: str
+        self.comments: str
+
+class Bookmark(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.object_type: str
+        self.object_id: int
+        self.object: Any
+        self.user: Any
+        self.created: str
+
+class BookmarkRequest(Record):
+    def __init__(self):
+        self.object_type: str
+        self.object_id: int
+        self.user: Any
 
 class Cable(Record):
     def __init__(self):
@@ -167,7 +183,7 @@ class Cable(Record):
         self.a_terminations: List[Any]
         self.b_terminations: List[Any]
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.label: str
         self.color: str
         self.length: float
@@ -185,7 +201,7 @@ class CableRequest(Record):
         self.a_terminations: List[Any]
         self.b_terminations: List[Any]
         self.status: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.label: str
         self.color: str
         self.length: float
@@ -221,17 +237,17 @@ class Circuit(Record):
         self.url: str
         self.display: str
         self.cid: str
-        self.provider: 'Provider'
-        self.provider_account: 'ProviderAccount'
-        self.type: 'CircuitType'
+        self.provider: Any
+        self.provider_account: Any
+        self.type: Any
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.install_date: str
         self.termination_date: str
         self.commit_rate: int
         self.description: str
-        self.termination_a: 'CircuitCircuitTermination'
-        self.termination_z: 'CircuitCircuitTermination'
+        self.termination_a: Any
+        self.termination_z: Any
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -243,8 +259,8 @@ class CircuitCircuitTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'Site'
-        self.provider_network: 'ProviderNetwork'
+        self.site: Any
+        self.provider_network: Any
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
@@ -252,8 +268,8 @@ class CircuitCircuitTermination(Record):
 
 class CircuitCircuitTerminationRequest(Record):
     def __init__(self):
-        self.site: 'SiteRequest'
-        self.provider_network: 'ProviderNetworkRequest'
+        self.site: Any
+        self.provider_network: Any
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
@@ -262,11 +278,11 @@ class CircuitCircuitTerminationRequest(Record):
 class CircuitRequest(Record):
     def __init__(self):
         self.cid: str
-        self.provider: 'ProviderRequest'
-        self.provider_account: 'ProviderAccountRequest'
-        self.type: 'CircuitTypeRequest'
+        self.provider: Any
+        self.provider_account: Any
+        self.type: Any
         self.status: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.install_date: str
         self.termination_date: str
         self.commit_rate: int
@@ -280,17 +296,17 @@ class CircuitTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.circuit: 'Circuit'
+        self.circuit: Any
         self.term_side: str
-        self.site: 'Site'
-        self.provider_network: 'ProviderNetwork'
+        self.site: Any
+        self.provider_network: Any
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
         self.pp_info: str
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -302,10 +318,10 @@ class CircuitTermination(Record):
 
 class CircuitTerminationRequest(Record):
     def __init__(self):
-        self.circuit: 'CircuitRequest'
+        self.circuit: Any
         self.term_side: str
-        self.site: 'SiteRequest'
-        self.provider_network: 'ProviderNetworkRequest'
+        self.site: Any
+        self.provider_network: Any
         self.port_speed: int
         self.upstream_speed: int
         self.xconnect_id: str
@@ -322,6 +338,7 @@ class CircuitType(Record):
         self.display: str
         self.name: str
         self.slug: str
+        self.color: str
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -333,6 +350,7 @@ class CircuitTypeRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
+        self.color: str
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -343,11 +361,11 @@ class Cluster(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.type: 'ClusterType'
-        self.group: 'ClusterGroup'
+        self.type: Any
+        self.group: Any
         self.status: Any
-        self.tenant: 'Tenant'
-        self.site: 'Site'
+        self.tenant: Any
+        self.site: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -382,11 +400,11 @@ class ClusterGroupRequest(Record):
 class ClusterRequest(Record):
     def __init__(self):
         self.name: str
-        self.type: 'ClusterTypeRequest'
-        self.group: 'ClusterGroupRequest'
+        self.type: Any
+        self.group: Any
         self.status: str
-        self.tenant: 'TenantRequest'
-        self.site: 'SiteRequest'
+        self.tenant: Any
+        self.site: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -421,13 +439,45 @@ class Community(Record):
         self.custom_fields: Any
         self.display: str
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.created: str
         self.last_updated: str
         self.description: str
         self.value: str
         self.site: int
         self.role: int
+        self.comments: str
+
+class CommunityList(Record):
+    def __init__(self):
+        self.id: int
+        self.name: str
+        self.display: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
+
+class CommunityListRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
+
+class CommunityListRule(Record):
+    def __init__(self):
+        self.id: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.display: str
+        self.community_list: Any
+        self.created: str
+        self.last_updated: str
+        self.action: str
+        self.community: Any
+        self.comments: str
 
 class ComponentNestedModule(Record):
     def __init__(self):
@@ -435,7 +485,7 @@ class ComponentNestedModule(Record):
         self.url: str
         self.display: str
         self.device: int
-        self.module_bay: 'ModuleNestedModuleBay'
+        self.module_bay: Any
 
 class ComponentNestedModuleRequest(Record):
     def __init__(self):
@@ -463,9 +513,9 @@ class ConfigContext(Record):
         self.tenant_groups: List[Any]
         self.tenants: List[Any]
         self.tags: List[Any]
-        self.data_source: 'DataSource'
+        self.data_source: Any
         self.data_path: str
-        self.data_file: 'DataFile'
+        self.data_file: Any
         self.data_synced: str
         self.data: Any
         self.created: str
@@ -490,7 +540,7 @@ class ConfigContextRequest(Record):
         self.tenant_groups: List[Any]
         self.tenants: List[Any]
         self.tags: List[Any]
-        self.data_source: 'DataSourceRequest'
+        self.data_source: Any
         self.data: Any
 
 class ConfigTemplate(Record):
@@ -502,9 +552,9 @@ class ConfigTemplate(Record):
         self.description: str
         self.environment_params: Any
         self.template_code: str
-        self.data_source: 'DataSource'
+        self.data_source: Any
         self.data_path: str
-        self.data_file: 'DataFile'
+        self.data_file: Any
         self.data_synced: str
         self.tags: List[Any]
         self.created: str
@@ -516,7 +566,7 @@ class ConfigTemplateRequest(Record):
         self.description: str
         self.environment_params: Any
         self.template_code: str
-        self.data_source: 'DataSourceRequest'
+        self.data_source: Any
         self.tags: List[Any]
 
 class ConsolePort(Record):
@@ -524,15 +574,15 @@ class ConsolePort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
         self.speed: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -547,8 +597,8 @@ class ConsolePort(Record):
 
 class ConsolePortRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
@@ -563,8 +613,8 @@ class ConsolePortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -574,8 +624,8 @@ class ConsolePortTemplate(Record):
 
 class ConsolePortTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
@@ -586,15 +636,15 @@ class ConsoleServerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
         self.speed: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -609,8 +659,8 @@ class ConsoleServerPort(Record):
 
 class ConsoleServerPortRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
@@ -625,8 +675,8 @@ class ConsoleServerPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -636,8 +686,8 @@ class ConsoleServerPortTemplate(Record):
 
 class ConsoleServerPortTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
@@ -648,7 +698,7 @@ class Contact(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.group: 'ContactGroup'
+        self.group: Any
         self.name: str
         self.title: str
         self.phone: str
@@ -670,9 +720,11 @@ class ContactAssignment(Record):
         self.content_type: str
         self.object_id: int
         self.object: Any
-        self.contact: 'Contact'
-        self.role: 'ContactRole'
+        self.contact: Any
+        self.role: Any
         self.priority: Any
+        self.tags: List[Any]
+        self.custom_fields: Any
         self.created: str
         self.last_updated: str
 
@@ -680,9 +732,11 @@ class ContactAssignmentRequest(Record):
     def __init__(self):
         self.content_type: str
         self.object_id: int
-        self.contact: 'ContactRequest'
-        self.role: 'ContactRoleRequest'
+        self.contact: Any
+        self.role: Any
         self.priority: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class ContactGroup(Record):
     def __init__(self):
@@ -691,7 +745,7 @@ class ContactGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'ContactGroup'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -704,14 +758,14 @@ class ContactGroupRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.parent: 'ContactGroupRequest'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
 
 class ContactRequest(Record):
     def __init__(self):
-        self.group: 'ContactGroupRequest'
+        self.group: Any
         self.name: str
         self.title: str
         self.phone: str
@@ -768,16 +822,39 @@ class CustomField(Record):
         self.required: bool
         self.search_weight: int
         self.filter_logic: Any
-        self.ui_visibility: Any
+        self.ui_visible: Any
+        self.ui_editable: Any
         self.is_cloneable: bool
         self.default: Any
         self.weight: int
         self.validation_minimum: int
         self.validation_maximum: int
         self.validation_regex: str
-        self.choices: List[Any]
+        self.choice_set: Any
         self.created: str
         self.last_updated: str
+
+class CustomFieldChoiceSet(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.base_choices: Any
+        self.extra_choices: List[Any]
+        self.order_alphabetically: bool
+        self.choices_count: str
+        self.created: str
+        self.last_updated: str
+
+class CustomFieldChoiceSetRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.base_choices: str
+        self.extra_choices: List[Any]
+        self.order_alphabetically: bool
 
 class CustomFieldRequest(Record):
     def __init__(self):
@@ -791,14 +868,15 @@ class CustomFieldRequest(Record):
         self.required: bool
         self.search_weight: int
         self.filter_logic: str
-        self.ui_visibility: str
+        self.ui_visible: str
+        self.ui_editable: str
         self.is_cloneable: bool
         self.default: Any
         self.weight: int
         self.validation_minimum: int
         self.validation_maximum: int
         self.validation_regex: str
-        self.choices: List[Any]
+        self.choice_set: Any
 
 class CustomLink(Record):
     def __init__(self):
@@ -844,7 +922,7 @@ class DataFile(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.source: 'DataSource'
+        self.source: Any
         self.path: str
         self.last_updated: str
         self.size: int
@@ -864,6 +942,7 @@ class DataSource(Record):
         self.comments: str
         self.parameters: Any
         self.ignore_rules: str
+        self.custom_fields: Any
         self.created: str
         self.last_updated: str
         self.file_count: int
@@ -871,13 +950,14 @@ class DataSource(Record):
 class DataSourceRequest(Record):
     def __init__(self):
         self.name: str
-        self.type: str
+        self.type: Any
         self.source_url: str
         self.enabled: bool
         self.description: str
         self.comments: str
         self.parameters: Any
         self.ignore_rules: str
+        self.custom_fields: Any
 
 class Device(Record):
     def __init__(self):
@@ -885,46 +965,60 @@ class Device(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.device_type: 'DeviceType'
-        self.device_role: 'DeviceRole'
-        self.tenant: 'Tenant'
-        self.platform: 'Platform'
+        self.device_type: Any
+        self.role: Any
+        self.device_role: Any
+        self.tenant: Any
+        self.platform: Any
         self.serial: str
         self.asset_tag: str
-        self.site: 'Site'
-        self.location: 'Location'
-        self.rack: 'Rack'
+        self.site: Any
+        self.location: Any
+        self.rack: Any
         self.position: float
         self.face: Any
-        self.parent_device: 'Device'
+        self.latitude: float
+        self.longitude: float
+        self.parent_device: Any
         self.status: Any
         self.airflow: Any
-        self.primary_ip: 'IPAddress'
-        self.primary_ip4: 'IPAddress'
-        self.primary_ip6: 'IPAddress'
-        self.cluster: 'Cluster'
-        self.virtual_chassis: 'VirtualChassis'
+        self.primary_ip: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
+        self.oob_ip: Any
+        self.cluster: Any
+        self.virtual_chassis: Any
         self.vc_position: int
         self.vc_priority: int
         self.description: str
         self.comments: str
-        self.config_template: 'ConfigTemplate'
+        self.config_template: Any
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
         self.last_updated: str
+        self.console_port_count: int
+        self.console_server_port_count: int
+        self.power_port_count: int
+        self.power_outlet_count: int
+        self.interface_count: int
+        self.front_port_count: int
+        self.rear_port_count: int
+        self.device_bay_count: int
+        self.module_bay_count: int
+        self.inventory_item_count: int
 
 class DeviceBay(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.name: str
         self.label: str
         self.description: str
-        self.installed_device: 'Device'
+        self.installed_device: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -932,11 +1026,11 @@ class DeviceBay(Record):
 
 class DeviceBayRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
+        self.device: Any
         self.name: str
         self.label: str
         self.description: str
-        self.installed_device: 'DeviceRequest'
+        self.installed_device: Any
         self.tags: List[Any]
         self.custom_fields: Any
 
@@ -945,7 +1039,7 @@ class DeviceBayTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
+        self.device_type: Any
         self.name: str
         self.label: str
         self.description: str
@@ -954,7 +1048,7 @@ class DeviceBayTemplate(Record):
 
 class DeviceBayTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
+        self.device_type: Any
         self.name: str
         self.label: str
         self.description: str
@@ -968,7 +1062,7 @@ class DeviceRole(Record):
         self.slug: str
         self.color: str
         self.vm_role: bool
-        self.config_template: 'ConfigTemplate'
+        self.config_template: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -983,7 +1077,7 @@ class DeviceRoleRequest(Record):
         self.slug: str
         self.color: str
         self.vm_role: bool
-        self.config_template: 'ConfigTemplateRequest'
+        self.config_template: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -993,12 +1087,13 @@ class DeviceType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'Manufacturer'
-        self.default_platform: 'Platform'
+        self.manufacturer: Any
+        self.default_platform: Any
         self.model: str
         self.slug: str
         self.part_number: str
         self.u_height: float
+        self.exclude_from_utilization: bool
         self.is_full_depth: bool
         self.subdevice_role: Any
         self.airflow: Any
@@ -1013,15 +1108,26 @@ class DeviceType(Record):
         self.created: str
         self.last_updated: str
         self.device_count: int
+        self.console_port_template_count: int
+        self.console_server_port_template_count: int
+        self.power_port_template_count: int
+        self.power_outlet_template_count: int
+        self.interface_template_count: int
+        self.front_port_template_count: int
+        self.rear_port_template_count: int
+        self.device_bay_template_count: int
+        self.module_bay_template_count: int
+        self.inventory_item_template_count: int
 
 class DeviceTypeRequest(Record):
     def __init__(self):
-        self.manufacturer: 'ManufacturerRequest'
-        self.default_platform: 'PlatformRequest'
+        self.manufacturer: Any
+        self.default_platform: Any
         self.model: str
         self.slug: str
         self.part_number: str
         self.u_height: float
+        self.exclude_from_utilization: bool
         self.is_full_depth: bool
         self.subdevice_role: str
         self.airflow: str
@@ -1040,65 +1146,124 @@ class DeviceWithConfigContext(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.device_type: 'DeviceType'
-        self.device_role: 'DeviceRole'
-        self.tenant: 'Tenant'
-        self.platform: 'Platform'
+        self.device_type: Any
+        self.role: Any
+        self.device_role: Any
+        self.tenant: Any
+        self.platform: Any
         self.serial: str
         self.asset_tag: str
-        self.site: 'Site'
-        self.location: 'Location'
-        self.rack: 'Rack'
+        self.site: Any
+        self.location: Any
+        self.rack: Any
         self.position: float
         self.face: Any
-        self.parent_device: 'Device'
+        self.latitude: float
+        self.longitude: float
+        self.parent_device: Any
         self.status: Any
         self.airflow: Any
-        self.primary_ip: 'IPAddress'
-        self.primary_ip4: 'IPAddress'
-        self.primary_ip6: 'IPAddress'
-        self.cluster: 'Cluster'
-        self.virtual_chassis: 'VirtualChassis'
+        self.primary_ip: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
+        self.oob_ip: Any
+        self.cluster: Any
+        self.virtual_chassis: Any
         self.vc_position: int
         self.vc_priority: int
         self.description: str
         self.comments: str
+        self.config_template: Any
+        self.config_context: Any
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
-        self.config_context: Any
-        self.config_template: 'ConfigTemplate'
         self.created: str
         self.last_updated: str
+        self.console_port_count: int
+        self.console_server_port_count: int
+        self.power_port_count: int
+        self.power_outlet_count: int
+        self.interface_count: int
+        self.front_port_count: int
+        self.rear_port_count: int
+        self.device_bay_count: int
+        self.module_bay_count: int
+        self.inventory_item_count: int
 
 class DeviceWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
-        self.device_type: 'DeviceTypeRequest'
-        self.device_role: 'DeviceRoleRequest'
-        self.tenant: 'TenantRequest'
-        self.platform: 'PlatformRequest'
+        self.device_type: Any
+        self.role: Any
+        self.tenant: Any
+        self.platform: Any
         self.serial: str
         self.asset_tag: str
-        self.site: 'SiteRequest'
-        self.location: 'LocationRequest'
-        self.rack: 'RackRequest'
+        self.site: Any
+        self.location: Any
+        self.rack: Any
         self.position: float
         self.face: str
+        self.latitude: float
+        self.longitude: float
         self.status: str
         self.airflow: str
-        self.primary_ip4: 'IPAddressRequest'
-        self.primary_ip6: 'IPAddressRequest'
-        self.cluster: 'ClusterRequest'
-        self.virtual_chassis: 'VirtualChassisRequest'
+        self.primary_ip4: Any
+        self.primary_ip6: Any
+        self.oob_ip: Any
+        self.cluster: Any
+        self.virtual_chassis: Any
         self.vc_position: int
         self.vc_priority: int
         self.description: str
         self.comments: str
+        self.config_template: Any
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
-        self.config_template: 'ConfigTemplateRequest'
+
+class EventRule(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.content_types: List[Any]
+        self.name: str
+        self.type_create: bool
+        self.type_update: bool
+        self.type_delete: bool
+        self.type_job_start: bool
+        self.type_job_end: bool
+        self.enabled: bool
+        self.conditions: Any
+        self.action_type: Any
+        self.action_object_type: str
+        self.action_object_id: int
+        self.action_object: Any
+        self.description: str
+        self.custom_fields: Any
+        self.tags: List[Any]
+        self.created: str
+        self.last_updated: str
+
+class EventRuleRequest(Record):
+    def __init__(self):
+        self.content_types: List[Any]
+        self.name: str
+        self.type_create: bool
+        self.type_update: bool
+        self.type_delete: bool
+        self.type_job_start: bool
+        self.type_job_end: bool
+        self.enabled: bool
+        self.conditions: Any
+        self.action_type: str
+        self.action_object_type: str
+        self.action_object_id: int
+        self.description: str
+        self.custom_fields: Any
+        self.tags: List[Any]
 
 class ExportTemplate(Record):
     def __init__(self):
@@ -1112,9 +1277,9 @@ class ExportTemplate(Record):
         self.mime_type: str
         self.file_extension: str
         self.as_attachment: bool
-        self.data_source: 'DataSource'
+        self.data_source: Any
         self.data_path: str
-        self.data_file: 'DataFile'
+        self.data_file: Any
         self.data_synced: str
         self.created: str
         self.last_updated: str
@@ -1128,7 +1293,7 @@ class ExportTemplateRequest(Record):
         self.mime_type: str
         self.file_extension: str
         self.as_attachment: bool
-        self.data_source: 'DataSourceRequest'
+        self.data_source: Any
 
 class FHRPGroup(Record):
     def __init__(self):
@@ -1153,7 +1318,7 @@ class FHRPGroupAssignment(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.group: 'FHRPGroup'
+        self.group: Any
         self.interface_type: str
         self.interface_id: int
         self.interface: Any
@@ -1163,7 +1328,7 @@ class FHRPGroupAssignment(Record):
 
 class FHRPGroupAssignmentRequest(Record):
     def __init__(self):
-        self.group: 'FHRPGroupRequest'
+        self.group: Any
         self.interface_type: str
         self.interface_id: int
         self.priority: int
@@ -1185,17 +1350,17 @@ class FrontPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
         self.color: str
-        self.rear_port: 'FrontPortRearPort'
+        self.rear_port: Any
         self.rear_port_position: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -1222,13 +1387,13 @@ class FrontPortRearPortRequest(Record):
 
 class FrontPortRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
         self.color: str
-        self.rear_port: 'FrontPortRearPortRequest'
+        self.rear_port: Any
         self.rear_port_position: int
         self.description: str
         self.mark_connected: bool
@@ -1240,13 +1405,13 @@ class FrontPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
         self.color: str
-        self.rear_port: 'RearPortTemplate'
+        self.rear_port: Any
         self.rear_port_position: int
         self.description: str
         self.created: str
@@ -1254,13 +1419,13 @@ class FrontPortTemplate(Record):
 
 class FrontPortTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
         self.color: str
-        self.rear_port: 'RearPortTemplateRequest'
+        self.rear_port: Any
         self.rear_port_position: int
         self.description: str
 
@@ -1287,6 +1452,66 @@ class GroupRequest(Record):
     def __init__(self):
         self.name: str
 
+class IKEPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.version: Any
+        self.mode: Any
+        self.proposals: List[Any]
+        self.preshared_key: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class IKEPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.version: int
+        self.mode: str
+        self.proposals: List[Any]
+        self.preshared_key: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class IKEProposal(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.authentication_method: Any
+        self.encryption_algorithm: Any
+        self.authentication_algorithm: Any
+        self.group: Any
+        self.sa_lifetime: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class IKEProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.authentication_method: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.group: int
+        self.sa_lifetime: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class IPAddress(Record):
     def __init__(self):
         self.id: int
@@ -1294,14 +1519,14 @@ class IPAddress(Record):
         self.display: str
         self.family: Any
         self.address: str
-        self.vrf: 'VRF'
-        self.tenant: 'Tenant'
+        self.vrf: Any
+        self.tenant: Any
         self.status: Any
         self.role: Any
         self.assigned_object_type: str
         self.assigned_object_id: int
         self.assigned_object: Any
-        self.nat_inside: 'IPAddress'
+        self.nat_inside: Any
         self.nat_outside: List[Any]
         self.dns_name: str
         self.description: str
@@ -1314,13 +1539,13 @@ class IPAddress(Record):
 class IPAddressRequest(Record):
     def __init__(self):
         self.address: str
-        self.vrf: 'VRFRequest'
-        self.tenant: 'TenantRequest'
+        self.vrf: Any
+        self.tenant: Any
         self.status: str
         self.role: str
         self.assigned_object_type: str
         self.assigned_object_id: int
-        self.nat_inside: 'IPAddressRequest'
+        self.nat_inside: Any
         self.dns_name: str
         self.description: str
         self.comments: str
@@ -1336,10 +1561,10 @@ class IPRange(Record):
         self.start_address: str
         self.end_address: str
         self.size: int
-        self.vrf: 'VRF'
-        self.tenant: 'Tenant'
+        self.vrf: Any
+        self.tenant: Any
         self.status: Any
-        self.role: 'Role'
+        self.role: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -1352,15 +1577,96 @@ class IPRangeRequest(Record):
     def __init__(self):
         self.start_address: str
         self.end_address: str
-        self.vrf: 'VRFRequest'
-        self.tenant: 'TenantRequest'
+        self.vrf: Any
+        self.tenant: Any
         self.status: str
-        self.role: 'RoleRequest'
+        self.role: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
         self.mark_utilized: bool
+
+class IPSecPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.proposals: List[Any]
+        self.pfs_group: Any
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class IPSecPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.proposals: List[Any]
+        self.pfs_group: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class IPSecProfile(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.mode: Any
+        self.ike_policy: Any
+        self.ipsec_policy: Any
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class IPSecProfileRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.mode: str
+        self.ike_policy: Any
+        self.ipsec_policy: Any
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class IPSecProposal(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.description: str
+        self.encryption_algorithm: Any
+        self.authentication_algorithm: Any
+        self.sa_lifetime_seconds: int
+        self.sa_lifetime_data: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class IPSecProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.sa_lifetime_seconds: int
+        self.sa_lifetime_data: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class ImageAttachment(Record):
     def __init__(self):
@@ -1391,16 +1697,16 @@ class Interface(dcim.Interfaces):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.vdcs: List[Any]
-        self.module: 'ComponentNestedModule'
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
         self.enabled: bool
-        self.parent: 'Interface'
-        self.bridge: 'Interface'
-        self.lag: 'Interface'
+        self.parent: Any
+        self.bridge: Any
+        self.lag: Any
         self.mtu: int
         self.mac_address: str
         self.speed: int
@@ -1416,17 +1722,17 @@ class Interface(dcim.Interfaces):
         self.rf_channel_frequency: float
         self.rf_channel_width: float
         self.tx_power: int
-        self.untagged_vlan: 'VLAN'
+        self.untagged_vlan: Any
         self.tagged_vlans: List[Any]
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
-        self.wireless_link: 'WirelessLink'
+        self.wireless_link: Any
         self.link_peers: List[Any]
         self.link_peers_type: str
         self.wireless_lans: List[Any]
-        self.vrf: 'VRF'
-        self.l2vpn_termination: 'L2VPNTermination'
+        self.vrf: Any
+        self.l2vpn_termination: Any
         self.connected_endpoints: List[Any]
         self.connected_endpoints_type: str
         self.connected_endpoints_reachable: bool
@@ -1440,16 +1746,16 @@ class Interface(dcim.Interfaces):
 
 class InterfaceRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
+        self.device: Any
         self.vdcs: List[Any]
-        self.module: 'ComponentNestedModuleRequest'
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
         self.enabled: bool
-        self.parent: 'InterfaceRequest'
-        self.bridge: 'InterfaceRequest'
-        self.lag: 'InterfaceRequest'
+        self.parent: Any
+        self.bridge: Any
+        self.lag: Any
         self.mtu: int
         self.mac_address: str
         self.speed: int
@@ -1465,11 +1771,11 @@ class InterfaceRequest(Record):
         self.rf_channel_frequency: float
         self.rf_channel_width: float
         self.tx_power: int
-        self.untagged_vlan: 'VLANRequest'
+        self.untagged_vlan: Any
         self.tagged_vlans: List[Any]
         self.mark_connected: bool
         self.wireless_lans: List[Any]
-        self.vrf: 'VRFRequest'
+        self.vrf: Any
         self.tags: List[Any]
         self.custom_fields: Any
 
@@ -1478,45 +1784,47 @@ class InterfaceTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
         self.enabled: bool
         self.mgmt_only: bool
         self.description: str
-        self.bridge: 'InterfaceTemplate'
+        self.bridge: Any
         self.poe_mode: Any
         self.poe_type: Any
+        self.rf_role: Any
         self.created: str
         self.last_updated: str
 
 class InterfaceTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
         self.enabled: bool
         self.mgmt_only: bool
         self.description: str
-        self.bridge: 'InterfaceTemplateRequest'
+        self.bridge: Any
         self.poe_mode: str
         self.poe_type: str
+        self.rf_role: str
 
 class InventoryItem(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'InventoryItemRole'
-        self.manufacturer: 'Manufacturer'
+        self.role: Any
+        self.manufacturer: Any
         self.part_id: str
         self.serial: str
         self.asset_tag: str
@@ -1533,12 +1841,12 @@ class InventoryItem(Record):
 
 class InventoryItemRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
+        self.device: Any
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'InventoryItemRoleRequest'
-        self.manufacturer: 'ManufacturerRequest'
+        self.role: Any
+        self.manufacturer: Any
         self.part_id: str
         self.serial: str
         self.asset_tag: str
@@ -1578,12 +1886,12 @@ class InventoryItemTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
+        self.device_type: Any
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'InventoryItemRole'
-        self.manufacturer: 'Manufacturer'
+        self.role: Any
+        self.manufacturer: Any
         self.part_id: str
         self.description: str
         self.component_type: str
@@ -1595,12 +1903,12 @@ class InventoryItemTemplate(Record):
 
 class InventoryItemTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
+        self.device_type: Any
         self.parent: int
         self.name: str
         self.label: str
-        self.role: 'InventoryItemRoleRequest'
-        self.manufacturer: 'ManufacturerRequest'
+        self.role: Any
+        self.manufacturer: Any
         self.part_id: str
         self.description: str
         self.component_type: str
@@ -1620,8 +1928,9 @@ class Job(Record):
         self.interval: int
         self.started: str
         self.completed: str
-        self.user: 'User'
+        self.user: Any
         self.data: Any
+        self.error: str
         self.job_id: str
 
 class JournalEntry(Record):
@@ -1663,7 +1972,7 @@ class L2VPN(Record):
         self.export_targets: List[Any]
         self.description: str
         self.comments: str
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -1679,7 +1988,7 @@ class L2VPNRequest(Record):
         self.export_targets: List[Any]
         self.description: str
         self.comments: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.tags: List[Any]
         self.custom_fields: Any
 
@@ -1688,7 +1997,7 @@ class L2VPNTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.l2vpn: 'L2VPN'
+        self.l2vpn: Any
         self.assigned_object_type: str
         self.assigned_object_id: int
         self.assigned_object: Any
@@ -1699,7 +2008,7 @@ class L2VPNTermination(Record):
 
 class L2VPNTerminationRequest(Record):
     def __init__(self):
-        self.l2vpn: 'L2VPNRequest'
+        self.l2vpn: Any
         self.assigned_object_type: str
         self.assigned_object_id: int
         self.tags: List[Any]
@@ -1712,10 +2021,10 @@ class Location(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.site: 'Site'
-        self.parent: 'Location'
+        self.site: Any
+        self.parent: Any
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1729,10 +2038,10 @@ class LocationRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.site: 'SiteRequest'
-        self.parent: 'LocationRequest'
+        self.site: Any
+        self.parent: Any
         self.status: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -1766,9 +2075,9 @@ class Module(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module_bay: 'ModuleBay'
-        self.module_type: 'ModuleType'
+        self.device: Any
+        self.module_bay: Any
+        self.module_type: Any
         self.status: Any
         self.serial: str
         self.asset_tag: str
@@ -1784,9 +2093,9 @@ class ModuleBay(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.name: str
-        self.installed_module: 'ModuleBayNestedModule'
+        self.installed_module: Any
         self.label: str
         self.position: str
         self.description: str
@@ -1808,9 +2117,9 @@ class ModuleBayNestedModuleRequest(Record):
 
 class ModuleBayRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
+        self.device: Any
         self.name: str
-        self.installed_module: 'ModuleBayNestedModuleRequest'
+        self.installed_module: Any
         self.label: str
         self.position: str
         self.description: str
@@ -1822,7 +2131,7 @@ class ModuleBayTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
+        self.device_type: Any
         self.name: str
         self.label: str
         self.position: str
@@ -1832,7 +2141,7 @@ class ModuleBayTemplate(Record):
 
 class ModuleBayTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
+        self.device_type: Any
         self.name: str
         self.label: str
         self.position: str
@@ -1851,9 +2160,9 @@ class ModuleNestedModuleBayRequest(Record):
 
 class ModuleRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module_bay: 'ModuleBayRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device: Any
+        self.module_bay: Any
+        self.module_type: Any
         self.status: str
         self.serial: str
         self.asset_tag: str
@@ -1867,7 +2176,7 @@ class ModuleType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'Manufacturer'
+        self.manufacturer: Any
         self.model: str
         self.part_number: str
         self.weight: float
@@ -1881,7 +2190,7 @@ class ModuleType(Record):
 
 class ModuleTypeRequest(Record):
     def __init__(self):
-        self.manufacturer: 'ManufacturerRequest'
+        self.manufacturer: Any
         self.model: str
         self.part_number: str
         self.weight: float
@@ -1901,6 +2210,7 @@ class NestedASN(Record):
 class NestedBGPPeerGroup(Record):
     def __init__(self):
         self.id: int
+        self.display: str
         self.url: str
         self.name: str
         self.description: str
@@ -1977,6 +2287,20 @@ class NestedClusterTypeRequest(Record):
         self.name: str
         self.slug: str
 
+class NestedCommunity(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.value: str
+
+class NestedCommunityList(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+
 class NestedConfigTemplate(Record):
     def __init__(self):
         self.id: int
@@ -2026,6 +2350,18 @@ class NestedContactRoleRequest(Record):
         self.name: str
         self.slug: str
 
+class NestedCustomFieldChoiceSet(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.choices_count: str
+
+class NestedCustomFieldChoiceSetRequest(Record):
+    def __init__(self):
+        self.name: str
+
 class NestedDataFile(Record):
     def __init__(self):
         self.id: int
@@ -2073,7 +2409,7 @@ class NestedDeviceType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'Manufacturer'
+        self.manufacturer: Any
         self.model: str
         self.slug: str
 
@@ -2095,6 +2431,17 @@ class NestedFHRPGroupRequest(Record):
         self.protocol: str
         self.group_id: int
 
+class NestedIKEPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+
+class NestedIKEPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+
 class NestedIPAddress(Record):
     def __init__(self):
         self.id: int
@@ -2107,12 +2454,34 @@ class NestedIPAddressRequest(Record):
     def __init__(self):
         self.address: str
 
+class NestedIPSecPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+
+class NestedIPSecPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+
+class NestedIPSecProfile(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+
+class NestedIPSecProfileRequest(Record):
+    def __init__(self):
+        self.name: str
+
 class NestedInterface(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.name: str
         self.cable: int
         self._occupied: bool
@@ -2168,11 +2537,11 @@ class NestedL2VPNTermination(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.l2vpn: 'L2VPN'
+        self.l2vpn: Any
 
 class NestedL2VPNTerminationRequest(Record):
     def __init__(self):
-        self.l2vpn: 'L2VPNRequest'
+        self.l2vpn: Any
 
 class NestedLocation(Record):
     def __init__(self):
@@ -2201,25 +2570,17 @@ class NestedManufacturerRequest(Record):
         self.name: str
         self.slug: str
 
-class NestedModule(Record):
-    def __init__(self):
-        self.id: int
-        self.url: str
-        self.display: str
-        self.device: 'Device'
-        self.module_bay: 'ModuleNestedModuleBay'
-        self.module_type: 'ModuleType'
-
 class NestedModuleBay(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.module: 'Module'
+        self.installed_module: Any
         self.name: str
 
 class NestedModuleBayRequest(Record):
     def __init__(self):
+        self.installed_module: Any
         self.name: str
 
 class NestedModuleType(Record):
@@ -2227,7 +2588,7 @@ class NestedModuleType(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.manufacturer: 'Manufacturer'
+        self.manufacturer: Any
         self.model: str
 
 class NestedModuleTypeRequest(Record):
@@ -2263,7 +2624,7 @@ class NestedPowerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
+        self.device: Any
         self.name: str
         self.cable: int
         self._occupied: bool
@@ -2283,6 +2644,15 @@ class NestedPowerPortTemplate(Record):
 class NestedPowerPortTemplateRequest(Record):
     def __init__(self):
         self.name: str
+
+class NestedPrefix(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.family: int
+        self.prefix: str
+        self._depth: int
 
 class NestedPrefixList(Record):
     def __init__(self):
@@ -2403,6 +2773,14 @@ class NestedRoleRequest(Record):
         self.name: str
         self.slug: str
 
+class NestedRoutingPolicy(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.name: str
+        self.display: str
+        self.description: str
+
 class NestedSite(Record):
     def __init__(self):
         self.id: int
@@ -2472,6 +2850,30 @@ class NestedTenantRequest(Record):
         self.name: str
         self.slug: str
 
+class NestedTunnel(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+
+class NestedTunnelGroup(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.slug: str
+
+class NestedTunnelGroupRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.slug: str
+
+class NestedTunnelRequest(Record):
+    def __init__(self):
+        self.name: str
+
 class NestedUser(Record):
     def __init__(self):
         self.id: int
@@ -2514,7 +2916,7 @@ class NestedVMInterface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.virtual_machine: 'VirtualMachineWithConfigContext'
+        self.virtual_machine: Any
         self.name: str
 
 class NestedVMInterfaceRequest(Record):
@@ -2540,12 +2942,12 @@ class NestedVirtualChassis(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.master: 'Device'
+        self.master: Any
 
 class NestedVirtualChassisRequest(Record):
     def __init__(self):
         self.name: str
-        self.master: 'DeviceRequest'
+        self.master: Any
 
 class NestedVirtualMachine(Record):
     def __init__(self):
@@ -2589,7 +2991,7 @@ class ObjectChange(Record):
         self.url: str
         self.display: str
         self.time: str
-        self.user: 'User'
+        self.user: Any
         self.user_name: str
         self.request_id: str
         self.action: Any
@@ -2659,6 +3061,13 @@ class PaginatedBGPSessionList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedBookmarkList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedCableList(Record):
     def __init__(self):
         self.count: int
@@ -2716,6 +3125,20 @@ class PaginatedClusterTypeList(Record):
         self.results: List[Any]
 
 class PaginatedCommunityList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedCommunityListList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedCommunityListRuleList(Record):
     def __init__(self):
         self.count: int
         self.next: str
@@ -2799,6 +3222,13 @@ class PaginatedContentTypeList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedCustomFieldChoiceSetList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedCustomFieldList(Record):
     def __init__(self):
         self.count: int
@@ -2862,6 +3292,13 @@ class PaginatedDeviceWithConfigContextList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedEventRuleList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedExportTemplateList(Record):
     def __init__(self):
         self.count: int
@@ -2904,6 +3341,20 @@ class PaginatedGroupList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedIKEPolicyList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedIKEProposalList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedIPAddressList(Record):
     def __init__(self):
         self.count: int
@@ -2912,6 +3363,27 @@ class PaginatedIPAddressList(Record):
         self.results: List[Any]
 
 class PaginatedIPRangeList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedIPSecPolicyList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedIPSecProfileList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedIPSecProposalList(Record):
     def __init__(self):
         self.count: int
         self.next: str
@@ -3163,6 +3635,13 @@ class PaginatedRackRoleList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedRackUnitList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedRearPortList(Record):
     def __init__(self):
         self.count: int
@@ -3275,6 +3754,27 @@ class PaginatedTokenList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedTunnelGroupList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedTunnelList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
+class PaginatedTunnelTerminationList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedUserList(Record):
     def __init__(self):
         self.count: int
@@ -3324,6 +3824,13 @@ class PaginatedVirtualDeviceContextList(Record):
         self.previous: str
         self.results: List[Any]
 
+class PaginatedVirtualDiskList(Record):
+    def __init__(self):
+        self.count: int
+        self.next: str
+        self.previous: str
+        self.results: List[Any]
+
 class PaginatedVirtualMachineWithConfigContextList(Record):
     def __init__(self):
         self.count: int
@@ -3361,13 +3868,11 @@ class PaginatedWirelessLinkList(Record):
 
 class PatchedBGPPeerGroupRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.import_policies: List[Any]
-        self.export_policies: List[Any]
-        self.custom_field_data: Any
         self.name: str
         self.description: str
+        self.import_policies: List[Any]
+        self.export_policies: List[Any]
+        self.comments: str
 
 class PatchedCableTerminationRequest(Record):
     def __init__(self):
@@ -3380,6 +3885,7 @@ class PatchedCircuitTypeRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
+        self.color: str
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -3399,6 +3905,14 @@ class PatchedClusterTypeRequest(Record):
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
+
+class PatchedCommunityListRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class PatchedContactRoleRequest(Record):
     def __init__(self):
@@ -3469,12 +3983,12 @@ class PatchedManufacturerRequest(Record):
 
 class PatchedPrefixListRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.custom_field_data: Any
         self.name: str
         self.description: str
         self.family: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class PatchedRIRRequest(Record):
     def __init__(self):
@@ -3505,27 +4019,11 @@ class PatchedRoleRequest(Record):
 
 class PatchedRoutingPolicyRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.custom_field_data: Any
         self.name: str
         self.description: str
-
-class PatchedRoutingPolicyRuleRequest(Record):
-    def __init__(self):
         self.tags: List[Any]
         self.custom_fields: Any
-        self.custom_field_data: Any
-        self.index: int
-        self.action: str
-        self.description: str
-        self.continue_entry: int
-        self.match_custom: Any
-        self.set_actions: Any
-        self.routing_policy: int
-        self.match_community: List[Any]
-        self.match_ip_address: List[Any]
-        self.match_ipv6_address: List[Any]
+        self.comments: str
 
 class PatchedSavedFilterRequest(Record):
     def __init__(self):
@@ -3545,6 +4043,15 @@ class PatchedTagRequest(Record):
         self.slug: str
         self.color: str
         self.description: str
+        self.object_types: List[Any]
+
+class PatchedTunnelGroupRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.slug: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class PatchedVLANGroupRequest(Record):
     def __init__(self):
@@ -3560,23 +4067,18 @@ class PatchedVLANGroupRequest(Record):
 
 class PatchedWebhookRequest(Record):
     def __init__(self):
-        self.content_types: List[Any]
         self.name: str
-        self.type_create: bool
-        self.type_update: bool
-        self.type_delete: bool
-        self.type_job_start: bool
-        self.type_job_end: bool
+        self.description: str
         self.payload_url: str
-        self.enabled: bool
         self.http_method: str
         self.http_content_type: str
         self.additional_headers: str
         self.body_template: str
         self.secret: str
-        self.conditions: Any
         self.ssl_verification: bool
         self.ca_file_path: str
+        self.custom_fields: Any
+        self.tags: List[Any]
 
 class PatchedWritableASNRangeRequest(Record):
     def __init__(self):
@@ -3626,8 +4128,17 @@ class PatchedWritableBGPSessionRequest(Record):
         self.peer_group: int
         self.import_policies: List[Any]
         self.export_policies: List[Any]
+        self.prefix_list_in: int
+        self.prefix_list_out: int
         self.name: str
         self.description: str
+        self.comments: str
+
+class PatchedWritableBookmarkRequest(Record):
+    def __init__(self):
+        self.object_type: str
+        self.object_id: int
+        self.user: int
 
 class PatchedWritableCableRequest(Record):
     def __init__(self):
@@ -3689,6 +4200,15 @@ class PatchedWritableClusterRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class PatchedWritableCommunityListRuleRequest(Record):
+    def __init__(self):
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.community_list: int
+        self.action: str
+        self.community: int
+        self.comments: str
+
 class PatchedWritableCommunityRequest(Record):
     def __init__(self):
         self.tags: List[Any]
@@ -3699,6 +4219,7 @@ class PatchedWritableCommunityRequest(Record):
         self.value: str
         self.site: int
         self.role: int
+        self.comments: str
 
 class PatchedWritableConfigContextRequest(Record):
     def __init__(self):
@@ -3729,6 +4250,7 @@ class PatchedWritableConfigTemplateRequest(Record):
         self.environment_params: Any
         self.template_code: str
         self.data_source: int
+        self.data_file: int
         self.tags: List[Any]
 
 class PatchedWritableConsolePortRequest(Record):
@@ -3782,6 +4304,8 @@ class PatchedWritableContactAssignmentRequest(Record):
         self.contact: int
         self.role: int
         self.priority: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class PatchedWritableContactGroupRequest(Record):
     def __init__(self):
@@ -3806,6 +4330,14 @@ class PatchedWritableContactRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class PatchedWritableCustomFieldChoiceSetRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.base_choices: str
+        self.extra_choices: List[Any]
+        self.order_alphabetically: bool
+
 class PatchedWritableCustomFieldRequest(Record):
     def __init__(self):
         self.content_types: List[Any]
@@ -3818,14 +4350,15 @@ class PatchedWritableCustomFieldRequest(Record):
         self.required: bool
         self.search_weight: int
         self.filter_logic: str
-        self.ui_visibility: str
+        self.ui_visible: str
+        self.ui_editable: str
         self.is_cloneable: bool
         self.default: Any
         self.weight: int
         self.validation_minimum: int
         self.validation_maximum: int
         self.validation_regex: str
-        self.choices: List[Any]
+        self.choice_set: int
 
 class PatchedWritableDataSourceRequest(Record):
     def __init__(self):
@@ -3837,6 +4370,7 @@ class PatchedWritableDataSourceRequest(Record):
         self.comments: str
         self.parameters: Any
         self.ignore_rules: str
+        self.custom_fields: Any
 
 class PatchedWritableDeviceBayRequest(Record):
     def __init__(self):
@@ -3874,6 +4408,7 @@ class PatchedWritableDeviceTypeRequest(Record):
         self.slug: str
         self.part_number: str
         self.u_height: float
+        self.exclude_from_utilization: bool
         self.is_full_depth: bool
         self.subdevice_role: str
         self.airflow: str
@@ -3890,7 +4425,7 @@ class PatchedWritableDeviceWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
         self.device_type: int
-        self.device_role: int
+        self.role: int
         self.tenant: int
         self.platform: int
         self.serial: str
@@ -3900,20 +4435,41 @@ class PatchedWritableDeviceWithConfigContextRequest(Record):
         self.rack: int
         self.position: float
         self.face: str
+        self.latitude: float
+        self.longitude: float
         self.status: str
         self.airflow: str
         self.primary_ip4: int
         self.primary_ip6: int
+        self.oob_ip: int
         self.cluster: int
         self.virtual_chassis: int
         self.vc_position: int
         self.vc_priority: int
         self.description: str
         self.comments: str
+        self.config_template: int
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
-        self.config_template: int
+
+class PatchedWritableEventRuleRequest(Record):
+    def __init__(self):
+        self.content_types: List[Any]
+        self.name: str
+        self.type_create: bool
+        self.type_update: bool
+        self.type_delete: bool
+        self.type_job_start: bool
+        self.type_job_end: bool
+        self.enabled: bool
+        self.conditions: Any
+        self.action_type: str
+        self.action_object_type: str
+        self.action_object_id: int
+        self.description: str
+        self.custom_fields: Any
+        self.tags: List[Any]
 
 class PatchedWritableExportTemplateRequest(Record):
     def __init__(self):
@@ -3960,6 +4516,31 @@ class PatchedWritableFrontPortTemplateRequest(Record):
         self.rear_port_position: int
         self.description: str
 
+class PatchedWritableIKEPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.version: int
+        self.mode: str
+        self.proposals: List[Any]
+        self.preshared_key: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class PatchedWritableIKEProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.authentication_method: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.group: int
+        self.sa_lifetime: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class PatchedWritableIPAddressRequest(Record):
     def __init__(self):
         self.address: str
@@ -3989,6 +4570,39 @@ class PatchedWritableIPRangeRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
         self.mark_utilized: bool
+
+class PatchedWritableIPSecPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.proposals: List[Any]
+        self.pfs_group: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class PatchedWritableIPSecProfileRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.mode: str
+        self.ike_policy: int
+        self.ipsec_policy: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class PatchedWritableIPSecProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.sa_lifetime_seconds: int
+        self.sa_lifetime_data: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class PatchedWritableInterfaceRequest(Record):
     def __init__(self):
@@ -4038,6 +4652,7 @@ class PatchedWritableInterfaceTemplateRequest(Record):
         self.bridge: int
         self.poe_mode: str
         self.poe_type: str
+        self.rf_role: str
 
 class PatchedWritableInventoryItemRequest(Record):
     def __init__(self):
@@ -4175,8 +4790,6 @@ class PatchedWritablePlatformRequest(Record):
         self.slug: str
         self.manufacturer: int
         self.config_template: int
-        self.napalm_driver: str
-        self.napalm_args: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4195,6 +4808,7 @@ class PatchedWritablePowerFeedRequest(Record):
         self.max_utilization: int
         self.mark_connected: bool
         self.description: str
+        self.tenant: int
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4270,6 +4884,7 @@ class PatchedWritablePrefixListRuleRequest(Record):
         self.ge: int
         self.le: int
         self.prefix: int
+        self.comments: str
 
 class PatchedWritablePrefixRequest(Record):
     def __init__(self):
@@ -4332,6 +4947,7 @@ class PatchedWritableRackRequest(Record):
         self.type: str
         self.width: int
         self.u_height: int
+        self.starting_unit: int
         self.weight: float
         self.max_weight: int
         self.weight_unit: str
@@ -4398,6 +5014,21 @@ class PatchedWritableRouteTargetRequest(Record):
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
+
+class PatchedWritableRoutingPolicyRuleRequest(Record):
+    def __init__(self):
+        self.index: int
+        self.action: str
+        self.match_ip_address: List[Any]
+        self.routing_policy: int
+        self.match_community: List[Any]
+        self.match_custom: Any
+        self.set_actions: Any
+        self.match_ipv6_address: List[Any]
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class PatchedWritableServiceRequest(Record):
     def __init__(self):
@@ -4479,6 +5110,30 @@ class PatchedWritableTokenRequest(Record):
         self.write_enabled: bool
         self.description: str
 
+class PatchedWritableTunnelRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.status: str
+        self.group: int
+        self.encapsulation: str
+        self.ipsec_profile: int
+        self.tenant: int
+        self.tunnel_id: int
+        self.description: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class PatchedWritableTunnelTerminationRequest(Record):
+    def __init__(self):
+        self.tunnel: int
+        self.role: str
+        self.termination_type: str
+        self.termination_id: int
+        self.outside_ip: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class PatchedWritableUserRequest(Record):
     def __init__(self):
         self.username: str
@@ -4489,6 +5144,7 @@ class PatchedWritableUserRequest(Record):
         self.is_staff: bool
         self.is_active: bool
         self.date_joined: str
+        self.last_login: str
         self.groups: List[Any]
 
 class PatchedWritableVLANRequest(Record):
@@ -4559,6 +5215,15 @@ class PatchedWritableVirtualDeviceContextRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class PatchedWritableVirtualDiskRequest(Record):
+    def __init__(self):
+        self.virtual_machine: int
+        self.name: str
+        self.description: str
+        self.size: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class PatchedWritableVirtualMachineWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
@@ -4576,6 +5241,7 @@ class PatchedWritableVirtualMachineWithConfigContextRequest(Record):
         self.disk: int
         self.description: str
         self.comments: str
+        self.config_template: int
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4626,10 +5292,8 @@ class Platform(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.manufacturer: 'Manufacturer'
-        self.config_template: 'ConfigTemplate'
-        self.napalm_driver: str
-        self.napalm_args: Any
+        self.manufacturer: Any
+        self.config_template: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4642,10 +5306,8 @@ class PlatformRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.manufacturer: 'ManufacturerRequest'
-        self.config_template: 'ConfigTemplateRequest'
-        self.napalm_driver: str
-        self.napalm_args: Any
+        self.manufacturer: Any
+        self.config_template: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4655,8 +5317,8 @@ class PowerFeed(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.power_panel: 'PowerPanel'
-        self.rack: 'Rack'
+        self.power_panel: Any
+        self.rack: Any
         self.name: str
         self.status: Any
         self.type: Any
@@ -4666,7 +5328,7 @@ class PowerFeed(Record):
         self.amperage: int
         self.max_utilization: int
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -4674,6 +5336,7 @@ class PowerFeed(Record):
         self.connected_endpoints_type: str
         self.connected_endpoints_reachable: bool
         self.description: str
+        self.tenant: Any
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4683,8 +5346,8 @@ class PowerFeed(Record):
 
 class PowerFeedRequest(Record):
     def __init__(self):
-        self.power_panel: 'PowerPanelRequest'
-        self.rack: 'RackRequest'
+        self.power_panel: Any
+        self.rack: Any
         self.name: str
         self.status: str
         self.type: str
@@ -4695,6 +5358,7 @@ class PowerFeedRequest(Record):
         self.max_utilization: int
         self.mark_connected: bool
         self.description: str
+        self.tenant: Any
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -4704,16 +5368,16 @@ class PowerOutlet(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
-        self.power_port: 'PowerPort'
+        self.power_port: Any
         self.feed_leg: Any
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -4728,12 +5392,12 @@ class PowerOutlet(Record):
 
 class PowerOutletRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
-        self.power_port: 'PowerPortRequest'
+        self.power_port: Any
         self.feed_leg: str
         self.description: str
         self.mark_connected: bool
@@ -4745,12 +5409,12 @@ class PowerOutletTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
-        self.power_port: 'PowerPortTemplate'
+        self.power_port: Any
         self.feed_leg: Any
         self.description: str
         self.created: str
@@ -4758,12 +5422,12 @@ class PowerOutletTemplate(Record):
 
 class PowerOutletTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
-        self.power_port: 'PowerPortTemplateRequest'
+        self.power_port: Any
         self.feed_leg: str
         self.description: str
 
@@ -4772,8 +5436,8 @@ class PowerPanel(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'Site'
-        self.location: 'Location'
+        self.site: Any
+        self.location: Any
         self.name: str
         self.description: str
         self.comments: str
@@ -4785,8 +5449,8 @@ class PowerPanel(Record):
 
 class PowerPanelRequest(Record):
     def __init__(self):
-        self.site: 'SiteRequest'
-        self.location: 'LocationRequest'
+        self.site: Any
+        self.location: Any
         self.name: str
         self.description: str
         self.comments: str
@@ -4798,8 +5462,8 @@ class PowerPort(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -4807,7 +5471,7 @@ class PowerPort(Record):
         self.allocated_draw: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -4822,8 +5486,8 @@ class PowerPort(Record):
 
 class PowerPortRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
@@ -4839,8 +5503,8 @@ class PowerPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -4852,8 +5516,8 @@ class PowerPortTemplate(Record):
 
 class PowerPortTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
@@ -4868,12 +5532,12 @@ class Prefix(ipam.Prefixes):
         self.display: str
         self.family: Any
         self.prefix: str
-        self.site: 'Site'
-        self.vrf: 'VRF'
-        self.tenant: 'Tenant'
-        self.vlan: 'VLAN'
+        self.site: Any
+        self.vrf: Any
+        self.tenant: Any
+        self.vlan: Any
         self.status: Any
-        self.role: 'Role'
+        self.role: Any
         self.is_pool: bool
         self.mark_utilized: bool
         self.description: str
@@ -4888,24 +5552,22 @@ class Prefix(ipam.Prefixes):
 class PrefixList(Record):
     def __init__(self):
         self.id: int
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.display: str
-        self.created: str
-        self.last_updated: str
-        self.custom_field_data: Any
         self.name: str
+        self.display: str
         self.description: str
         self.family: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class PrefixListRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.custom_field_data: Any
         self.name: str
         self.description: str
         self.family: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class PrefixListRule(Record):
     def __init__(self):
@@ -4913,7 +5575,7 @@ class PrefixListRule(Record):
         self.tags: List[Any]
         self.custom_fields: Any
         self.display: str
-        self.prefix_list: 'PrefixList'
+        self.prefix_list: Any
         self.created: str
         self.last_updated: str
         self.index: int
@@ -4921,17 +5583,18 @@ class PrefixListRule(Record):
         self.prefix_custom: str
         self.ge: int
         self.le: int
-        self.prefix: int
+        self.prefix: Any
+        self.comments: str
 
 class PrefixRequest(Record):
     def __init__(self):
         self.prefix: str
-        self.site: 'SiteRequest'
-        self.vrf: 'VRFRequest'
-        self.tenant: 'TenantRequest'
-        self.vlan: 'VLANRequest'
+        self.site: Any
+        self.vrf: Any
+        self.tenant: Any
+        self.vlan: Any
         self.status: str
-        self.role: 'RoleRequest'
+        self.role: Any
         self.is_pool: bool
         self.mark_utilized: bool
         self.description: str
@@ -4961,7 +5624,7 @@ class ProviderAccount(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.provider: 'Provider'
+        self.provider: Any
         self.name: str
         self.account: str
         self.description: str
@@ -4973,7 +5636,7 @@ class ProviderAccount(Record):
 
 class ProviderAccountRequest(Record):
     def __init__(self):
-        self.provider: 'ProviderRequest'
+        self.provider: Any
         self.name: str
         self.account: str
         self.description: str
@@ -4986,7 +5649,7 @@ class ProviderNetwork(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.provider: 'Provider'
+        self.provider: Any
         self.name: str
         self.service_id: str
         self.description: str
@@ -4998,7 +5661,7 @@ class ProviderNetwork(Record):
 
 class ProviderNetworkRequest(Record):
     def __init__(self):
-        self.provider: 'ProviderRequest'
+        self.provider: Any
         self.name: str
         self.service_id: str
         self.description: str
@@ -5048,16 +5711,17 @@ class Rack(Record):
         self.display: str
         self.name: str
         self.facility_id: str
-        self.site: 'Site'
-        self.location: 'Location'
-        self.tenant: 'Tenant'
+        self.site: Any
+        self.location: Any
+        self.tenant: Any
         self.status: Any
-        self.role: 'RackRole'
+        self.role: Any
         self.serial: str
         self.asset_tag: str
         self.type: Any
         self.width: Any
         self.u_height: int
+        self.starting_unit: int
         self.weight: float
         self.max_weight: int
         self.weight_unit: Any
@@ -5079,16 +5743,17 @@ class RackRequest(Record):
     def __init__(self):
         self.name: str
         self.facility_id: str
-        self.site: 'SiteRequest'
-        self.location: 'LocationRequest'
-        self.tenant: 'TenantRequest'
+        self.site: Any
+        self.location: Any
+        self.tenant: Any
         self.status: str
-        self.role: 'RackRoleRequest'
+        self.role: Any
         self.serial: str
         self.asset_tag: str
         self.type: str
         self.width: int
         self.u_height: int
+        self.starting_unit: int
         self.weight: float
         self.max_weight: int
         self.weight_unit: str
@@ -5107,12 +5772,12 @@ class RackReservation(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.rack: 'Rack'
+        self.rack: Any
         self.units: List[Any]
         self.created: str
         self.last_updated: str
-        self.user: 'User'
-        self.tenant: 'Tenant'
+        self.user: Any
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5120,10 +5785,10 @@ class RackReservation(Record):
 
 class RackReservationRequest(Record):
     def __init__(self):
-        self.rack: 'RackRequest'
+        self.rack: Any
         self.units: List[Any]
-        self.user: 'UserRequest'
-        self.tenant: 'TenantRequest'
+        self.user: Any
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5153,13 +5818,22 @@ class RackRoleRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class RackUnit(Record):
+    def __init__(self):
+        self.id: float
+        self.name: str
+        self.face: Any
+        self.device: Any
+        self.occupied: bool
+        self.display: str
+
 class RearPort(Record):
     def __init__(self):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.module: 'ComponentNestedModule'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -5167,7 +5841,7 @@ class RearPort(Record):
         self.positions: int
         self.description: str
         self.mark_connected: bool
-        self.cable: 'Cable'
+        self.cable: Any
         self.cable_end: str
         self.link_peers: List[Any]
         self.link_peers_type: str
@@ -5179,8 +5853,8 @@ class RearPort(Record):
 
 class RearPortRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.module: 'ComponentNestedModuleRequest'
+        self.device: Any
+        self.module: Any
         self.name: str
         self.label: str
         self.type: str
@@ -5196,8 +5870,8 @@ class RearPortTemplate(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device_type: 'DeviceType'
-        self.module_type: 'ModuleType'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: Any
@@ -5209,8 +5883,8 @@ class RearPortTemplate(Record):
 
 class RearPortTemplateRequest(Record):
     def __init__(self):
-        self.device_type: 'DeviceTypeRequest'
-        self.module_type: 'ModuleTypeRequest'
+        self.device_type: Any
+        self.module_type: Any
         self.name: str
         self.label: str
         self.type: str
@@ -5225,7 +5899,7 @@ class Region(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'Region'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5238,7 +5912,7 @@ class RegionRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.parent: 'RegionRequest'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5274,7 +5948,7 @@ class RouteTarget(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5285,7 +5959,7 @@ class RouteTarget(Record):
 class RouteTargetRequest(Record):
     def __init__(self):
         self.name: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5294,58 +5968,36 @@ class RouteTargetRequest(Record):
 class RoutingPolicy(Record):
     def __init__(self):
         self.id: int
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.display: str
-        self.created: str
-        self.last_updated: str
-        self.custom_field_data: Any
         self.name: str
         self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class RoutingPolicyRequest(Record):
     def __init__(self):
-        self.tags: List[Any]
-        self.custom_fields: Any
-        self.custom_field_data: Any
         self.name: str
         self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class RoutingPolicyRule(Record):
     def __init__(self):
         self.id: int
-        self.tags: List[Any]
-        self.custom_fields: Any
+        self.index: int
         self.display: str
-        self.created: str
-        self.last_updated: str
-        self.custom_field_data: Any
-        self.index: int
         self.action: str
-        self.description: str
-        self.continue_entry: int
+        self.match_ip_address: List[Any]
+        self.routing_policy: Any
+        self.match_community: List[Any]
         self.match_custom: Any
         self.set_actions: Any
-        self.routing_policy: int
-        self.match_community: List[Any]
-        self.match_ip_address: List[Any]
         self.match_ipv6_address: List[Any]
-
-class RoutingPolicyRuleRequest(Record):
-    def __init__(self):
+        self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
-        self.custom_field_data: Any
-        self.index: int
-        self.action: str
-        self.description: str
-        self.continue_entry: int
-        self.match_custom: Any
-        self.set_actions: Any
-        self.routing_policy: int
-        self.match_community: List[Any]
-        self.match_ip_address: List[Any]
-        self.match_ipv6_address: List[Any]
+        self.comments: str
 
 class SavedFilter(Record):
     def __init__(self):
@@ -5381,8 +6033,8 @@ class Service(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.device: 'Device'
-        self.virtual_machine: 'VirtualMachineWithConfigContext'
+        self.device: Any
+        self.virtual_machine: Any
         self.name: str
         self.ports: List[Any]
         self.protocol: Any
@@ -5396,8 +6048,8 @@ class Service(Record):
 
 class ServiceRequest(Record):
     def __init__(self):
-        self.device: 'DeviceRequest'
-        self.virtual_machine: 'VirtualMachineRequest'
+        self.device: Any
+        self.virtual_machine: Any
         self.name: str
         self.ports: List[Any]
         self.protocol: str
@@ -5440,9 +6092,9 @@ class Site(Record):
         self.name: str
         self.slug: str
         self.status: Any
-        self.region: 'Region'
-        self.group: 'SiteGroup'
-        self.tenant: 'Tenant'
+        self.region: Any
+        self.group: Any
+        self.tenant: Any
         self.facility: str
         self.time_zone: str
         self.description: str
@@ -5470,7 +6122,7 @@ class SiteGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'SiteGroup'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5483,7 +6135,7 @@ class SiteGroupRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.parent: 'SiteGroupRequest'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5493,9 +6145,9 @@ class SiteRequest(Record):
         self.name: str
         self.slug: str
         self.status: str
-        self.region: 'RegionRequest'
-        self.group: 'SiteGroupRequest'
-        self.tenant: 'TenantRequest'
+        self.region: Any
+        self.group: Any
+        self.tenant: Any
         self.facility: str
         self.time_zone: str
         self.description: str
@@ -5517,6 +6169,7 @@ class Tag(Record):
         self.slug: str
         self.color: str
         self.description: str
+        self.object_types: List[Any]
         self.tagged_items: int
         self.created: str
         self.last_updated: str
@@ -5527,6 +6180,7 @@ class TagRequest(Record):
         self.slug: str
         self.color: str
         self.description: str
+        self.object_types: List[Any]
 
 class Tenant(Record):
     def __init__(self):
@@ -5535,7 +6189,7 @@ class Tenant(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.group: 'TenantGroup'
+        self.group: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5560,7 +6214,7 @@ class TenantGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'TenantGroup'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5573,7 +6227,7 @@ class TenantGroupRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.parent: 'TenantGroupRequest'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5582,7 +6236,7 @@ class TenantRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.group: 'TenantGroupRequest'
+        self.group: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5593,7 +6247,20 @@ class Token(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.user: 'User'
+        self.user: Any
+        self.created: str
+        self.expires: str
+        self.last_used: str
+        self.key: str
+        self.write_enabled: bool
+        self.description: str
+
+class TokenProvision(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.user: Any
         self.created: str
         self.expires: str
         self.last_used: str
@@ -5603,17 +6270,101 @@ class Token(Record):
 
 class TokenProvisionRequest(Record):
     def __init__(self):
+        self.expires: str
+        self.write_enabled: bool
+        self.description: str
         self.username: str
         self.password: str
 
 class TokenRequest(Record):
     def __init__(self):
-        self.user: 'UserRequest'
+        self.user: Any
         self.expires: str
         self.last_used: str
         self.key: str
         self.write_enabled: bool
         self.description: str
+
+class Tunnel(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.status: Any
+        self.group: Any
+        self.encapsulation: Any
+        self.ipsec_profile: Any
+        self.tenant: Any
+        self.tunnel_id: int
+        self.description: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class TunnelGroup(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.name: str
+        self.slug: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+        self.tunnel_count: int
+
+class TunnelGroupRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.slug: str
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class TunnelRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.status: str
+        self.group: Any
+        self.encapsulation: str
+        self.ipsec_profile: Any
+        self.tenant: Any
+        self.tunnel_id: int
+        self.description: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class TunnelTermination(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.tunnel: Any
+        self.role: Any
+        self.termination_type: str
+        self.termination_id: int
+        self.termination: Any
+        self.outside_ip: Any
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class TunnelTerminationRequest(Record):
+    def __init__(self):
+        self.tunnel: Any
+        self.role: str
+        self.termination_type: str
+        self.termination_id: int
+        self.outside_ip: Any
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class User(Record):
     def __init__(self):
@@ -5627,6 +6378,7 @@ class User(Record):
         self.is_staff: bool
         self.is_active: bool
         self.date_joined: str
+        self.last_login: str
         self.groups: List[Any]
 
 class UserRequest(Record):
@@ -5639,6 +6391,7 @@ class UserRequest(Record):
         self.is_staff: bool
         self.is_active: bool
         self.date_joined: str
+        self.last_login: str
         self.groups: List[Any]
 
 class VLAN(Record):
@@ -5646,16 +6399,16 @@ class VLAN(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.site: 'Site'
-        self.group: 'VLANGroup'
+        self.site: Any
+        self.group: Any
         self.vid: int
         self.name: str
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.status: Any
-        self.role: 'Role'
+        self.role: Any
         self.description: str
         self.comments: str
-        self.l2vpn_termination: 'L2VPNTermination'
+        self.l2vpn_termination: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -5696,13 +6449,13 @@ class VLANGroupRequest(Record):
 
 class VLANRequest(Record):
     def __init__(self):
-        self.site: 'SiteRequest'
-        self.group: 'VLANGroupRequest'
+        self.site: Any
+        self.group: Any
         self.vid: int
         self.name: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.status: str
-        self.role: 'RoleRequest'
+        self.role: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5713,19 +6466,19 @@ class VMInterface(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.virtual_machine: 'VirtualMachineWithConfigContext'
+        self.virtual_machine: Any
         self.name: str
         self.enabled: bool
-        self.parent: 'VMInterface'
-        self.bridge: 'VMInterface'
+        self.parent: Any
+        self.bridge: Any
         self.mtu: int
         self.mac_address: str
         self.description: str
         self.mode: Any
-        self.untagged_vlan: 'VLAN'
+        self.untagged_vlan: Any
         self.tagged_vlans: List[Any]
-        self.vrf: 'VRF'
-        self.l2vpn_termination: 'L2VPNTermination'
+        self.vrf: Any
+        self.l2vpn_termination: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.created: str
@@ -5735,18 +6488,18 @@ class VMInterface(Record):
 
 class VMInterfaceRequest(Record):
     def __init__(self):
-        self.virtual_machine: 'VirtualMachineRequest'
+        self.virtual_machine: Any
         self.name: str
         self.enabled: bool
-        self.parent: 'VMInterfaceRequest'
-        self.bridge: 'VMInterfaceRequest'
+        self.parent: Any
+        self.bridge: Any
         self.mtu: int
         self.mac_address: str
         self.description: str
         self.mode: str
-        self.untagged_vlan: 'VLANRequest'
+        self.untagged_vlan: Any
         self.tagged_vlans: List[Any]
-        self.vrf: 'VRFRequest'
+        self.vrf: Any
         self.tags: List[Any]
         self.custom_fields: Any
 
@@ -5757,7 +6510,7 @@ class VRF(Record):
         self.display: str
         self.name: str
         self.rd: str
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.enforce_unique: bool
         self.description: str
         self.comments: str
@@ -5774,7 +6527,7 @@ class VRFRequest(Record):
     def __init__(self):
         self.name: str
         self.rd: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.enforce_unique: bool
         self.description: str
         self.comments: str
@@ -5790,20 +6543,20 @@ class VirtualChassis(Record):
         self.display: str
         self.name: str
         self.domain: str
-        self.master: 'Device'
+        self.master: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
-        self.member_count: int
         self.created: str
         self.last_updated: str
+        self.member_count: int
 
 class VirtualChassisRequest(Record):
     def __init__(self):
         self.name: str
         self.domain: str
-        self.master: 'DeviceRequest'
+        self.master: Any
         self.description: str
         self.comments: str
         self.tags: List[Any]
@@ -5815,12 +6568,12 @@ class VirtualDeviceContext(Record):
         self.url: str
         self.display: str
         self.name: str
-        self.device: 'Device'
+        self.device: Any
         self.identifier: int
-        self.tenant: 'Tenant'
-        self.primary_ip: 'IPAddress'
-        self.primary_ip4: 'IPAddress'
-        self.primary_ip6: 'IPAddress'
+        self.tenant: Any
+        self.primary_ip: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
         self.status: Any
         self.description: str
         self.comments: str
@@ -5833,14 +6586,37 @@ class VirtualDeviceContext(Record):
 class VirtualDeviceContextRequest(Record):
     def __init__(self):
         self.name: str
-        self.device: 'DeviceRequest'
+        self.device: Any
         self.identifier: int
-        self.tenant: 'TenantRequest'
-        self.primary_ip4: 'IPAddressRequest'
-        self.primary_ip6: 'IPAddressRequest'
+        self.tenant: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
         self.status: str
         self.description: str
         self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class VirtualDisk(Record):
+    def __init__(self):
+        self.id: int
+        self.url: str
+        self.display: str
+        self.virtual_machine: Any
+        self.name: str
+        self.description: str
+        self.size: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.created: str
+        self.last_updated: str
+
+class VirtualDiskRequest(Record):
+    def __init__(self):
+        self.virtual_machine: Any
+        self.name: str
+        self.description: str
+        self.size: int
         self.tags: List[Any]
         self.custom_fields: Any
 
@@ -5851,44 +6627,48 @@ class VirtualMachineWithConfigContext(Record):
         self.display: str
         self.name: str
         self.status: Any
-        self.site: 'Site'
-        self.cluster: 'Cluster'
-        self.device: 'Device'
-        self.role: 'DeviceRole'
-        self.tenant: 'Tenant'
-        self.platform: 'Platform'
-        self.primary_ip: 'IPAddress'
-        self.primary_ip4: 'IPAddress'
-        self.primary_ip6: 'IPAddress'
+        self.site: Any
+        self.cluster: Any
+        self.device: Any
+        self.role: Any
+        self.tenant: Any
+        self.platform: Any
+        self.primary_ip: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
         self.vcpus: float
         self.memory: int
         self.disk: int
         self.description: str
         self.comments: str
+        self.config_template: Any
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
         self.config_context: Any
         self.created: str
         self.last_updated: str
+        self.interface_count: int
+        self.virtual_disk_count: int
 
 class VirtualMachineWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
         self.status: str
-        self.site: 'SiteRequest'
-        self.cluster: 'ClusterRequest'
-        self.device: 'DeviceRequest'
-        self.role: 'DeviceRoleRequest'
-        self.tenant: 'TenantRequest'
-        self.platform: 'PlatformRequest'
-        self.primary_ip4: 'IPAddressRequest'
-        self.primary_ip6: 'IPAddressRequest'
+        self.site: Any
+        self.cluster: Any
+        self.device: Any
+        self.role: Any
+        self.tenant: Any
+        self.platform: Any
+        self.primary_ip4: Any
+        self.primary_ip6: Any
         self.vcpus: float
         self.memory: int
         self.disk: int
         self.description: str
         self.comments: str
+        self.config_template: Any
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5898,45 +6678,35 @@ class Webhook(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.content_types: List[Any]
         self.name: str
-        self.type_create: bool
-        self.type_update: bool
-        self.type_delete: bool
-        self.type_job_start: bool
-        self.type_job_end: bool
+        self.description: str
         self.payload_url: str
-        self.enabled: bool
         self.http_method: str
         self.http_content_type: str
         self.additional_headers: str
         self.body_template: str
         self.secret: str
-        self.conditions: Any
         self.ssl_verification: bool
         self.ca_file_path: str
+        self.custom_fields: Any
+        self.tags: List[Any]
         self.created: str
         self.last_updated: str
 
 class WebhookRequest(Record):
     def __init__(self):
-        self.content_types: List[Any]
         self.name: str
-        self.type_create: bool
-        self.type_update: bool
-        self.type_delete: bool
-        self.type_job_start: bool
-        self.type_job_end: bool
+        self.description: str
         self.payload_url: str
-        self.enabled: bool
         self.http_method: str
         self.http_content_type: str
         self.additional_headers: str
         self.body_template: str
         self.secret: str
-        self.conditions: Any
         self.ssl_verification: bool
         self.ca_file_path: str
+        self.custom_fields: Any
+        self.tags: List[Any]
 
 class WirelessLAN(Record):
     def __init__(self):
@@ -5945,10 +6715,10 @@ class WirelessLAN(Record):
         self.display: str
         self.ssid: str
         self.description: str
-        self.group: 'WirelessLANGroup'
+        self.group: Any
         self.status: Any
-        self.vlan: 'VLAN'
-        self.tenant: 'Tenant'
+        self.vlan: Any
+        self.tenant: Any
         self.auth_type: Any
         self.auth_cipher: Any
         self.auth_psk: str
@@ -5965,7 +6735,7 @@ class WirelessLANGroup(Record):
         self.display: str
         self.name: str
         self.slug: str
-        self.parent: 'WirelessLANGroup'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5978,7 +6748,7 @@ class WirelessLANGroupRequest(Record):
     def __init__(self):
         self.name: str
         self.slug: str
-        self.parent: 'WirelessLANGroupRequest'
+        self.parent: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -5987,10 +6757,10 @@ class WirelessLANRequest(Record):
     def __init__(self):
         self.ssid: str
         self.description: str
-        self.group: 'WirelessLANGroupRequest'
+        self.group: Any
         self.status: str
-        self.vlan: 'VLANRequest'
-        self.tenant: 'TenantRequest'
+        self.vlan: Any
+        self.tenant: Any
         self.auth_type: str
         self.auth_cipher: str
         self.auth_psk: str
@@ -6003,11 +6773,11 @@ class WirelessLink(Record):
         self.id: int
         self.url: str
         self.display: str
-        self.interface_a: 'Interface'
-        self.interface_b: 'Interface'
+        self.interface_a: Any
+        self.interface_b: Any
         self.ssid: str
         self.status: Any
-        self.tenant: 'Tenant'
+        self.tenant: Any
         self.auth_type: Any
         self.auth_cipher: Any
         self.auth_psk: str
@@ -6020,11 +6790,11 @@ class WirelessLink(Record):
 
 class WirelessLinkRequest(Record):
     def __init__(self):
-        self.interface_a: 'InterfaceRequest'
-        self.interface_b: 'InterfaceRequest'
+        self.interface_a: Any
+        self.interface_b: Any
         self.ssid: str
         self.status: str
-        self.tenant: 'TenantRequest'
+        self.tenant: Any
         self.auth_type: str
         self.auth_cipher: str
         self.auth_psk: str
@@ -6081,8 +6851,17 @@ class WritableBGPSessionRequest(Record):
         self.peer_group: int
         self.import_policies: List[Any]
         self.export_policies: List[Any]
+        self.prefix_list_in: int
+        self.prefix_list_out: int
         self.name: str
         self.description: str
+        self.comments: str
+
+class WritableBookmarkRequest(Record):
+    def __init__(self):
+        self.object_type: str
+        self.object_id: int
+        self.user: int
 
 class WritableCableRequest(Record):
     def __init__(self):
@@ -6144,6 +6923,15 @@ class WritableClusterRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class WritableCommunityListRuleRequest(Record):
+    def __init__(self):
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.community_list: int
+        self.action: str
+        self.community: int
+        self.comments: str
+
 class WritableCommunityRequest(Record):
     def __init__(self):
         self.tags: List[Any]
@@ -6154,6 +6942,7 @@ class WritableCommunityRequest(Record):
         self.value: str
         self.site: int
         self.role: int
+        self.comments: str
 
 class WritableConfigContextRequest(Record):
     def __init__(self):
@@ -6184,6 +6973,7 @@ class WritableConfigTemplateRequest(Record):
         self.environment_params: Any
         self.template_code: str
         self.data_source: int
+        self.data_file: int
         self.tags: List[Any]
 
 class WritableConsolePortRequest(Record):
@@ -6237,6 +7027,8 @@ class WritableContactAssignmentRequest(Record):
         self.contact: int
         self.role: int
         self.priority: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class WritableContactGroupRequest(Record):
     def __init__(self):
@@ -6261,6 +7053,14 @@ class WritableContactRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class WritableCustomFieldChoiceSetRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.base_choices: str
+        self.extra_choices: List[Any]
+        self.order_alphabetically: bool
+
 class WritableCustomFieldRequest(Record):
     def __init__(self):
         self.content_types: List[Any]
@@ -6273,14 +7073,15 @@ class WritableCustomFieldRequest(Record):
         self.required: bool
         self.search_weight: int
         self.filter_logic: str
-        self.ui_visibility: str
+        self.ui_visible: str
+        self.ui_editable: str
         self.is_cloneable: bool
         self.default: Any
         self.weight: int
         self.validation_minimum: int
         self.validation_maximum: int
         self.validation_regex: str
-        self.choices: List[Any]
+        self.choice_set: int
 
 class WritableDataSourceRequest(Record):
     def __init__(self):
@@ -6292,6 +7093,7 @@ class WritableDataSourceRequest(Record):
         self.comments: str
         self.parameters: Any
         self.ignore_rules: str
+        self.custom_fields: Any
 
 class WritableDeviceBayRequest(Record):
     def __init__(self):
@@ -6329,6 +7131,7 @@ class WritableDeviceTypeRequest(Record):
         self.slug: str
         self.part_number: str
         self.u_height: float
+        self.exclude_from_utilization: bool
         self.is_full_depth: bool
         self.subdevice_role: str
         self.airflow: str
@@ -6345,7 +7148,7 @@ class WritableDeviceWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
         self.device_type: int
-        self.device_role: int
+        self.role: int
         self.tenant: int
         self.platform: int
         self.serial: str
@@ -6355,20 +7158,41 @@ class WritableDeviceWithConfigContextRequest(Record):
         self.rack: int
         self.position: float
         self.face: str
+        self.latitude: float
+        self.longitude: float
         self.status: str
         self.airflow: str
         self.primary_ip4: int
         self.primary_ip6: int
+        self.oob_ip: int
         self.cluster: int
         self.virtual_chassis: int
         self.vc_position: int
         self.vc_priority: int
         self.description: str
         self.comments: str
+        self.config_template: int
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any
-        self.config_template: int
+
+class WritableEventRuleRequest(Record):
+    def __init__(self):
+        self.content_types: List[Any]
+        self.name: str
+        self.type_create: bool
+        self.type_update: bool
+        self.type_delete: bool
+        self.type_job_start: bool
+        self.type_job_end: bool
+        self.enabled: bool
+        self.conditions: Any
+        self.action_type: str
+        self.action_object_type: str
+        self.action_object_id: int
+        self.description: str
+        self.custom_fields: Any
+        self.tags: List[Any]
 
 class WritableExportTemplateRequest(Record):
     def __init__(self):
@@ -6415,6 +7239,31 @@ class WritableFrontPortTemplateRequest(Record):
         self.rear_port_position: int
         self.description: str
 
+class WritableIKEPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.version: int
+        self.mode: str
+        self.proposals: List[Any]
+        self.preshared_key: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class WritableIKEProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.authentication_method: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.group: int
+        self.sa_lifetime: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class WritableIPAddressRequest(Record):
     def __init__(self):
         self.address: str
@@ -6444,6 +7293,39 @@ class WritableIPRangeRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
         self.mark_utilized: bool
+
+class WritableIPSecPolicyRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.proposals: List[Any]
+        self.pfs_group: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class WritableIPSecProfileRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.mode: str
+        self.ike_policy: int
+        self.ipsec_policy: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class WritableIPSecProposalRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.description: str
+        self.encryption_algorithm: str
+        self.authentication_algorithm: str
+        self.sa_lifetime_seconds: int
+        self.sa_lifetime_data: int
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
 
 class WritableInterfaceRequest(Record):
     def __init__(self):
@@ -6493,6 +7375,7 @@ class WritableInterfaceTemplateRequest(Record):
         self.bridge: int
         self.poe_mode: str
         self.poe_type: str
+        self.rf_role: str
 
 class WritableInventoryItemRequest(Record):
     def __init__(self):
@@ -6630,8 +7513,6 @@ class WritablePlatformRequest(Record):
         self.slug: str
         self.manufacturer: int
         self.config_template: int
-        self.napalm_driver: str
-        self.napalm_args: Any
         self.description: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -6650,6 +7531,7 @@ class WritablePowerFeedRequest(Record):
         self.max_utilization: int
         self.mark_connected: bool
         self.description: str
+        self.tenant: int
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
@@ -6725,6 +7607,7 @@ class WritablePrefixListRuleRequest(Record):
         self.ge: int
         self.le: int
         self.prefix: int
+        self.comments: str
 
 class WritablePrefixRequest(Record):
     def __init__(self):
@@ -6787,6 +7670,7 @@ class WritableRackRequest(Record):
         self.type: str
         self.width: int
         self.u_height: int
+        self.starting_unit: int
         self.weight: float
         self.max_weight: int
         self.weight_unit: str
@@ -6853,6 +7737,21 @@ class WritableRouteTargetRequest(Record):
         self.comments: str
         self.tags: List[Any]
         self.custom_fields: Any
+
+class WritableRoutingPolicyRuleRequest(Record):
+    def __init__(self):
+        self.index: int
+        self.action: str
+        self.match_ip_address: List[Any]
+        self.routing_policy: int
+        self.match_community: List[Any]
+        self.match_custom: Any
+        self.set_actions: Any
+        self.match_ipv6_address: List[Any]
+        self.description: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+        self.comments: str
 
 class WritableServiceRequest(Record):
     def __init__(self):
@@ -6934,6 +7833,30 @@ class WritableTokenRequest(Record):
         self.write_enabled: bool
         self.description: str
 
+class WritableTunnelRequest(Record):
+    def __init__(self):
+        self.name: str
+        self.status: str
+        self.group: int
+        self.encapsulation: str
+        self.ipsec_profile: int
+        self.tenant: int
+        self.tunnel_id: int
+        self.description: str
+        self.comments: str
+        self.tags: List[Any]
+        self.custom_fields: Any
+
+class WritableTunnelTerminationRequest(Record):
+    def __init__(self):
+        self.tunnel: int
+        self.role: str
+        self.termination_type: str
+        self.termination_id: int
+        self.outside_ip: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class WritableUserRequest(Record):
     def __init__(self):
         self.username: str
@@ -6944,6 +7867,7 @@ class WritableUserRequest(Record):
         self.is_staff: bool
         self.is_active: bool
         self.date_joined: str
+        self.last_login: str
         self.groups: List[Any]
 
 class WritableVLANRequest(Record):
@@ -7014,6 +7938,15 @@ class WritableVirtualDeviceContextRequest(Record):
         self.tags: List[Any]
         self.custom_fields: Any
 
+class WritableVirtualDiskRequest(Record):
+    def __init__(self):
+        self.virtual_machine: int
+        self.name: str
+        self.description: str
+        self.size: int
+        self.tags: List[Any]
+        self.custom_fields: Any
+
 class WritableVirtualMachineWithConfigContextRequest(Record):
     def __init__(self):
         self.name: str
@@ -7031,6 +7964,7 @@ class WritableVirtualMachineWithConfigContextRequest(Record):
         self.disk: int
         self.description: str
         self.comments: str
+        self.config_template: int
         self.local_context_data: Any
         self.tags: List[Any]
         self.custom_fields: Any

@@ -33,6 +33,7 @@ class Api:
         self.users = UsersApp(self, "users")
         self.wireless = WirelessApp(self, "wireless")
         self.plugins = PluginsApp(self)
+
     @property
     def version(self) -> str: ...
     def openapi(self) -> dict: ...

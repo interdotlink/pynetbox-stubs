@@ -122,6 +122,10 @@ class PermissionsEndpoint(Endpoint):
     def get(
         self,
         id: Optional[int] = None,
+        can_add: Optional[bool] = None,
+        can_change: Optional[bool] = None,
+        can_delete: Optional[bool] = None,
+        can_view: Optional[bool] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -170,6 +174,10 @@ class PermissionsEndpoint(Endpoint):
     def filter(
         self,
         id: Optional[int] = None,
+        can_add: Optional[bool] = None,
+        can_change: Optional[bool] = None,
+        can_delete: Optional[bool] = None,
+        can_view: Optional[bool] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -244,6 +252,10 @@ class PermissionsEndpoint(Endpoint):
     def count(
         self,
         id: Optional[int] = None,
+        can_add: Optional[bool] = None,
+        can_change: Optional[bool] = None,
+        can_delete: Optional[bool] = None,
+        can_view: Optional[bool] = None,
         description: Optional[str] = None,
         description__empty: Optional[bool] = None,
         description__ic: Optional[str] = None,
@@ -464,7 +476,14 @@ class Tokens_provisionEndpoint(Endpoint):
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
     @overload
-    def create(self, username: str, password: str) -> Record: ...
+    def create(
+        self,
+        username: str,
+        password: str,
+        expires: Optional[str] = None,
+        write_enabled: Optional[bool] = None,
+        description: Optional[str] = None,
+    ) -> Record: ...
     def create(self, *args: Dict[str, Any], **kwargs: Any) -> Record: ...
     def update(self, objects: Iterable[Record]) -> RecordSet[Record]: ...
     def delete(self, objects: Iterable[Record]) -> bool: ...
@@ -510,6 +529,7 @@ class UsersEndpoint(Endpoint):
         id__n: Optional[int] = None,
         is_active: Optional[bool] = None,
         is_staff: Optional[bool] = None,
+        is_superuser: Optional[bool] = None,
         last_name: Optional[str] = None,
         last_name__empty: Optional[bool] = None,
         last_name__ic: Optional[str] = None,
@@ -575,6 +595,7 @@ class UsersEndpoint(Endpoint):
         id__n: Optional[int] = None,
         is_active: Optional[bool] = None,
         is_staff: Optional[bool] = None,
+        is_superuser: Optional[bool] = None,
         last_name: Optional[str] = None,
         last_name__empty: Optional[bool] = None,
         last_name__ic: Optional[str] = None,
@@ -616,6 +637,7 @@ class UsersEndpoint(Endpoint):
         is_staff: Optional[bool] = None,
         is_active: Optional[bool] = None,
         date_joined: Optional[str] = None,
+        last_login: Optional[str] = None,
         groups: Optional[List[Any]] = None,
     ) -> definitions.User: ...
     def create(
@@ -663,6 +685,7 @@ class UsersEndpoint(Endpoint):
         id__n: Optional[int] = None,
         is_active: Optional[bool] = None,
         is_staff: Optional[bool] = None,
+        is_superuser: Optional[bool] = None,
         last_name: Optional[str] = None,
         last_name__empty: Optional[bool] = None,
         last_name__ic: Optional[str] = None,
