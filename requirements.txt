@@ -1,4 +1,5 @@
 setuptools
+StrEnum
 pynetbox
 black
 isort
