@@ -8,6 +8,7 @@ from pynetbox._gen.ipam import IpamApp
 from pynetbox._gen.tenancy import TenancyApp
 from pynetbox._gen.users import UsersApp
 from pynetbox._gen.virtualization import VirtualizationApp
+from pynetbox._gen.vpn import VpnApp
 from pynetbox._gen.wireless import WirelessApp
 from pynetbox.core.app import App, PluginsApp
 
@@ -32,6 +33,7 @@ class Api:
         self.virtualization = VirtualizationApp(self, "virtualization")
         self.users = UsersApp(self, "users")
         self.wireless = WirelessApp(self, "wireless")
+        self.vpn = VpnApp(self, "vpn")
         self.plugins = PluginsApp(self)
 
     @property
