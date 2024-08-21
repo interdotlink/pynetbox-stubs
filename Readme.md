@@ -9,7 +9,7 @@ This module also includes stubs for the following NetBox plugins:
 # Installation
 
 ```shell
-pip install git+https://github.com/do-davidpilibosian/pynetbox-stubs#egg=pynetbox-stubs
+pip install git+https://github.com/do-davidpilibosian/pynetbox-stubs.git#egg=pynetbox-stubs
 ```
 
 # Example
