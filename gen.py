@@ -1,6 +1,7 @@
 import json
 import os
 from enum import StrEnum
+from http.client import responses
 from pathlib import Path
 from typing import Any, Dict, List, Literal, NamedTuple, Optional, Union
 
@@ -275,9 +276,10 @@ def visit_create(data: dict, defs: List["RecordDefinition"]) -> ParameterList:
     except IndexError:
         return ParameterList([])
     except KeyError:
-        schema_name = data["requestBody"]["content"]["application/json"][
-            "schema"
-        ]["$ref"][len("#/components/schemas/") :]
+        l = data.get("requestBody") or data["responses"]["201"]
+        schema_name = l["content"]["application/json"]["schema"]["$ref"][
+            len("#/components/schemas/") :
+        ]
     try:
         definition: "RecordDefinition" = next(
             d for d in defs if d.name == schema_name

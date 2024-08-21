@@ -9,10 +9,16 @@ from pynetbox.core.response import Record, RecordSet
 class Endpoint(Endpoint):
     def all(self, limit=0, offset=None) -> RecordSet[Record]: ...
     def get(
-        self, format: Optional[str] = None, **kwargs: Optional[Any]
+        self,
+        format: Optional[str] = None,
+        lang: Optional[str] = None,
+        **kwargs: Optional[Any]
     ) -> Optional[Record]: ...
     def filter(
-        self, format: Optional[str] = None, **kwargs: Optional[Any]
+        self,
+        format: Optional[str] = None,
+        lang: Optional[str] = None,
+        **kwargs: Optional[Any]
     ) -> RecordSet[Record]: ...
     @overload
     def create(self, *args: Dict[str, Any]) -> Record: ...
@@ -25,7 +31,10 @@ class Endpoint(Endpoint):
     def delete(self, objects: Iterable[Record]) -> bool: ...
     def choices(self) -> dict: ...
     def count(
-        self, format: Optional[str] = None, **kwargs: Optional[Any]
+        self,
+        format: Optional[str] = None,
+        lang: Optional[str] = None,
+        **kwargs: Optional[Any]
     ) -> int: ...
 
 class SchemaApp(App):
