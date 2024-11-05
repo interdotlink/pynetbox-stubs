@@ -12,5 +12,6 @@ class App:
     def __init__(self, api: "Api", name: str):
         self.api = api
         self.name = name
+
     def __getattr__(self, name: str) -> Endpoint: ...
     def config(self) -> str: ...
