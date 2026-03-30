@@ -1,3 +1,7 @@
+# ARCHIVED
+
+We are not longer using this repo internally so we are deprecating it. Writing and maintaining our own stubs generator was more complex and less effective than simply using an off-the-shelf tool. For example, we switch to [datamodel-code-generator](https://pypi.org/project/datamodel-code-generator/) internally, and we have better type coverage. Please do not use this repo anymore.
+
 # pynetbox-stubs
 
 Project that contains Python stub files for [pynetbox](https://github.com/netbox-community/pynetbox) in order to allow type checking code that uses pynetbox with [mypy](http://mypy-lang.org/)
